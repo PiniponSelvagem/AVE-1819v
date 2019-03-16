@@ -7,16 +7,19 @@ namespace Csvier {
     public class CsvParser {
 
         private ConstructorInfo[] availableCtors;
-        //private ParameterInfo[][] availableParams;
 
         private List<string> argsList = new List<string>();
         private List<int> colsList = new List<int>();
 
         private ConstructorInfo selectedCtor;
-        
+
+        private Type klass;
         private char separator;
 
+        private string[] textData;
+
         public CsvParser(Type klass, char separator) {
+            this.klass = klass;
             this.separator = separator;
 
             availableCtors = klass.GetConstructors();
@@ -28,8 +31,6 @@ namespace Csvier {
                 }
             }
             */
-
-            Console.WriteLine();
         }
 
         public CsvParser(Type klass) : this(klass, ',') {
@@ -68,7 +69,7 @@ namespace Csvier {
         }
 
         public CsvParser Load(String src) {
-            string[] arr = src.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            textData = src.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
             return this;
         }
 
@@ -92,7 +93,25 @@ namespace Csvier {
         }
 
         public object[] Parse() {
-            throw new NotImplementedException();
+            object[] ret = new object[textData.Length];
+
+            for (int i=0; i<ret.Length; ++i) {
+                string[] line = textData[i].Split(separator);
+                object[] args = new object[selectedCtor.GetParameters().Length];
+
+                for (int j=0; j<args.Length; ++j) {
+                    object obj = null;
+                    switch (colsList[j]) {
+                        case 0: obj = DateTime.Parse(line[colsList[j]]); break;
+                        case 2: obj = Int32.Parse(line[colsList[j]]); break;
+                    }
+                    args[j] = obj;
+                }
+
+                ret[i] = Activator.CreateInstance(klass, args);
+            }
+
+            return ret;
         }
 
     }
