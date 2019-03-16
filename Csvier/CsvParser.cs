@@ -72,10 +72,28 @@ namespace Csvier {
         }
 
         public CsvParser Remove(int count) {
+            int size = textData.Length-count;
+            string[] dest = new string[size];
+            Array.Copy(textData, count, dest, 0, size);
+            textData = dest;
             return this;
         }
 
         public CsvParser RemoveEmpties() {
+            int deleted = 0;
+            string[] dest = new string[textData.Length];
+            for (int i=0, j=0; i<textData.Length; ++i) {
+                if (textData[i].Length!=0) {
+                    dest[j] = textData[i];
+                    ++j;
+                }
+                else {
+                    ++deleted;
+                }
+            }
+            string[] ret = new string[dest.Length-deleted];
+            Array.Copy(dest, 0, ret, 0, dest.Length-deleted);
+            textData = ret;
             return this;
         }
         
