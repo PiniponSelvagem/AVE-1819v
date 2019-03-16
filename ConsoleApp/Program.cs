@@ -18,15 +18,29 @@ namespace ConsoleApp {
 
 
         static void CtorArgsTest() {
+            object w = null;
+
             Type t = typeof(WeatherInfo);
             ConstructorInfo[] c = t.GetConstructors();
-            
+            for (int i=0; i<c.Length; ++i) {
+                ParameterInfo[] p = c[i].GetParameters();
+                for (int x=0; x<p.Length; ++x) {
+                    Console.WriteLine(c[i] + "-" + p[x].Name);
+                    if (p.Length == 2) {
+                        object[] args = { DateTime.Parse("2019-01-02"), 20 };
+                        //w = new WeatherInfo(DateTime.Parse("2019-01-02"), 20);
+                        w = Activator.CreateInstance(t, args);
+                    }
+                }
+            }
 
-            /*
+            Console.WriteLine(w);
+            
             CsvParser pastWeather = new CsvParser(typeof(WeatherInfo))
                 .CtorArg("date", 0)
                 .CtorArg("tempC", 2);
-            */
+            
+            Console.WriteLine(pastWeather);
         }
 
         static void PastWeather() {

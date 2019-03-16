@@ -6,18 +6,56 @@ using System.Reflection;
 namespace Csvier {
     public class CsvParser {
 
-        private Type klass;
+        private ConstructorInfo[] availableCtors;
+        //private ParameterInfo[][] availableParams;
+
+        private List<string> argsList = new List<string>();
+        private List<int> colsList = new List<int>();
+
+        private ConstructorInfo selectedCtor;
+        
         private char separator;
 
         public CsvParser(Type klass, char separator) {
-            this.klass = klass;
             this.separator = separator;
+
+            availableCtors = klass.GetConstructors();
+            /*
+            availableParams = new ParameterInfo[klass.GetConstructors().Length][];
+            for (int i=0; i<availableCtors.Length; ++i) {
+                for (int j=0; j<availableParams.Length; ++j) {
+                    availableParams[i] = availableCtors[i].GetParameters();
+                }
+            }
+            */
+
+            Console.WriteLine();
         }
 
         public CsvParser(Type klass) : this(klass, ',') {
         }
 
         public CsvParser CtorArg(string arg, int col) {
+            argsList.Add(arg);
+            colsList.Add(col);
+
+            int argsSize = argsList.Count();
+            ConstructorInfo cInfo;
+
+            for (int i=0; i<availableCtors.Length; ++i) {
+                ParameterInfo[] pInfo = availableCtors[i].GetParameters();
+                if (pInfo.Length == argsSize) {
+                    for (int j=0; j<pInfo.Length; ++j) {
+                        if (!argsList[j].Equals(pInfo[j].Name)) {
+                            break;
+                        }
+                        if (j==pInfo.Length-1) {
+                            selectedCtor = availableCtors[i];
+                        }
+                    }
+                }
+            }
+
             return this;
         }
 
