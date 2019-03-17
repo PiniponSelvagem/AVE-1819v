@@ -1,10 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Net;
-using Clima;
 using System.Collections.Generic;
+using Request;
 
-namespace Csvier.Test {
+namespace Clima.Test {
 
     [TestClass]
     public class ClimaTest {

@@ -90,8 +90,7 @@ namespace Csvier {
         public CsvParser RemoveEvenIndexes() {
             return Remove(i => i%2==0);
         }
-
-
+        
         public CsvParser RemoveOddIndexes() {
             return Remove(i => i%2==1);
         }
@@ -117,6 +116,11 @@ namespace Csvier {
         }
 
 
+
+
+        /* -----------------------------------
+         * -------- AUXILIARY METHODS --------
+         * ----------------------------------- */
 
         private CsvParser Remove(Predicate<int> condition) {
             int deleted = 0;

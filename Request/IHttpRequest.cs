@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Request {
-    public interface IHttpRequest : IDisposable {
+    public interface IRequest : IDisposable {
         string GetBody(string url);
     }
 }

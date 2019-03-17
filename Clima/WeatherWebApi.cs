@@ -1,11 +1,7 @@
 ﻿using Csvier;
 using Request;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Clima {
     public class WeatherWebApi : IDisposable {
@@ -16,12 +12,12 @@ namespace Clima {
 
         readonly CsvParser pastWeather;
         readonly CsvParser locations;
-        readonly IHttpRequest req;
+        readonly IRequest req;
 
         public WeatherWebApi() : this(new HttpRequest()) {
         }
 
-        public WeatherWebApi(IHttpRequest req) {
+        public WeatherWebApi(IRequest req) {
             this.req = req;
         }
 
@@ -36,6 +32,7 @@ namespace Clima {
         }
 
         public LocationInfo[] Search(string query) {
+            req.GetBody(PATH_WEATHER);
             throw new NotImplementedException();
         }
     }
