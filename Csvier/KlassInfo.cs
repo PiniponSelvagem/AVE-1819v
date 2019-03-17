@@ -13,23 +13,29 @@ namespace Csvier {
             }
         }
 
-        public Type type { get; private set; }
+        public Type Type { get; private set; }
         private CInfo[] CInfos { get; set; }
+        private PropertyInfo[] PropInfos { get; set; }
+        private FieldInfo[] FildInfos { get; set; }
 
         public KlassInfo(Type type) {
-            this.type = type;
-            FillInfo(type);
+            this.Type = type;
+            FillAllInfo();
         }
 
-        private void FillInfo(Type type) {
-            ConstructorInfo[] csInfo = type.GetConstructors();
-            CInfos = new CInfo[csInfo.Length];
+        private void FillAllInfo() {
+            ConstructorInfo[] ctorInfos = Type.GetConstructors();
+            CInfos = new CInfo[ctorInfos.Length];
 
-            for (int i = 0; i<csInfo.Length; ++i) {
-                ParameterInfo[] pInfos = csInfo[i].GetParameters();
-                CInfos[i] = new CInfo(csInfo[i], pInfos);
+            for (int i = 0; i<ctorInfos.Length; ++i) {
+                ParameterInfo[] pInfos = ctorInfos[i].GetParameters();
+                CInfos[i] = new CInfo(ctorInfos[i], pInfos);
             }
+
+            PropInfos = Type.GetProperties();
+            FildInfos = Type.GetFields();
         }
+
 
         public int GetConstructorsLength { get { return CInfos.Length; } }
         public ConstructorInfo GetConstructor(int i) { return CInfos[i].CtorInfo; }

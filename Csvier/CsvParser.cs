@@ -6,19 +6,21 @@ using System.Reflection;
 namespace Csvier {
     public class CsvParser {
 
-        private struct ValueCol {
-            public string value;
+        private struct ArgCol {
+            public string arg;
             public int col;
 
-            public ValueCol(string value, int col) {
-                this.value = value;
+            public ArgCol(string arg, int col) {
+                this.arg = arg;
                 this.col = col;
             }
         }
 
-        private List<ValueCol> argsList = new List<ValueCol>();
         private KlassInfo klassInfo;
-        private ConstructorInfo selectedCtor;
+        private List<ArgCol> ctorArgsList  = new List<ArgCol>();
+        private List<ArgCol> propArgsList  = new List<ArgCol>();
+        private List<ArgCol> fieldArgsList = new List<ArgCol>();
+        private int selectedCtorIndex;
 
         private readonly char separator;
         private string[] textData;
@@ -32,30 +34,18 @@ namespace Csvier {
         }
 
         public CsvParser CtorArg(string arg, int col) {
-            argsList.Add(new ValueCol(arg, col));
-            int argsSize = argsList.Count();
-
-            for (int i=0; i<klassInfo.GetConstructorsLength; ++i) {
-                ParameterInfo[] pInfo = klassInfo.GetPamatersForCtor(i);
-                if (pInfo.Length == argsSize) {         // check if currentCtor thats being checked has the same number of parameters in argsList
-                    for (int j=0; j<pInfo.Length; ++j) {
-                        if (argsList[j].value.Equals(pInfo[j].Name) && j==pInfo.Length-1) { // parameters names && number of parameters match, select this ctor
-                            selectedCtor = klassInfo.GetConstructor(i);
-                            goto Return;
-                        }
-                    }
-                }
-            }
-            
-            Return:
+            ctorArgsList.Add(new ArgCol(arg, col));
+            SelectConstructor();
             return this;
         }
 
         public CsvParser PropArg(string arg, int col) {
+            propArgsList.Add(new ArgCol(arg, col));
             return this;
         }
 
         public CsvParser FieldArg(string arg, int col) {
+            fieldArgsList.Add(new ArgCol(arg, col));
             return this;
         }
 
@@ -90,19 +80,25 @@ namespace Csvier {
 
         public object[] Parse() {
             object[] ret = new object[textData.Length];
+            object[] args = new object[klassInfo.GetPamatersForCtor(selectedCtorIndex).Length];
 
             for (int i = 0; i<ret.Length; ++i) {
                 string[] line = textData[i].Split(separator);
-                object[] args = new object[selectedCtor.GetParameters().Length];
 
                 for (int j = 0; j<args.Length; ++j) {
-                    ParameterInfo[] pInfo = selectedCtor.GetParameters();
+                    ParameterInfo[] pInfo = klassInfo.GetPamatersForCtor(selectedCtorIndex);
                     Type type = pInfo[j].ParameterType;
-                    //args[j] = TryParseValue(line[argsList[j].col], type);
-                    args[j] = Convert.ChangeType(line[argsList[j].col], type);
+                    args[j] = TryParseValue(line[ctorArgsList[j].col], type);
                 }
 
-                ret[i] = Activator.CreateInstance(klassInfo.type, args);
+                ret[i] = Activator.CreateInstance(klassInfo.Type, args);
+                
+                //TODO: extract method
+                PropertyInfo p = klassInfo.Type.GetProperty(propArgsList[0].arg);
+                object o = TryParseValue(line[propArgsList[0].col], typeof(double));
+                p.SetValue(ret[i], o);
+
+                //TODO: fields
             }
 
             return ret;
@@ -133,6 +129,35 @@ namespace Csvier {
                 textData = ret;
             }
             return this;
+        }
+
+        private void SelectConstructor() {
+            int argsSize = ctorArgsList.Count();
+
+            for (int i = 0; i<klassInfo.GetConstructorsLength; ++i) {
+                ParameterInfo[] pInfos = klassInfo.GetPamatersForCtor(i);
+                if (pInfos.Length == argsSize && CheckIfParamsMatch(i, pInfos)) { // check if currentCtor thats being checked has the same number of parameters in argsList
+                    selectedCtorIndex = i;
+                    break; // Constructor found, can leave now
+                }
+            }
+        }
+
+        private bool CheckIfParamsMatch(int i, ParameterInfo[] pInfos) {
+            for (int j = 0; j<pInfos.Length; ++j) {
+                if (j==pInfos.Length-1 && ctorArgsList[j].arg.Equals(pInfos[j].Name)) { // parameters names && number of parameters match, select this ctor
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private object TryParseValue(string str, Type type) {
+            if (typeof(double).Equals(type)) {
+                str = str.Replace(".", ",");    // this might create problems if PC set to other culture?
+                return Convert.ToDouble(str);
+            }
+            return Convert.ChangeType(str, type);
         }
 
         // TODO: Ask prof if Convert.ChangeType is allowed... or if theres a better way.

@@ -22,9 +22,9 @@ namespace Clima {
         public override String ToString() {
             return "WeatherInfo{" +
                 "date=" + Date +
-                ", tempC=" + TempC +
-                ", precipMM=" + PrecipMM +
-                ", desc='" + Desc + '\'' +
+                " | tempC=" + TempC +
+                " | precipMM=" + PrecipMM +
+                " | desc='" + Desc + '\'' +
                 '}';
         }
 

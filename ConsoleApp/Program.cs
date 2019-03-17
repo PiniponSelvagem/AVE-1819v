@@ -51,7 +51,9 @@ namespace ConsoleApp {
 
             CsvParser pastWeather = new CsvParser(typeof(WeatherInfo))
                 .CtorArg("date", 0)
-                .CtorArg("tempC", 2);
+                .CtorArg("tempC", 2)
+                .PropArg("PrecipMM", 11)
+                .PropArg("Desc", 10);
 
             object[] items = pastWeather
                 .Load(sampleWeatherInLisbonFiltered)
