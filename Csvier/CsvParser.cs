@@ -80,82 +80,20 @@ namespace Csvier {
         }
 
         public CsvParser RemoveEmpties() {
-            int deleted = 0;
-            string[] dest = new string[textData.Length];
-            for (int i = 0, j = 0; i<textData.Length; ++i) {
-                if (textData[i].Length==0) {
-                    ++deleted;
-                }
-                else {
-                    dest[j] = textData[i];
-                    ++j;
-                }
-            }
-            if (deleted!=0) {
-                string[] ret = new string[dest.Length-deleted];
-                Array.Copy(dest, 0, ret, 0, dest.Length-deleted);
-                textData = ret;
-            }
-            return this;
+            return Remove(i => textData[i].Length==0);
         }
         
         public CsvParser RemoveWith(string word) {
-            int deleted = 0;
-            string[] dest = new string[textData.Length];
-            for (int i = 0, j = 0; i<textData.Length; ++i) {
-                if (textData[i].StartsWith(word)) {        //TODO: only this condition changes comparing to RemoveEmpties()
-                    ++deleted;
-                }
-                else {
-                    dest[j] = textData[i];
-                    ++j;
-                }
-            }
-            if (deleted!=0) {
-                string[] ret = new string[dest.Length-deleted];
-                Array.Copy(dest, 0, ret, 0, dest.Length-deleted);
-                textData = ret;
-            }
-            return this;
+            return Remove(i => textData[i].StartsWith(word));
         }
 
         public CsvParser RemoveEvenIndexes() {
-            int deleted = 0;
-            string[] dest = new string[textData.Length];
-            for (int i = 0, j = 0; i<textData.Length; ++i) {
-                if (i%2==0) {        //TODO: only this condition changes comparing to RemoveEmpties()
-                    ++deleted;
-                }
-                else {
-                    dest[j] = textData[i];
-                    ++j;
-                }
-            }
-            if (deleted!=0) {
-                string[] ret = new string[dest.Length-deleted];
-                Array.Copy(dest, 0, ret, 0, dest.Length-deleted);
-                textData = ret;
-            }
-            return this;
+            return Remove(i => i%2==0);
         }
+
+
         public CsvParser RemoveOddIndexes() {
-            int deleted = 0;
-            string[] dest = new string[textData.Length];
-            for (int i = 0, j = 0; i<textData.Length; ++i) {
-                if (i%2==1) {        //TODO: only this condition changes comparing to RemoveEmpties()
-                    ++deleted;
-                }
-                else {
-                    dest[j] = textData[i];
-                    ++j;
-                }
-            }
-            if (deleted!=0) {
-                string[] ret = new string[dest.Length-deleted];
-                Array.Copy(dest, 0, ret, 0, dest.Length-deleted);
-                textData = ret;
-            }
-            return this;
+            return Remove(i => i%2==1);
         }
 
         public object[] Parse() {
@@ -178,6 +116,27 @@ namespace Csvier {
             return ret;
         }
 
+
+
+        private CsvParser Remove(Predicate<int> condition) {
+            int deleted = 0;
+            string[] dest = new string[textData.Length];
+            for (int i = 0, j = 0; i<textData.Length; ++i) {
+                if (condition(i)) {
+                    ++deleted;
+                }
+                else {
+                    dest[j] = textData[i];
+                    ++j;
+                }
+            }
+            if (deleted!=0) {
+                string[] ret = new string[dest.Length-deleted];
+                Array.Copy(dest, 0, ret, 0, dest.Length-deleted);
+                textData = ret;
+            }
+            return this;
+        }
 
         // TODO: Ask prof if Convert.ChangeType is allowed... or if theres a better way.
         /*
