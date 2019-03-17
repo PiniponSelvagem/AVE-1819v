@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wing.Test.CsvierTest;
 
 namespace Csvier.Test {
@@ -9,9 +10,8 @@ namespace Csvier.Test {
         [TestMethod]
         public void LoadParse() {
             // Arrange
-            int valueStart=10,  inc=20;
-            CsvParser testInfo = new CsvParser(typeof(TestInfo))
-                .CtorArg("valueInt", 1);
+            int valueStart=10, inc=20;
+            CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
             object[] testInfoItems = testInfo
@@ -19,19 +19,35 @@ namespace Csvier.Test {
                 .Parse();
 
             // Assert
-            foreach(TestInfo tItem in testInfoItems) {
-                Assert.AreEqual(tItem.ValueInt, valueStart);
-                valueStart+=inc;
-            }
+            AssertFullFilteredSample(valueStart, inc, testInfoItems);
+        }
+
+        [TestMethod]
+        public void PropArg() {
+            // Arrange
+
+            // Act
+
+            // Assert
+            throw new NotImplementedException();
+        }
+
+        [TestMethod]
+        public void FieldArg() {
+            // Arrange
+
+            // Act
+
+            // Assert
+            throw new NotImplementedException();
         }
 
         [TestMethod]
         public void RemoveCount() {
             // Arrange
-            int valueStart=50,  inc=20;
+            int valueStart=50, inc=20;
             int count=2;
-            CsvParser testInfo = new CsvParser(typeof(TestInfo))
-                .CtorArg("valueInt", 1);
+            CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
             object[] testInfoItems = testInfo
@@ -40,18 +56,14 @@ namespace Csvier.Test {
                 .Parse();
 
             // Assert
-            foreach (TestInfo tItem in testInfoItems) {
-                Assert.AreEqual(tItem.ValueInt, valueStart);
-                valueStart+=inc;
-            }
+            AssertFullFilteredSample(valueStart, inc, testInfoItems);
         }
 
         [TestMethod]
         public void RemoveEmpties() {
             // Arrange
-            int valueStart=10,  inc=20;
-            CsvParser testInfo = new CsvParser(typeof(TestInfo))
-                .CtorArg("valueInt", 1);
+            int valueStart=10, inc=20;
+            CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
             object[] testInfoItems = testInfo
@@ -60,19 +72,15 @@ namespace Csvier.Test {
                 .Parse();
 
             // Assert
-            foreach (TestInfo tItem in testInfoItems) {
-                Assert.AreEqual(tItem.ValueInt, valueStart);
-                valueStart+=inc;
-            }
+            AssertFullFilteredSample(valueStart, inc, testInfoItems);
         }
 
         [TestMethod]
         public void RemoveWith() {
             // Arrange
             string toRemove = "#";
-            int valueStart=10,  inc=20;
-            CsvParser testInfo = new CsvParser(typeof(TestInfo))
-                .CtorArg("valueInt", 1);
+            int valueStart=10, inc=20;
+            CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
             object[] testInfoItems = testInfo
@@ -81,18 +89,14 @@ namespace Csvier.Test {
                 .Parse();
 
             // Assert
-            foreach (TestInfo tItem in testInfoItems) {
-                Assert.AreEqual(tItem.ValueInt, valueStart);
-                valueStart+=inc;
-            }
+            AssertFullFilteredSample(valueStart, inc, testInfoItems);
         }
 
         [TestMethod]
         public void RemoveEvenIndexes() {
             // Arrange
-            int valueStart=30,  inc=40;
-            CsvParser testInfo = new CsvParser(typeof(TestInfo))
-                .CtorArg("valueInt", 1);
+            int valueStart=30, inc=40;
+            CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
             object[] testInfoItems = testInfo
@@ -101,18 +105,14 @@ namespace Csvier.Test {
                 .Parse();
 
             // Assert
-            foreach (TestInfo tItem in testInfoItems) {
-                Assert.AreEqual(tItem.ValueInt, valueStart);
-                valueStart+=inc;
-            }
+            AssertFullFilteredSample(valueStart, inc, testInfoItems);
         }
 
         [TestMethod]
         public void RemoveOddIndexes() {
             // Arrange
-            int valueStart=10,  inc=40;
-            CsvParser testInfo = new CsvParser(typeof(TestInfo))
-                .CtorArg("valueInt", 1);
+            int valueStart=10, inc=40;
+            CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
             object[] testInfoItems = testInfo
@@ -121,6 +121,20 @@ namespace Csvier.Test {
                 .Parse();
 
             // Assert
+            AssertFullFilteredSample(valueStart, inc, testInfoItems);
+        }
+
+
+
+        /* -----------------------------------
+         * -------- AUXILIARY METHODS --------
+         * ----------------------------------- */
+        
+        private CsvParser CreateCsvParser_valueInt1() {
+            return new CsvParser(typeof(TestInfo)).CtorArg("valueInt", 1);
+        }
+        
+        private void AssertFullFilteredSample(int valueStart, int inc, object[] testInfoItems) {
             foreach (TestInfo tItem in testInfoItems) {
                 Assert.AreEqual(tItem.ValueInt, valueStart);
                 valueStart+=inc;

@@ -57,7 +57,7 @@ namespace ConsoleApp {
                 .Load(sampleWeatherInLisbonFiltered)
                 .RemoveEmpties()
                 .RemoveWith("#")
-                .RemoveEvenIndexes()
+                //.RemoveEvenIndexes()
                 .Parse();
 
             PrintAll(items);

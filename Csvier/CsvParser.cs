@@ -17,19 +17,15 @@ namespace Csvier {
         }
 
         private List<ValueCol> argsList = new List<ValueCol>();
-        private ConstructorInfo[] availableCtors;
+        private KlassInfo klassInfo;
         private ConstructorInfo selectedCtor;
 
-        private Type klass;
-        private char separator;
-
+        private readonly char separator;
         private string[] textData;
 
         public CsvParser(Type klass, char separator) {
-            this.klass = klass;
             this.separator = separator;
-
-            availableCtors = klass.GetConstructors();
+            klassInfo = new KlassInfo(klass);
         }
 
         public CsvParser(Type klass) : this(klass, ',') {
@@ -37,24 +33,21 @@ namespace Csvier {
 
         public CsvParser CtorArg(string arg, int col) {
             argsList.Add(new ValueCol(arg, col));
-
             int argsSize = argsList.Count();
 
-            for (int i=0; i<availableCtors.Length; ++i) {
-                ParameterInfo[] pInfo = availableCtors[i].GetParameters();
-                if (pInfo.Length == argsSize) {
+            for (int i=0; i<klassInfo.GetConstructorsLength; ++i) {
+                ParameterInfo[] pInfo = klassInfo.GetPamatersForCtor(i);
+                if (pInfo.Length == argsSize) {         // check if currentCtor thats being checked has the same number of parameters in argsList
                     for (int j=0; j<pInfo.Length; ++j) {
-                        if (!argsList[j].value.Equals(pInfo[j].Name)) {
-                            break;
-                        }
-                        if (j==pInfo.Length-1) {
-                            selectedCtor = availableCtors[i];
-                            break;
+                        if (argsList[j].value.Equals(pInfo[j].Name) && j==pInfo.Length-1) { // parameters names && number of parameters match, select this ctor
+                            selectedCtor = klassInfo.GetConstructor(i);
+                            goto Return;
                         }
                     }
                 }
             }
-
+            
+            Return:
             return this;
         }
 
@@ -109,7 +102,7 @@ namespace Csvier {
                     args[j] = Convert.ChangeType(line[argsList[j].col], type);
                 }
 
-                ret[i] = Activator.CreateInstance(klass, args);
+                ret[i] = Activator.CreateInstance(klassInfo.type, args);
             }
 
             return ret;
