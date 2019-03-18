@@ -21,6 +21,8 @@ namespace Csvier {
         private List<ArgCol> propArgsList  = new List<ArgCol>();
         private List<ArgCol> fieldArgsList = new List<ArgCol>();
         private int selectedCtorIndex;
+        private int propArgsListLength = 0;
+        private int fieldArgsListLength = 0;
 
         private readonly char separator;
         private string[] textData;
@@ -41,11 +43,13 @@ namespace Csvier {
 
         public CsvParser PropArg(string arg, int col) {
             propArgsList.Add(new ArgCol(arg, col));
+            ++propArgsListLength;
             return this;
         }
 
         public CsvParser FieldArg(string arg, int col) {
             fieldArgsList.Add(new ArgCol(arg, col));
+            ++fieldArgsListLength;
             return this;
         }
 
@@ -65,7 +69,7 @@ namespace Csvier {
         public CsvParser RemoveEmpties() {
             return Remove(i => textData[i].Length==0);
         }
-        
+
         public CsvParser RemoveWith(string word) {
             return Remove(i => textData[i].StartsWith(word));
         }
@@ -73,7 +77,7 @@ namespace Csvier {
         public CsvParser RemoveEvenIndexes() {
             return Remove(i => i%2==0);
         }
-        
+
         public CsvParser RemoveOddIndexes() {
             return Remove(i => i%2==1);
         }
@@ -92,17 +96,46 @@ namespace Csvier {
                 }
 
                 ret[i] = Activator.CreateInstance(klassInfo.Type, args);
-                
-                //TODO: extract method
-                PropertyInfo p = klassInfo.Type.GetProperty(propArgsList[0].arg);
-                object o = TryParseValue(line[propArgsList[0].col], typeof(double));
-                p.SetValue(ret[i], o);
+
+                //TODO: extract method                
+                for (int pIndx=0; pIndx<propArgsListLength; ++pIndx) {
+                    PropertyInfo prop = klassInfo.GetProperty(propArgsList[pIndx].arg);
+                    Type type = prop.PropertyType;
+                    object obj = TryParseValue(line[propArgsList[pIndx].col], type);
+                    prop.SetValue(ret[i], obj);
+                }
 
                 //TODO: fields
+                
+                for (int fIndx = 0; fIndx<fieldArgsListLength; ++fIndx) {
+                    FieldInfo field = klassInfo.GetField(fieldArgsList[fIndx].arg);
+                    Type type = field.FieldType;
+                    object obj = TryParseValue(line[fieldArgsList[fIndx].col], type);
+                    field.SetValue(ret[i], obj);
+                }
+                
+                //SetValueForArg
             }
 
             return ret;
         }
+
+
+        /*
+        private void SetValueForArg<T>(Type type, T t, string[] line, object ret) {
+            for (int i = 0; i<fieldArgsListLength; ++i) {
+                T t = klassInfo.GetField(fieldArgsList[i].arg);
+                object obj = TryParseValue(line[fieldArgsList[i].col], type);
+                t.SetValue(ret, obj);
+            }
+        }
+        */
+
+
+
+
+
+
 
 
 
@@ -178,6 +211,5 @@ namespace Csvier {
             return obj;
         }
         */
-
     }
 }
