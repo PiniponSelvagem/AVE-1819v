@@ -83,62 +83,21 @@ namespace Csvier {
         }
 
         public object[] Parse() {
-            object[] ret = new object[textData.Length];
+            object[] ret = new object[textData.Length]; // place to store the instances
             object[] args = new object[klassInfo.GetPamatersForCtor(selectedCtorIndex).Length];
 
             for (int i = 0; i<ret.Length; ++i) {
                 string[] line = textData[i].Split(separator);
-
-                for (int j = 0; j<args.Length; ++j) {
-                    ParameterInfo[] pInfo = klassInfo.GetPamatersForCtor(selectedCtorIndex);
-                    Type type = pInfo[j].ParameterType;
-                    args[j] = TryParseValue(line[ctorArgsList[j].col], type);
-                }
-
+                SetValuesForConstructors(line, args);
                 ret[i] = Activator.CreateInstance(klassInfo.Type, args);
-
-                //TODO: extract method                
-                for (int pIndx=0; pIndx<propArgsListLength; ++pIndx) {
-                    PropertyInfo prop = klassInfo.GetProperty(propArgsList[pIndx].arg);
-                    Type type = prop.PropertyType;
-                    object obj = TryParseValue(line[propArgsList[pIndx].col], type);
-                    prop.SetValue(ret[i], obj);
-                }
-
-                //TODO: fields
-                
-                for (int fIndx = 0; fIndx<fieldArgsListLength; ++fIndx) {
-                    FieldInfo field = klassInfo.GetField(fieldArgsList[fIndx].arg);
-                    Type type = field.FieldType;
-                    object obj = TryParseValue(line[fieldArgsList[fIndx].col], type);
-                    field.SetValue(ret[i], obj);
-                }
-                
-                //SetValueForArg
+                SetValuesForProperties(line, ret[i]);
+                SetValuesForFields(line, ret[i]);
             }
 
             return ret;
         }
 
-
-        /*
-        private void SetValueForArg<T>(Type type, T t, string[] line, object ret) {
-            for (int i = 0; i<fieldArgsListLength; ++i) {
-                T t = klassInfo.GetField(fieldArgsList[i].arg);
-                object obj = TryParseValue(line[fieldArgsList[i].col], type);
-                t.SetValue(ret, obj);
-            }
-        }
-        */
-
-
-
-
-
-
-
-
-
+        
 
         /* -----------------------------------
          * -------- AUXILIARY METHODS --------
@@ -193,23 +152,32 @@ namespace Csvier {
             return Convert.ChangeType(str, type);
         }
 
-        // TODO: Ask prof if Convert.ChangeType is allowed... or if theres a better way.
-        /*
-        private object TryParseValue(string str, Type type) {
-            object obj = null;
 
-            if (typeof(int).Equals(type)) {
-                obj = Int32.Parse(str);
-            }
-            else if (typeof(DateTime).Equals(type)) {
-                obj = DateTime.Parse(str);
-            }
-            else {
-                obj = str;
-            }
 
-            return obj;
+        private void SetValuesForConstructors(string[] line, object[] args) {
+            for (int j = 0; j<args.Length; ++j) {
+                ParameterInfo[] pInfo = klassInfo.GetPamatersForCtor(selectedCtorIndex);
+                string value = line[ctorArgsList[j].col];
+                args[j] = TryParseValue(value, pInfo[j].ParameterType);
+            }
         }
-        */
+
+        private void SetValuesForProperties(string[] line, object ret) {
+            for (int i = 0; i<propArgsListLength; ++i) {
+                PropertyInfo prop = klassInfo.GetProperty(propArgsList[i].arg);
+                string value = line[propArgsList[i].col];
+                object obj = TryParseValue(value, prop.PropertyType);
+                prop.SetValue(ret, obj);
+            }
+        }
+
+        private void SetValuesForFields(string[] line, object ret) {
+            for (int i = 0; i<fieldArgsListLength; ++i) {
+                FieldInfo field = klassInfo.GetField(fieldArgsList[i].arg);
+                string value = line[fieldArgsList[i].col];
+                object obj = TryParseValue(value, field.FieldType);
+                field.SetValue(ret, obj);
+            }
+        }
     }
 }
