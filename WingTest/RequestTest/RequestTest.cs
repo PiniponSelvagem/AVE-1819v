@@ -16,7 +16,7 @@ namespace Request.Test {
         [TestMethod]
         public void MockRequest() {
             using (MockRequest request = new MockRequest()) {
-                string body = request.GetBody("Resources\\Test_MockRequest.txt");
+                string body = request.GetBody("Test_MockRequest.txt");
                 Assert.IsTrue(body.StartsWith("ABC"));
                 Assert.IsTrue(body.EndsWith("GHI"));
             }

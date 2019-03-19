@@ -15,9 +15,9 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
@@ -36,10 +36,10 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .PropArg("ValueInt2", 1)
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt2", valueStart, inc, testInfoItems);
@@ -52,11 +52,11 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .PropArg("ValueInt2", 1)
                 .PropArg("ValueDouble", 3)
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt2", valueStart, inc, testInfoItems);
@@ -75,10 +75,10 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .FieldArg("fieldValueInt", 1)
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int_Field("fieldValueInt", valueStart, inc, testInfoItems);
@@ -91,11 +91,11 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .FieldArg("fieldValueInt", 1)
                 .FieldArg("fieldValueDouble", 3)
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int_Field("fieldValueInt", valueStart, inc, testInfoItems);
@@ -116,10 +116,10 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .Remove(count)
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
@@ -132,10 +132,10 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_EmptyLines_DateIntIntDoubleString)
                 .RemoveEmpties()
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
@@ -149,10 +149,10 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_ToFilterWith_DateIntIntDoubleString)
                 .RemoveWith(toRemove)
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
@@ -165,10 +165,10 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .RemoveEvenIndexes()
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
@@ -181,10 +181,10 @@ namespace Csvier.Test {
             CsvParser testInfo = CreateCsvParser_valueInt1();
 
             // Act
-            object[] testInfoItems = testInfo
+            TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .RemoveOddIndexes()
-                .Parse();
+                .Parse<TestInfo>();
 
             // Assert
             AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);

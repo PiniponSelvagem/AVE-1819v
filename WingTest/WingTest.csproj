@@ -56,6 +56,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="RequestTest\MockRequest.cs" />
     <Compile Include="RequestTest\RequestTest.cs" />
     <Compile Include="CsvierTest\CsvParserTest.cs" />
   </ItemGroup>

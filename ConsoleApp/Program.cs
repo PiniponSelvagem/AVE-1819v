@@ -54,13 +54,13 @@ namespace ConsoleApp {
                 .CtorArg("tempC", 2)
                 .PropArg("PrecipMM", 11)
                 .PropArg("Desc", 10);
-
-            object[] items = pastWeather
+            
+            WeatherInfo[] items = pastWeather
                 .Load(sampleWeatherInLisbonFiltered)
                 .RemoveEmpties()
                 .RemoveWith("#")
                 //.RemoveEvenIndexes()
-                .Parse();
+                .Parse<WeatherInfo>();
 
             PrintAll(items);
         }

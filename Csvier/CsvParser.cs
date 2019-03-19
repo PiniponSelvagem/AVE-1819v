@@ -21,8 +21,6 @@ namespace Csvier {
         private List<ArgCol> propArgsList  = new List<ArgCol>();
         private List<ArgCol> fieldArgsList = new List<ArgCol>();
         private int selectedCtorIndex;
-        private int propArgsListLength = 0;
-        private int fieldArgsListLength = 0;
 
         private readonly char separator;
         private string[] textData;
@@ -37,19 +35,17 @@ namespace Csvier {
 
         public CsvParser CtorArg(string arg, int col) {
             ctorArgsList.Add(new ArgCol(arg, col));
-            SelectConstructor();
+            selectedCtorIndex = SelectConstructor();
             return this;
         }
 
         public CsvParser PropArg(string arg, int col) {
             propArgsList.Add(new ArgCol(arg, col));
-            ++propArgsListLength;
             return this;
         }
 
         public CsvParser FieldArg(string arg, int col) {
             fieldArgsList.Add(new ArgCol(arg, col));
-            ++fieldArgsListLength;
             return this;
         }
 
@@ -82,14 +78,14 @@ namespace Csvier {
             return Remove(i => i%2==1);
         }
 
-        public object[] Parse() {
-            object[] ret = new object[textData.Length]; // place to store the instances
+        public T[] Parse<T>() {
+            T[] ret = new T[textData.Length]; // place to store the instances
             object[] args = new object[klassInfo.GetPamatersForCtor(selectedCtorIndex).Length];
 
             for (int i = 0; i<ret.Length; ++i) {
                 string[] line = textData[i].Split(separator);
                 SetValuesForConstructors(line, args);
-                ret[i] = Activator.CreateInstance(klassInfo.Type, args);
+                ret[i] = (T) Activator.CreateInstance(klassInfo.Type, args);
                 SetValuesForProperties(line, ret[i]);
                 SetValuesForFields(line, ret[i]);
             }
@@ -123,16 +119,16 @@ namespace Csvier {
             return this;
         }
 
-        private void SelectConstructor() {
+        private int SelectConstructor() {
             int argsSize = ctorArgsList.Count();
 
             for (int i = 0; i<klassInfo.GetConstructorsLength; ++i) {
                 ParameterInfo[] pInfos = klassInfo.GetPamatersForCtor(i);
                 if (pInfos.Length == argsSize && CheckIfParamsMatch(i, pInfos)) { // check if currentCtor thats being checked has the same number of parameters in argsList
-                    selectedCtorIndex = i;
-                    break; // Constructor found, can leave now
+                    return i;
                 }
             }
+            return -1;  //in case not found, might be a good idea to throw exception instead
         }
 
         private bool CheckIfParamsMatch(int i, ParameterInfo[] pInfos) {
@@ -163,7 +159,7 @@ namespace Csvier {
         }
 
         private void SetValuesForProperties(string[] line, object ret) {
-            for (int i = 0; i<propArgsListLength; ++i) {
+            for (int i = 0; i<propArgsList.Count; ++i) {
                 PropertyInfo prop = klassInfo.GetProperty(propArgsList[i].arg);
                 string value = line[propArgsList[i].col];
                 object obj = TryParseValue(value, prop.PropertyType);
@@ -172,7 +168,7 @@ namespace Csvier {
         }
 
         private void SetValuesForFields(string[] line, object ret) {
-            for (int i = 0; i<fieldArgsListLength; ++i) {
+            for (int i = 0; i<fieldArgsList.Count; ++i) {
                 FieldInfo field = klassInfo.GetField(fieldArgsList[i].arg);
                 string value = line[fieldArgsList[i].col];
                 object obj = TryParseValue(value, field.FieldType);
