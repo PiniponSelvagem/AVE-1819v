@@ -146,11 +146,15 @@ namespace Csvier {
         }
 
         private object TryParseValue(string str, Type type) {
-            if (typeof(double).Equals(type)) {
-                str = str.Replace(".", ",");    // this might create problems if PC set to other culture?
-                return Convert.ToDouble(str);
+            try {
+                if (typeof(double).Equals(type)) {
+                    str = str.Replace(".", ",");    // this might create problems if PC set to other culture?
+                    return Convert.ToDouble(str);
+                }
+                return Convert.ChangeType(str, type);
+            } catch(FormatException) {
+                throw new InvalidCastCsvException(type.Name, str);
             }
-            return Convert.ChangeType(str, type);
         }
 
 

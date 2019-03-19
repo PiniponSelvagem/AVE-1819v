@@ -11,9 +11,23 @@ namespace Csvier.Test {
 
         [TestMethod]
         [ExpectedException(typeof(ConstructorNotFoundCsvException))]
-        public void LoadParse_WithIncorrectCtorArg() {
+        public void LoadParse_WithIncorrectCtorArgName() {
             // Arrange
             CsvParser testInfo = CreateCsvParser("INVALID", 1);
+
+            // Act
+            TestInfo[] testInfoItems = testInfo
+                .Load(sample_Filtered_DateIntIntDoubleString)
+                .Parse<TestInfo>();
+
+            // Assert
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCastCsvException))]
+        public void LoadParse_WithInvalidCastForCtorArgType() {
+            // Arrange
+            CsvParser testInfo = CreateCsvParser("valueInt1", 4);
 
             // Act
             TestInfo[] testInfoItems = testInfo
@@ -63,7 +77,7 @@ namespace Csvier.Test {
 
         [TestMethod]
         [ExpectedException(typeof(PropertyNotFoundCsvException))]
-        public void PropArg_WithIncorrectArg() {
+        public void PropArg_WithIncorrectArgName() {
             // Arrange
             CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
@@ -71,6 +85,21 @@ namespace Csvier.Test {
             TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .PropArg("INVALID", 1)
+                .Parse<TestInfo>();
+
+            // Assert
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCastCsvException))]
+        public void PropArg_WithInvalidCastArgType() {
+            // Arrange
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
+
+            // Act
+            TestInfo[] testInfoItems = testInfo
+                .Load(sample_Filtered_DateIntIntDoubleString)
+                .PropArg("ValueInt2", 4)
                 .Parse<TestInfo>();
 
             // Assert
@@ -117,7 +146,7 @@ namespace Csvier.Test {
 
         [TestMethod]
         [ExpectedException(typeof(FieldNotFoundCsvException))]
-        public void FieldArg_WithIncorrectArg() {
+        public void FieldArg_WithIncorrectArgName() {
             // Arrange
             CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
@@ -125,6 +154,21 @@ namespace Csvier.Test {
             TestInfo[] testInfoItems = testInfo
                 .Load(sample_Filtered_DateIntIntDoubleString)
                 .FieldArg("INVALID", 1)
+                .Parse<TestInfo>();
+
+            // Assert
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidCastCsvException))]
+        public void FieldArg_WithInvalidCastArgType() {
+            // Arrange
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
+
+            // Act
+            TestInfo[] testInfoItems = testInfo
+                .Load(sample_Filtered_DateIntIntDoubleString)
+                .FieldArg("fieldValueInt", 4)
                 .Parse<TestInfo>();
 
             // Assert
