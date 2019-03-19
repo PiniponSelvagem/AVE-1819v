@@ -35,7 +35,9 @@ namespace ConsoleApp {
             CsvParser pastWeather = new CsvParser(typeof(WeatherInfo))
                 .CtorArg("date", 0)
                 .CtorArg("tempC", 2);
-            
+
+            //CsvParser pastWeather = new CsvParser(typeof(WeatherInfo)).Create();
+
             Console.WriteLine(pastWeather);
         }
 
