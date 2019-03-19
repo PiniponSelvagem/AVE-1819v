@@ -49,7 +49,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt1", valueStart, x => x+inc);
         }
 
         [TestMethod]
@@ -65,8 +65,8 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Date("ValueDate", valueDate, dateInc, testInfoItems);
-            AssertFullFilteredSample_Int("ValueInt1", valueStart, intInc, testInfoItems);
+            AssertFullFilteredSample<DateTime>(testInfoItems, typeof(PropertyInfo), "ValueDate", valueDate, x => (DateTime)x.AddDays(dateInc));
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt1", valueStart, x => x+intInc);
         }
 
 
@@ -118,7 +118,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt2", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt2", valueStart, x => x+inc);
         }
 
         [TestMethod]
@@ -135,8 +135,8 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt2", valueStart, inc, testInfoItems);
-            AssertFullFilteredSample_Double("ValueDouble", valueStart+0.01, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt2", valueStart, x => x+inc);
+            AssertFullFilteredSample<double>(testInfoItems, typeof(PropertyInfo), "ValueDouble", valueStart+0.01, x => Math.Round(x+=inc, 2));
         }
 
 
@@ -187,7 +187,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int_Field("fieldValueInt", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(FieldInfo), "fieldValueInt", valueStart, x => x+inc);
         }
 
         [TestMethod]
@@ -204,8 +204,8 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int_Field("fieldValueInt", valueStart, inc, testInfoItems);
-            AssertFullFilteredSample_Double_Field("fieldValueDouble", valueStart+0.01, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(FieldInfo), "fieldValueInt", valueStart, x => x+inc);
+            AssertFullFilteredSample<double>(testInfoItems, typeof(FieldInfo), "fieldValueDouble", valueStart+0.01, x => Math.Round(x+=inc, 2));
         }
 
 
@@ -228,7 +228,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt1", valueStart, x => x+inc);
         }
 
         [TestMethod]
@@ -244,7 +244,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt1", valueStart, x => x+inc);
         }
 
         [TestMethod]
@@ -261,7 +261,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt1", valueStart, x => x+inc);
         }
 
         [TestMethod]
@@ -277,7 +277,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt1", valueStart, x => x+inc);
         }
 
         [TestMethod]
@@ -293,7 +293,7 @@ namespace Csvier.Test {
                 .Parse<TestInfo>();
 
             // Assert
-            AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
+            AssertFullFilteredSample<int>(testInfoItems, typeof(PropertyInfo), "ValueInt1", valueStart, x => x+inc);
         }
 
 
@@ -322,43 +322,32 @@ namespace Csvier.Test {
             return csvParser;
         }
         
-        private void AssertFullFilteredSample_Int(string propName, int value, int inc, object[] testInfoItems) {
+        
+        /// <summary>
+        /// Asserts if all items of the testinfoItems[] follow the func condition.
+        /// </summary>
+        /// <exception cref="System.InvalidOperationException">
+        /// Thrown when parameter type is not typeof [ PropertyInfo / FieldInfo ].
+        /// </exception>
+        /// <param name="testInfoItems">Objects to be tested.</param>
+        /// <param name="type">Type of the value to be tested (Propertyinfo or FieldInfo).</param>
+        /// <param name="name">Name of the type.</param>
+        /// <param name="value">Start value.</param>
+        /// <param name="func">Function that will affect value after each assertion to prepare for the next one.</param>
+        private void AssertFullFilteredSample<T>(object[] testInfoItems, Type type, string name, T value, Func<T, T> func) {
             foreach (TestInfo tItem in testInfoItems) {
-                PropertyInfo prop = tItem.GetType().GetProperty(propName);
-                Assert.AreEqual(prop.GetValue(tItem), value);
-                value+=inc;
-            }
-        }
-
-        private void AssertFullFilteredSample_Date(string propName, DateTime value, int inc, object[] testInfoItems) {
-            foreach (TestInfo tItem in testInfoItems) {
-                PropertyInfo prop = tItem.GetType().GetProperty(propName);
-                Assert.AreEqual(prop.GetValue(tItem), value);
-                value = value.AddDays(inc);
-            }
-        }
-
-        private void AssertFullFilteredSample_Double(string propName, double value, double inc, object[] testInfoItems) {
-            foreach (TestInfo tItem in testInfoItems) {
-                PropertyInfo prop = tItem.GetType().GetProperty(propName);
-                Assert.AreEqual(prop.GetValue(tItem), value);
-                value = Math.Round(value+=inc, 2);
-            }
-        }
-
-        private void AssertFullFilteredSample_Int_Field(string fieldname, int value, int inc, object[] testInfoItems) {
-            foreach (TestInfo tItem in testInfoItems) {
-                FieldInfo field = tItem.GetType().GetField(fieldname);
-                Assert.AreEqual(field.GetValue(tItem), value);
-                value+=inc;
-            }
-        }
-
-        private void AssertFullFilteredSample_Double_Field(string fieldname, double value, double inc, object[] testInfoItems) {
-            foreach (TestInfo tItem in testInfoItems) {
-                FieldInfo field = tItem.GetType().GetField(fieldname);
-                Assert.AreEqual(field.GetValue(tItem), value);
-                value = Math.Round(value+=inc, 2);
+                T actual = default(T);
+                if (type == typeof(PropertyInfo)) {
+                    actual = (T)tItem.GetType().GetProperty(name).GetValue(tItem);
+                }
+                else if (type == typeof(FieldInfo)) {
+                    actual = (T)tItem.GetType().GetField(name).GetValue(tItem);
+                }
+                else {
+                    throw new InvalidOperationException();
+                }
+                Assert.AreEqual(actual, value);
+                value = func(value);
             }
         }
 
