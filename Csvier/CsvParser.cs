@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Csvier.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -79,6 +80,10 @@ namespace Csvier {
         }
 
         public T[] Parse<T>() {
+            if (selectedCtorIndex==-1) {
+                throw new ConstructorNotFoundCsvException();
+            }
+
             T[] ret = new T[textData.Length]; // place to store the instances
             object[] args = new object[klassInfo.GetPamatersForCtor(selectedCtorIndex).Length];
 
@@ -128,7 +133,7 @@ namespace Csvier {
                     return i;
                 }
             }
-            return -1;  //in case not found, might be a good idea to throw exception instead
+            return -1;
         }
 
         private bool CheckIfParamsMatch(int i, ParameterInfo[] pInfos) {
@@ -161,6 +166,9 @@ namespace Csvier {
         private void SetValuesForProperties(string[] line, object ret) {
             for (int i = 0; i<propArgsList.Count; ++i) {
                 PropertyInfo prop = klassInfo.GetProperty(propArgsList[i].arg);
+                if (prop==null) {
+                    throw new PropertyNotFoundCsvException(klassInfo.Type.Name, propArgsList[i].arg);
+                }
                 string value = line[propArgsList[i].col];
                 object obj = TryParseValue(value, prop.PropertyType);
                 prop.SetValue(ret, obj);
@@ -170,6 +178,9 @@ namespace Csvier {
         private void SetValuesForFields(string[] line, object ret) {
             for (int i = 0; i<fieldArgsList.Count; ++i) {
                 FieldInfo field = klassInfo.GetField(fieldArgsList[i].arg);
+                if (field==null) {
+                    throw new FieldNotFoundCsvException(klassInfo.Type.Name, fieldArgsList[i].arg);
+                }
                 string value = line[fieldArgsList[i].col];
                 object obj = TryParseValue(value, field.FieldType);
                 field.SetValue(ret, obj);

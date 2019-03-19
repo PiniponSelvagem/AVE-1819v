@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Resources\past-weather.ashx-q-37-017--7-933-date-2019-00-01-enddate-2019-00-30" />
+    <None Include="Resources\search.ashx-query-oporto-format-tab-key-88bcf72882994515b56161022192" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -84,7 +86,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Text.txt" />
+    <Content Include="Resources\Test_MockRequest.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

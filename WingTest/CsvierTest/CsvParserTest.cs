@@ -2,6 +2,7 @@
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Wing.Test.CsvierTest;
+using Csvier.Exceptions;
 
 namespace Csvier.Test {
 
@@ -9,10 +10,24 @@ namespace Csvier.Test {
     public class CsvParserTest {
 
         [TestMethod]
-        public void LoadParse() {
+        [ExpectedException(typeof(ConstructorNotFoundCsvException))]
+        public void LoadParse_WithIncorrectCtorArg() {
+            // Arrange
+            CsvParser testInfo = CreateCsvParser("INVALID", 1);
+
+            // Act
+            TestInfo[] testInfoItems = testInfo
+                .Load(sample_Filtered_DateIntIntDoubleString)
+                .Parse<TestInfo>();
+
+            // Assert
+        }
+
+        [TestMethod]
+        public void LoadParse_Single() {
             // Arrange
             int valueStart=10, inc=20;
-            CsvParser testInfo = CreateCsvParser_valueInt1();
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
             // Act
             TestInfo[] testInfoItems = testInfo
@@ -23,11 +38,43 @@ namespace Csvier.Test {
             AssertFullFilteredSample_Int("ValueInt1", valueStart, inc, testInfoItems);
         }
 
+        [TestMethod]
+        public void LoadParse_Multiple() {
+            // Arrange
+            DateTime valueDate = new DateTime(2000, 1, 1); int dateInc = 1; //ValueDate
+            int valueStart=10, intInc=20;  //ValueInt1
+            CsvParser testInfo = CreateCsvParser(new string[]{"valueDate", "valueInt1"}, new int[] {0, 1});
+
+            // Act
+            TestInfo[] testInfoItems = testInfo
+                .Load(sample_Filtered_DateIntIntDoubleString)
+                .Parse<TestInfo>();
+
+            // Assert
+            AssertFullFilteredSample_Date("ValueDate", valueDate, dateInc, testInfoItems);
+            AssertFullFilteredSample_Int("ValueInt1", valueStart, intInc, testInfoItems);
+        }
+
 
 
         /* -----------------------------------
          * -------- PROPERTIES TESTS ----------
          * ----------------------------------- */
+
+        [TestMethod]
+        [ExpectedException(typeof(PropertyNotFoundCsvException))]
+        public void PropArg_WithIncorrectArg() {
+            // Arrange
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
+
+            // Act
+            TestInfo[] testInfoItems = testInfo
+                .Load(sample_Filtered_DateIntIntDoubleString)
+                .PropArg("INVALID", 1)
+                .Parse<TestInfo>();
+
+            // Assert
+        }
 
         [TestMethod]
         public void PropArg_Single() {
@@ -67,6 +114,21 @@ namespace Csvier.Test {
         /* -----------------------------------
          * ----------- FIELD TESTS -----------
          * ----------------------------------- */
+
+        [TestMethod]
+        [ExpectedException(typeof(FieldNotFoundCsvException))]
+        public void FieldArg_WithIncorrectArg() {
+            // Arrange
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
+
+            // Act
+            TestInfo[] testInfoItems = testInfo
+                .Load(sample_Filtered_DateIntIntDoubleString)
+                .FieldArg("INVALID", 1)
+                .Parse<TestInfo>();
+
+            // Assert
+        }
 
         [TestMethod]
         public void FieldArg_Single() {
@@ -113,7 +175,7 @@ namespace Csvier.Test {
             // Arrange
             int valueStart=50, inc=20;
             int count=2;
-            CsvParser testInfo = CreateCsvParser_valueInt1();
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
             // Act
             TestInfo[] testInfoItems = testInfo
@@ -129,7 +191,7 @@ namespace Csvier.Test {
         public void RemoveEmpties() {
             // Arrange
             int valueStart=10, inc=20;
-            CsvParser testInfo = CreateCsvParser_valueInt1();
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
             // Act
             TestInfo[] testInfoItems = testInfo
@@ -146,7 +208,7 @@ namespace Csvier.Test {
             // Arrange
             string toRemove = "#";
             int valueStart=10, inc=20;
-            CsvParser testInfo = CreateCsvParser_valueInt1();
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
             // Act
             TestInfo[] testInfoItems = testInfo
@@ -162,7 +224,7 @@ namespace Csvier.Test {
         public void RemoveEvenIndexes() {
             // Arrange
             int valueStart=30, inc=40;
-            CsvParser testInfo = CreateCsvParser_valueInt1();
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
             // Act
             TestInfo[] testInfoItems = testInfo
@@ -178,7 +240,7 @@ namespace Csvier.Test {
         public void RemoveOddIndexes() {
             // Arrange
             int valueStart=10, inc=40;
-            CsvParser testInfo = CreateCsvParser_valueInt1();
+            CsvParser testInfo = CreateCsvParser("valueInt1", 1);
 
             // Act
             TestInfo[] testInfoItems = testInfo
@@ -200,8 +262,20 @@ namespace Csvier.Test {
             return new CsvParser(typeof(TestInfo));
         }
 
-        private CsvParser CreateCsvParser_valueInt1() {
-            return new CsvParser(typeof(TestInfo)).CtorArg("valueInt1", 1);
+        private CsvParser CreateCsvParser(string argName, int argCol) {
+            return new CsvParser(typeof(TestInfo)).CtorArg(argName, argCol);
+        }
+
+        private CsvParser CreateCsvParser(string[] argName, int[] argCol) {
+            if (argName.Length!=argCol.Length) {
+                string message = String.Format("The Lenght of both arrays must be equal. string[].Lenght={0} != int[].Lenght={1}", argName.Length, argCol.Length);
+                throw new ArgumentOutOfRangeException(message);
+            }
+            CsvParser csvParser = new CsvParser(typeof(TestInfo));
+            for (int i=0; i<argName.Length; ++i) {
+                csvParser.CtorArg(argName[i], argCol[i]);
+            }
+            return csvParser;
         }
         
         private void AssertFullFilteredSample_Int(string propName, int value, int inc, object[] testInfoItems) {
@@ -209,6 +283,14 @@ namespace Csvier.Test {
                 PropertyInfo prop = tItem.GetType().GetProperty(propName);
                 Assert.AreEqual(prop.GetValue(tItem), value);
                 value+=inc;
+            }
+        }
+
+        private void AssertFullFilteredSample_Date(string propName, DateTime value, int inc, object[] testInfoItems) {
+            foreach (TestInfo tItem in testInfoItems) {
+                PropertyInfo prop = tItem.GetType().GetProperty(propName);
+                Assert.AreEqual(prop.GetValue(tItem), value);
+                value = value.AddDays(inc);
             }
         }
 
@@ -235,6 +317,9 @@ namespace Csvier.Test {
                 value = Math.Round(value+=inc, 2);
             }
         }
+
+
+
 
 
         /* -----------------------------------
