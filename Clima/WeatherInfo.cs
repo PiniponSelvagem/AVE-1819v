@@ -1,5 +1,5 @@
-﻿using System;
-using Csvier;
+﻿using Csvier.Attributes;
+using System;
 
 namespace Clima {
     public class WeatherInfo {
