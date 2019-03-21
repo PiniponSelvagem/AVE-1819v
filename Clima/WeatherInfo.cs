@@ -1,10 +1,18 @@
 ﻿using System;
+using Csvier;
 
 namespace Clima {
     public class WeatherInfo {
-        public DateTime Date { get;  }
+        [Csv("CtorArg", 0)]
+        public DateTime Date { get; }
+
+        [Csv("CtorArg", 1)]
         public int TempC { get; }
+
+        [Csv("PropArg", 11)]
         public double PrecipMM { get; set; }
+
+        [Csv("PropArg", 10)]
         public String Desc { get; set; }
 
         public WeatherInfo() {

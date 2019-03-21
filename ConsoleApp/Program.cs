@@ -36,9 +36,12 @@ namespace ConsoleApp {
                 .CtorArg("date", 0)
                 .CtorArg("tempC", 2);
 
-            //CsvParser pastWeather = new CsvParser(typeof(WeatherInfo)).Create();
-
             Console.WriteLine(pastWeather);
+
+
+            //CsvParser pastWeather = new CsvParser(typeof(WeatherInfo)).AutoCreate();
+            CsvParser test = new CsvParser(typeof(WeatherInfo));
+            CsvAutoCreator.Set(test, typeof(WeatherInfo));
         }
 
         static void PastWeather() {
@@ -65,6 +68,22 @@ namespace ConsoleApp {
                 .Parse<WeatherInfo>();
 
             PrintAll(items);
+
+
+            Console.WriteLine("-----------------------------------------------------------------------------------");
+
+
+            CsvParser test = new CsvParser(typeof(WeatherInfo));
+            CsvAutoCreator.Set(test, typeof(WeatherInfo));
+
+            WeatherInfo[] items2 = test
+                .Load(sampleWeatherInLisbonFiltered)
+                .RemoveEmpties()
+                .RemoveWith("#")
+                //.RemoveEvenIndexes()
+                .Parse<WeatherInfo>();
+
+            PrintAll(items2);
         }
 
         static void PrintAll(object[] items) {

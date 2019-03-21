@@ -1,10 +1,19 @@
-﻿using System;
+﻿using Csvier;
+using System;
 
 namespace Clima {
     public class LocationInfo {
+
+        [Csv("CtorArg", 1)]
         public String Country { get; set; }
+
+        [Csv("CtorArg", 2)]
         public String Region { get; set; }
+
+        [Csv("CtorArg", 3)]
         public double Latitude { get; set; }
+
+        [Csv("CtorArg", 4)]
         public double Longitude { get; set; }
 
         public LocationInfo() {

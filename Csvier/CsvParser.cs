@@ -17,21 +17,24 @@ namespace Csvier {
             }
         }
 
+        public readonly Type type;
         private KlassInfo klassInfo;
         private List<ArgCol> ctorArgsList  = new List<ArgCol>();
         private List<ArgCol> propArgsList  = new List<ArgCol>();
         private List<ArgCol> fieldArgsList = new List<ArgCol>();
         private int selectedCtorIndex;
 
+        private const char DEFAULT_SEPARATOR = ',';
         private readonly char separator;
         private string[] textData;
 
         public CsvParser(Type klass, char separator) {
+            this.type = klass;
             this.separator = separator;
             klassInfo = new KlassInfo(klass);
         }
 
-        public CsvParser(Type klass) : this(klass, ',') {
+        public CsvParser(Type klass) : this(klass, DEFAULT_SEPARATOR) {
         }
 
         public CsvParser CtorArg(string arg, int col) {

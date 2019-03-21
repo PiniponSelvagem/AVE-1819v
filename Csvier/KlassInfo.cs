@@ -20,8 +20,6 @@ namespace Csvier {
         public int PropInfosLength { get; private set; }
         private Dictionary<string, FieldInfo> FieldInfos { get; set; }
         public int FieldInfosLength { get; private set; }
-        //public PropertyInfo[] PropInfos { get; private set; }
-        //public FieldInfo[] FieldInfos { get; private set; }
 
         public KlassInfo(Type type) {
             this.Type = type;

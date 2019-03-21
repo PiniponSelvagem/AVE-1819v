@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsvAttribute.cs" />
+    <Compile Include="CsvAutoCreator.cs" />
     <Compile Include="CsvParser.cs" />
     <Compile Include="CsvExceptions.cs" />
     <Compile Include="KlassInfo.cs" />

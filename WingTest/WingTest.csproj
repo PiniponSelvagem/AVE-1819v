@@ -49,7 +49,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClimaTest\ClimaTest.cs" />
+    <Compile Include="CsvierTest\CsvBase.cs" />
+    <Compile Include="CsvierTest\ICsv.cs" />
     <Compile Include="CsvierTest\TestInfo.cs" />
+    <Compile Include="CsvierTest\CsvParserCustomAttTest.cs" />
+    <Compile Include="CsvierTest\CsvDataManipulationTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -58,7 +62,7 @@
     </Compile>
     <Compile Include="RequestTest\MockRequest.cs" />
     <Compile Include="RequestTest\RequestTest.cs" />
-    <Compile Include="CsvierTest\CsvParserTest.cs" />
+    <Compile Include="CsvierTest\CsvParserExplicitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
