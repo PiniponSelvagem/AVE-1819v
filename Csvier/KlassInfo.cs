@@ -15,7 +15,7 @@ namespace Csvier {
         }
 
         public Type Type { get; private set; }
-        public CInfo[] CInfos { get; private set; }
+        public CInfo[] CInfos { get; set; }
         private Dictionary<string, PropertyInfo> PropInfos { get; set; }
         public int PropInfosLength { get; private set; }
         private Dictionary<string, FieldInfo> FieldInfos { get; set; }

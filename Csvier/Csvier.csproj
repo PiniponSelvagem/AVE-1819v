@@ -40,10 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CsvAttribute.cs" />
-    <Compile Include="CsvAutoCreator.cs" />
+    <Compile Include="ArgsManager\ArgsContainers\FieldArgs.cs" />
+    <Compile Include="ArgsManager\BaseArgsManager.cs" />
+    <Compile Include="ArgsManager\ArgsContainers\PropArgs.cs" />
+    <Compile Include="ArgsManager\ArgsContainers\CtorArgs.cs" />
+    <Compile Include="Attributes\CsvAttribute.cs" />
+    <Compile Include="Attributes\CsvAutoCreator.cs" />
     <Compile Include="CsvParser.cs" />
-    <Compile Include="CsvExceptions.cs" />
+    <Compile Include="Exceptions\CsvExceptions.cs" />
+    <Compile Include="ArgsManager\IArgsManager.cs" />
     <Compile Include="KlassInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

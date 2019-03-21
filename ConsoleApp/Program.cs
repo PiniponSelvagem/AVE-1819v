@@ -40,8 +40,8 @@ namespace ConsoleApp {
 
 
             //CsvParser pastWeather = new CsvParser(typeof(WeatherInfo)).AutoCreate();
-            CsvParser test = new CsvParser(typeof(WeatherInfo));
-            CsvAutoCreator.Set(test, typeof(WeatherInfo));
+            CsvParser test = new CsvParser(typeof(WeatherInfo))
+                .CsvParserAutoCreate();            
         }
 
         static void PastWeather() {
@@ -73,8 +73,8 @@ namespace ConsoleApp {
             Console.WriteLine("-----------------------------------------------------------------------------------");
 
 
-            CsvParser test = new CsvParser(typeof(WeatherInfo));
-            CsvAutoCreator.Set(test, typeof(WeatherInfo));
+            CsvParser test = new CsvParser(typeof(WeatherInfo))
+                .CsvParserAutoCreate();
 
             WeatherInfo[] items2 = test
                 .Load(sampleWeatherInLisbonFiltered)

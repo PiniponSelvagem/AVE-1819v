@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Csvier {
+namespace Csvier.Attributes {
 
     [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
     public class CsvAttribute : Attribute {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Csvier {
+namespace Csvier.Attributes {
     public class CsvAutoCreator {
 
         /*

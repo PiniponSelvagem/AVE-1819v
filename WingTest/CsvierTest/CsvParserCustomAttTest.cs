@@ -12,8 +12,8 @@ namespace Csvier.Test {
             // Arrange
             DateTime valueDate = new DateTime(2000, 1, 1); int dateInc = 1; //ValueDate
             int valueStart=10, intInc=20;  //ValueInt1
-            CsvParser testInfo = CreateCsvParser();
-            CsvAutoCreator.Set(testInfo, typeof(TestInfo));
+            CsvParser testInfo = CreateCsvParser()
+                .CsvParserAutoCreate();
 
             // Act
             TestInfo[] testInfoItems = LoadParse_TestInfo(testInfo);
@@ -33,8 +33,8 @@ namespace Csvier.Test {
         public void PropArg_Multiple() {
             // Arrange
             int valueStart=10, inc=20;
-            CsvParser testInfo = CreateCsvParser();
-            CsvAutoCreator.Set(testInfo, typeof(TestInfo));
+            CsvParser testInfo = CreateCsvParser()
+                .CsvParserAutoCreate();
 
             // Act
             TestInfo[] testInfoItems = LoadParse_TestInfo(testInfo);
@@ -53,8 +53,8 @@ namespace Csvier.Test {
         public void FieldArg_Multiple() {
             // Arrange
             int valueStart=10, inc=20;
-            CsvParser testInfo = CreateCsvParser();
-            CsvAutoCreator.Set(testInfo, typeof(TestInfo));
+            CsvParser testInfo = CreateCsvParser()
+                .CsvParserAutoCreate();
 
             // Act
             TestInfo[] testInfoItems = LoadParse_TestInfo(testInfo);

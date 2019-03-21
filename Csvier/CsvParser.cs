@@ -1,28 +1,14 @@
-﻿using Csvier.Exceptions;
+﻿using Csvier.ArgsContainers;
+using Csvier.Attributes;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
 
 namespace Csvier {
     public class CsvParser {
 
-        private struct ArgCol {
-            public string arg;
-            public int col;
-
-            public ArgCol(string arg, int col) {
-                this.arg = arg;
-                this.col = col;
-            }
-        }
-
         public readonly Type type;
-        private KlassInfo klassInfo;
-        private List<ArgCol> ctorArgsList  = new List<ArgCol>();
-        private List<ArgCol> propArgsList  = new List<ArgCol>();
-        private List<ArgCol> fieldArgsList = new List<ArgCol>();
-        private int selectedCtorIndex;
+        private readonly CtorArgs ctorArgs;
+        private readonly PropArgs propArgs;
+        private readonly FieldArgs fieldArgs;
 
         private const char DEFAULT_SEPARATOR = ',';
         private readonly char separator;
@@ -31,25 +17,33 @@ namespace Csvier {
         public CsvParser(Type klass, char separator) {
             this.type = klass;
             this.separator = separator;
-            klassInfo = new KlassInfo(klass);
+
+            KlassInfo klassInfo = new KlassInfo(klass);
+            ctorArgs  = new CtorArgs(klassInfo);
+            propArgs  = new PropArgs(klassInfo);
+            fieldArgs = new FieldArgs(klassInfo);
         }
 
         public CsvParser(Type klass) : this(klass, DEFAULT_SEPARATOR) {
         }
 
         public CsvParser CtorArg(string arg, int col) {
-            ctorArgsList.Add(new ArgCol(arg, col));
-            selectedCtorIndex = SelectConstructor();
+            ctorArgs.SetArg(arg, col);
             return this;
         }
 
         public CsvParser PropArg(string arg, int col) {
-            propArgsList.Add(new ArgCol(arg, col));
+            propArgs.SetArg(arg, col);
             return this;
         }
 
         public CsvParser FieldArg(string arg, int col) {
-            fieldArgsList.Add(new ArgCol(arg, col));
+            fieldArgs.SetArg(arg, col);
+            return this;
+        }
+
+        public CsvParser CsvParserAutoCreate() {
+            CsvAutoCreator.Set(this, type);
             return this;
         }
 
@@ -83,19 +77,15 @@ namespace Csvier {
         }
 
         public T[] Parse<T>() {
-            if (selectedCtorIndex==-1) {
-                throw new ConstructorNotFoundCsvException();
-            }
-
             T[] ret = new T[textData.Length]; // place to store the instances
-            object[] args = new object[klassInfo.GetPamatersForCtor(selectedCtorIndex).Length];
 
             for (int i = 0; i<ret.Length; ++i) {
                 string[] line = textData[i].Split(separator);
-                SetValuesForConstructors(line, args);
-                ret[i] = (T) Activator.CreateInstance(klassInfo.Type, args);
-                SetValuesForProperties(line, ret[i]);
-                SetValuesForFields(line, ret[i]);
+
+                ctorArgs.SetValues(line, null);
+                ret[i] = ctorArgs.CreateInstance<T>();
+                propArgs.SetValues(line, ret[i]);
+                fieldArgs.SetValues(line, ret[i]);
             }
 
             return ret;
@@ -125,73 +115,6 @@ namespace Csvier {
                 textData = ret;
             }
             return this;
-        }
-
-        private int SelectConstructor() {
-            int argsSize = ctorArgsList.Count();
-
-            for (int i = 0; i<klassInfo.GetConstructorsLength; ++i) {
-                ParameterInfo[] pInfos = klassInfo.GetPamatersForCtor(i);
-                if (pInfos.Length == argsSize && CheckIfParamsMatch(i, pInfos)) { // check if currentCtor thats being checked has the same number of parameters in argsList
-                    return i;
-                }
-            }
-            return -1;
-        }
-
-        private bool CheckIfParamsMatch(int i, ParameterInfo[] pInfos) {
-            for (int j = 0; j<pInfos.Length; ++j) {
-                if (j==pInfos.Length-1 && ctorArgsList[j].arg.Equals(pInfos[j].Name)) { // parameters names && number of parameters match, select this ctor
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private object TryParseValue(string str, Type type) {
-            try {
-                if (typeof(double).Equals(type)) {
-                    str = str.Replace(".", ",");    // this might create problems if PC set to other culture?
-                    return Convert.ToDouble(str);
-                }
-                return Convert.ChangeType(str, type);
-            } catch(FormatException) {
-                throw new InvalidCastCsvException(type.Name, str);
-            }
-        }
-
-
-
-        private void SetValuesForConstructors(string[] line, object[] args) {
-            for (int j = 0; j<args.Length; ++j) {
-                ParameterInfo[] pInfo = klassInfo.GetPamatersForCtor(selectedCtorIndex);
-                string value = line[ctorArgsList[j].col];
-                args[j] = TryParseValue(value, pInfo[j].ParameterType);
-            }
-        }
-
-        private void SetValuesForProperties(string[] line, object ret) {
-            for (int i = 0; i<propArgsList.Count; ++i) {
-                PropertyInfo prop = klassInfo.GetProperty(propArgsList[i].arg);
-                if (prop==null) {
-                    throw new PropertyNotFoundCsvException(klassInfo.Type.Name, propArgsList[i].arg);
-                }
-                string value = line[propArgsList[i].col];
-                object obj = TryParseValue(value, prop.PropertyType);
-                prop.SetValue(ret, obj);
-            }
-        }
-
-        private void SetValuesForFields(string[] line, object ret) {
-            for (int i = 0; i<fieldArgsList.Count; ++i) {
-                FieldInfo field = klassInfo.GetField(fieldArgsList[i].arg);
-                if (field==null) {
-                    throw new FieldNotFoundCsvException(klassInfo.Type.Name, fieldArgsList[i].arg);
-                }
-                string value = line[fieldArgsList[i].col];
-                object obj = TryParseValue(value, field.FieldType);
-                field.SetValue(ret, obj);
-            }
         }
     }
 }
