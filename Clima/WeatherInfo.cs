@@ -3,25 +3,30 @@ using System;
 
 namespace Clima {
     public class WeatherInfo {
-        [Csv("CtorArg", 0)]
+        [Csv("Date", 0)]
         public DateTime Date { get; }
 
-        [Csv("CtorArg", 1)]
+        [Csv("TempC", 1)]
         public int TempC { get; }
 
-        [Csv("PropArg", 11)]
+        [Csv("PrecipMM", 11)]
         public double PrecipMM { get; set; }
 
-        [Csv("PropArg", 10)]
+        [Csv("Desc", 10)]
         public String Desc { get; set; }
+
+
 
         public WeatherInfo() {
         }
 
+        [Csv("date", 0)]
         public WeatherInfo(DateTime date) {
             this.Date = date;
         }
 
+        [Csv("date", 0)]
+        [Csv("tempC", 1)]
         public WeatherInfo(DateTime date, int tempC) {
             this.Date = date;
             this.TempC = tempC;
@@ -35,6 +40,5 @@ namespace Clima {
                 " | desc='" + Desc + '\'' +
                 '}';
         }
-
     }
 }

@@ -43,7 +43,7 @@ namespace Csvier {
         }
 
         public CsvParser CsvParserAutoCreate() {
-            CsvAutoCreator.Set(this, type);
+            new CsvAutoCreator(this, type).Set(this, type);
             return this;
         }
 

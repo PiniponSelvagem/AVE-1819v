@@ -3,16 +3,15 @@ using System.Reflection;
 
 namespace Csvier.Attributes {
 
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
+    [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
     public class CsvAttribute : Attribute {
-        public MethodInfo Method { get; private set; }
 
-        public string MethodName { get; private set; }
+        public string Name { get; private set; }
         public int Column { get; private set; }
 
-        public CsvAttribute(string methodName, int column) {
+        public CsvAttribute(string name, int column) {
             //Method = this.GetType().GetMethod(methodName, BindingFlags.Public | BindingFlags.Instance);
-            this.MethodName = methodName;
+            this.Name = name;
             this.Column = column;
         }
 

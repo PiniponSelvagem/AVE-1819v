@@ -4,67 +4,66 @@ using System.Reflection;
 namespace Csvier.Attributes {
     public class CsvAutoCreator {
 
-        /*
-        // To save in case it was already created
-        private static CsvAttribute att;
-        private static bool Created { get; set; }
-        */
+        private CsvParser csv;
+        private Type type;
 
-        public static int Set(CsvParser csv, Type type) { 
-            //if (!Created) {
+        public CsvAutoCreator(CsvParser csv, Type type) {
+            this.csv = csv;
+            this.type = type;
+        }     
+        
+        public void Set(CsvParser csv, Type type) {
+            SetCtors();
+            SetProps();
+            SetFields();
+        }
 
+        private void SetCtors() {
+            ConstructorInfo selectedCtor = null;
+            object[] selectedAtts = null;
 
-            CsvAttribute att;
+            ConstructorInfo[] cs = type.GetConstructors();
+            for (int i=0, maxCount=-1; i<cs.Length; ++i) {
+                object[] atts = cs[i].GetCustomAttributes(typeof(CsvAttribute), false);
+                if (atts.Length > maxCount) {
+                    selectedCtor = cs[i];
+                    selectedAtts = atts;
+                    maxCount = atts.Length;
+                }
+            }
 
+            ParameterInfo[] paramInfos = selectedCtor.GetParameters();
+
+            if (selectedAtts.Length == 0 || paramInfos.Length == 0) {
+                return;     // return if the selected ctor dosent have params
+            }
+            
+            for(int i=0; i<selectedAtts.Length; ++i) {
+                CsvAttribute csvAtt = (CsvAttribute)selectedAtts[i];
+                csv.CtorArg(paramInfos[i].Name, csvAtt.Column);
+            }
+        }
+
+        private void SetProps() {
             PropertyInfo[] ps = type.GetProperties();
             foreach (PropertyInfo p in ps) {
-                att = (CsvAttribute)p.GetCustomAttribute(typeof(CsvAttribute), false);
-                if (att != null) {
-                    string attMethodName = att.MethodName;
-                    MethodInfo m = csv.GetType().GetMethod(attMethodName);
-                    string pName = p.Name;
-                    char c = attMethodName[0];
-                    if (c=='C') {
-                        char[] arr = pName.ToCharArray();
-                        arr[0] = Char.ToLowerInvariant(arr[0]);
-                        pName = new String(arr);
-                    }
-                    m.Invoke(csv, new object[] { pName, att.Column });
+                object[] atts = p.GetCustomAttributes(typeof(CsvAttribute), false);
+                if (atts.Length > 0 && p.GetSetMethod() != null) {
+                    CsvAttribute csvAtt = (CsvAttribute)atts[0];    // ONLY SELECT THE FIRST ATTRIBUTE
+                    csv.PropArg(p.Name, csvAtt.Column);
                 }
             }
+        }
 
+        private void SetFields() {
             FieldInfo[] fs = type.GetFields();
             foreach (FieldInfo f in fs) {
-                att = (CsvAttribute)f.GetCustomAttribute(typeof(CsvAttribute), false);
-                if (att != null) {
-                    MethodInfo m = csv.GetType().GetMethod(att.MethodName);
-                    m.Invoke(csv, new object[] { f.Name, att.Column });
+                object[] atts = f.GetCustomAttributes(typeof(CsvAttribute), false);
+                if (atts.Length > 0) {
+                    CsvAttribute csvAtt = (CsvAttribute)atts[0];    // ONLY SELECT THE FIRST ATTRIBUTE
+                    csv.FieldArg(f.Name, csvAtt.Column);
                 }
             }
-
-                /*
-                PropertyInfo temp = type.GetProperty("TempC");
-                CsvAttribute att = (CsvAttribute)temp.GetCustomAttribute(typeof(CsvAttribute), false);
-
-                csv.CtorArg("Date", 0);
-                csv.CtorArg("TempC", att.Column);
-                */
-
-
-
-                // Change Created
-                //Created = true;
-                //}
-                int result = 1;
-            //if (att != null) {
-                /*
-                result = att.IsValidNumber(studentNum);
-                if (result) {
-                    student.Nr = studentNum;
-                }
-                */
-            //}
-            return result;
         }
     }
 }

@@ -77,7 +77,7 @@ namespace Csvier.Test {
         [ExpectedException(typeof(InvalidCastCsvException))]
         public void PropArg_WithInvalidCastArgType() {
             // Arrange
-            CsvParser testInfo = CreateCsvParser("valueInt1", 1)
+            CsvParser testInfo = CreateCsvParser()
                 .PropArg("ValueInt2", 4);
 
             // Act
@@ -123,7 +123,7 @@ namespace Csvier.Test {
         [ExpectedException(typeof(FieldNotFoundCsvException))]
         public void FieldArg_WithIncorrectArgName() {
             // Arrange
-            CsvParser testInfo = CreateCsvParser("valueInt1", 1)
+            CsvParser testInfo = CreateCsvParser()
                 .FieldArg("INVALID", 1);
 
             // Act
