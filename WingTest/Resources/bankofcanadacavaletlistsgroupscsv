@@ -1,0 +1,331 @@
+TERMS AND CONDITIONS
+https://www.bankofcanada.ca/terms/
+
+GROUPS
+name,label,link
+sdp-2012-8,"Staff Discussion Paper 2012-8",https://www.bankofcanada.ca/valet/groups/sdp-2012-8
+swp-2012-37,"Staff Working Paper 2012-37",https://www.bankofcanada.ca/valet/groups/swp-2012-37
+swp-2015-46,"Staff Working Paper 2015-46",https://www.bankofcanada.ca/valet/groups/swp-2015-46
+swp-2013-42,"Staff Working Paper 2013-42",https://www.bankofcanada.ca/valet/groups/swp-2013-42
+sdp-2014-3,"Staff Discussion Paper 2014-3",https://www.bankofcanada.ca/valet/groups/sdp-2014-3
+sdp-2016-5,"Staff Discussion Paper 2016-5",https://www.bankofcanada.ca/valet/groups/sdp-2016-5
+swp-2013-37,"Staff Working Paper 2013-37",https://www.bankofcanada.ca/valet/groups/swp-2013-37
+bos,"Business Outlook Survey",https://www.bankofcanada.ca/valet/groups/bos
+FX_RATES_RECIPROCAL,"Daily reciprocal exchange rates",https://www.bankofcanada.ca/valet/groups/FX_RATES_RECIPROCAL
+FX_RATES_DAILY,"Daily exchange rates",https://www.bankofcanada.ca/valet/groups/FX_RATES_DAILY
+FX_RATES_MONTHLY,"Monthly exchange rates",https://www.bankofcanada.ca/valet/groups/FX_RATES_MONTHLY
+FX_RATES_ANNUAL,"Annual exchange rates",https://www.bankofcanada.ca/valet/groups/FX_RATES_ANNUAL
+BCPI_WEEKLY,"Weekly BCPI",https://www.bankofcanada.ca/valet/groups/BCPI_WEEKLY
+BCPI_MONTHLY,"Monthly BCPI",https://www.bankofcanada.ca/valet/groups/BCPI_MONTHLY
+BCPI_ANNUAL,"Annual BCPI",https://www.bankofcanada.ca/valet/groups/BCPI_ANNUAL
+BCPI_WEIGHTS,"BCPI Weights",https://www.bankofcanada.ca/valet/groups/BCPI_WEIGHTS
+LEGACY_NOON_RATES,"Legacy Noon Rates",https://www.bankofcanada.ca/valet/groups/LEGACY_NOON_RATES
+LEGACY_ClOSING_RATES,"Legacy Closing Rates",https://www.bankofcanada.ca/valet/groups/LEGACY_ClOSING_RATES
+LEGACY_MONTHLY_RATES,"Legacy Monthly Average Rates",https://www.bankofcanada.ca/valet/groups/LEGACY_MONTHLY_RATES
+LEGACY_ANNUAL_RATES,"Legacy Annual Average Rates",https://www.bankofcanada.ca/valet/groups/LEGACY_ANNUAL_RATES
+SAN-2017-2,"Staff Analytical Note 2017-2",https://www.bankofcanada.ca/valet/groups/SAN-2017-2
+RRB_INDEX_RATIO,"Real Return Bonds - Index ratios",https://www.bankofcanada.ca/valet/groups/RRB_INDEX_RATIO
+FSR-2016-DECEMBER,"December 2016 FSR",https://www.bankofcanada.ca/valet/groups/FSR-2016-DECEMBER
+FSR-2016-DECEMBER-CHART-2,"December 2016 FSR, Chart 2",https://www.bankofcanada.ca/valet/groups/FSR-2016-DECEMBER-CHART-2
+FSR-2016-DECEMBER-CHART-5,"December 2016 FSR, Chart 5",https://www.bankofcanada.ca/valet/groups/FSR-2016-DECEMBER-CHART-5
+FSR-2016-DECEMBER-CHART-6,"December 2016 FSR, Chart 6",https://www.bankofcanada.ca/valet/groups/FSR-2016-DECEMBER-CHART-6
+FSR-2016-DECEMBER-CHART-7,"December 2016 FSR, Chart 7",https://www.bankofcanada.ca/valet/groups/FSR-2016-DECEMBER-CHART-7
+FSR-2016-DECEMBER-CHART-8,"December 2016 FSR, Chart 8",https://www.bankofcanada.ca/valet/groups/FSR-2016-DECEMBER-CHART-8
+FSR-2016-DECEMBER-CHART-2A,"December 2016 FSR, Chart 2A",https://www.bankofcanada.ca/valet/groups/FSR-2016-DECEMBER-CHART-2A
+FSR-2017-JUNE-CHART-2,"June 2017 FSR, Chart 2",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE-CHART-2
+FSR-2017-JUNE-CHART-3,"June 2017 FSR, Chart 3",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE-CHART-3
+FSR-2017-JUNE-CHART-4,"June 2017 FSR, Chart 4",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE-CHART-4
+FSR-2017-JUNE-CHART-5,"June 2017 FSR, Chart 5",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE-CHART-5
+FSR-2017-JUNE-CHART-6,"June 2017 FSR, Chart 6",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE-CHART-6
+FSR-2017-JUNE-CHART-7,"June 2017 FSR, Chart 7",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE-CHART-7
+FSR-2017-JUNE-CHART-8,"June 2017 FSR, Chart 8",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE-CHART-8
+FSR-2017-JUNE,"June 2017 FSR",https://www.bankofcanada.ca/valet/groups/FSR-2017-JUNE
+CEER_DAILY,"CEER Daily",https://www.bankofcanada.ca/valet/groups/CEER_DAILY
+CEER_MONTHLY_NOMINAL,"CEER Monthly Nominal",https://www.bankofcanada.ca/valet/groups/CEER_MONTHLY_NOMINAL
+CEER_MONTHLY_REAL,"CEER Monthly Real",https://www.bankofcanada.ca/valet/groups/CEER_MONTHLY_REAL
+CEER_TOTAL_WEIGHTS,"CEER Total Weights",https://www.bankofcanada.ca/valet/groups/CEER_TOTAL_WEIGHTS
+CEER_EXPORT_WEIGHTS,"CEER Export Weights",https://www.bankofcanada.ca/valet/groups/CEER_EXPORT_WEIGHTS
+CEER_IMPORT_WEIGHTS,"CEER Import Weights",https://www.bankofcanada.ca/valet/groups/CEER_IMPORT_WEIGHTS
+CEER_THIRD-MARKET_COMPETITION_WEIGHTS,"CEER Third-Market Competition Weights",https://www.bankofcanada.ca/valet/groups/CEER_THIRD-MARKET_COMPETITION_WEIGHTS
+CEER,"CEER",https://www.bankofcanada.ca/valet/groups/CEER
+B1_MONTHLY,"Bank of Canada assets and liabilities: Month-end",https://www.bankofcanada.ca/valet/groups/B1_MONTHLY
+B2_WEEKLY,"Bank of Canada assets and liabilities: Weekly",https://www.bankofcanada.ca/valet/groups/B2_WEEKLY
+B3_MONTHLY,"Positions of members of Payments Canada with the Bank of Canada",https://www.bankofcanada.ca/valet/groups/B3_MONTHLY
+B3_WEEKLY,"Positions of members of Payments Canada with the Bank of Canada",https://www.bankofcanada.ca/valet/groups/B3_WEEKLY
+G4_WEEKLY,"Government of Canada direct securities and loans: Distribution of holdings",https://www.bankofcanada.ca/valet/groups/G4_WEEKLY
+G4_MONTHLY,"Government of Canada direct securities and loans: Distribution of holdings",https://www.bankofcanada.ca/valet/groups/G4_MONTHLY
+GOCCADDEP_WEEKLY,"Government of Canada Canadian Dollar Deposits",https://www.bankofcanada.ca/valet/groups/GOCCADDEP_WEEKLY
+F11_WEEKLY,"Historical money market trading by type of security",https://www.bankofcanada.ca/valet/groups/F11_WEEKLY
+F14_WEEKLY,"Historical strip bond trading and repos by type of security",https://www.bankofcanada.ca/valet/groups/F14_WEEKLY
+C1_MONTHLY,"Chartered bank selected assets: Monthly average",https://www.bankofcanada.ca/valet/groups/C1_MONTHLY
+C2_MONTHLY,"Chartered bank selected liabilities: Monthly average",https://www.bankofcanada.ca/valet/groups/C2_MONTHLY
+C3_MONTHLY,"Chartered bank assets: Month-end",https://www.bankofcanada.ca/valet/groups/C3_MONTHLY
+C4_MONTHLY,"Chartered bank liabilities and shareholders' equity: Month-end",https://www.bankofcanada.ca/valet/groups/C4_MONTHLY
+C8_MONTHLY,"Chartered bank assets and liabilities: Selected seasonally adjusted series",https://www.bankofcanada.ca/valet/groups/C8_MONTHLY
+C9_MONTHLY,"Chartered banks: Total foreign currency assets and liabilities",https://www.bankofcanada.ca/valet/groups/C9_MONTHLY
+F12_WEEKLY,"Historical bond market trading by type of security",https://www.bankofcanada.ca/valet/groups/F12_WEEKLY
+F13_WEEKLY,"Historical Government of Canada treasury bill and bond trading with counterparties",https://www.bankofcanada.ca/valet/groups/F13_WEEKLY
+F2_MONTHLY,"Corporate and other short-term paper outstanding",https://www.bankofcanada.ca/valet/groups/F2_MONTHLY
+K1_ANNUAL,"Bank of Canada note liabilities",https://www.bankofcanada.ca/valet/groups/K1_ANNUAL
+G6_MONTHLY,"Government of Canada direct securities and loans: Classified by remaining term to maturity and type of asset",https://www.bankofcanada.ca/valet/groups/G6_MONTHLY
+G7_MONTHLY,"Government of Canada direct securities and loans: Holdings of general public classified by remaining term to maturity",https://www.bankofcanada.ca/valet/groups/G7_MONTHLY
+K8_MONTHLY,"Bonds outstanding by currency of payments and issuers",https://www.bankofcanada.ca/valet/groups/K8_MONTHLY
+OFFICIAL_INT_RES,"Official International Reserves",https://www.bankofcanada.ca/valet/groups/OFFICIAL_INT_RES
+C5_QUARTERLY,"Chartered banks: Regional distribution of selected assets",https://www.bankofcanada.ca/valet/groups/C5_QUARTERLY
+C6_QUARTERLY,"Chartered banks: Regional distribution of selected liabilities",https://www.bankofcanada.ca/valet/groups/C6_QUARTERLY
+SAN-2017-21,"Staff Analytical Note - Evaluating real GDP growth forecasts in the Bank of Canada Monetary Policy Report",https://www.bankofcanada.ca/valet/groups/SAN-2017-21
+FSR-2017-NOVEMBER,"November 2017 FSR",https://www.bankofcanada.ca/valet/groups/FSR-2017-NOVEMBER
+SLOS,"Senior Loan Officer Survey",https://www.bankofcanada.ca/valet/groups/SLOS
+C5_BN,"Chartered banks: Regional distribution of selected assets - Bank notes and coin other than gold and silver bullion",https://www.bankofcanada.ca/valet/groups/C5_BN
+C5_SECURITIES,"Chartered banks: Regional distribution of selected assets - Securities issued or guaranteed",https://www.bankofcanada.ca/valet/groups/C5_SECURITIES
+C5_MORTGAGES,"Chartered banks: Regional distribution of selected assets - Mortgages",https://www.bankofcanada.ca/valet/groups/C5_MORTGAGES
+C5_NONMORTGAGELOANS,"Chartered banks: Regional distribution of selected assets - Non-mortgage loans",https://www.bankofcanada.ca/valet/groups/C5_NONMORTGAGELOANS
+C5_LBE,"Chartered banks: Regional distribution of selected assets - Land, building and equipment less accumulated depreciation",https://www.bankofcanada.ca/valet/groups/C5_LBE
+C5_CUSTOMERSLIABILITY,"Chartered banks: Regional distribution of selected assets - Customers' liability under acceptances",https://www.bankofcanada.ca/valet/groups/C5_CUSTOMERSLIABILITY
+C6_PERSONAL,"Chartered banks: Regional distribution of selected liabilities - Personal deposits",https://www.bankofcanada.ca/valet/groups/C6_PERSONAL
+C6_NONPERSONAL,"Chartered banks: Regional distribution of selected liabilities - Non-personal deposits",https://www.bankofcanada.ca/valet/groups/C6_NONPERSONAL
+C6_ACCEPTANCES,"Chartered banks: Regional distribution of selected liabilities - Acceptances",https://www.bankofcanada.ca/valet/groups/C6_ACCEPTANCES
+C6_LIABILITIES,"Chartered banks: Regional distribution of selected liabilities - Liabilities of subsidiaries, other than deposits",https://www.bankofcanada.ca/valet/groups/C6_LIABILITIES
+C6_NONCONTROLLING,"Chartered banks: Regional distribution of selected liabilities - Non-controlling interests in subsidiaries",https://www.bankofcanada.ca/valet/groups/C6_NONCONTROLLING
+DELETE_ME,"delete",https://www.bankofcanada.ca/valet/groups/DELETE_ME
+K8_CANADIAN,"Bonds outstanding by currency of payments and issuers - Canadian dollars",https://www.bankofcanada.ca/valet/groups/K8_CANADIAN
+K8_TOTAL,"Bonds outstanding by currency of payments and issuers - Total currencies",https://www.bankofcanada.ca/valet/groups/K8_TOTAL
+K9_MONTHLY,"Net new issues of securities by corporations and federal government enterprises: Industrial classification",https://www.bankofcanada.ca/valet/groups/K9_MONTHLY
+K8_FOREIGN,"Bonds outstanding by currency of payments and issuers - Foreign currencies",https://www.bankofcanada.ca/valet/groups/K8_FOREIGN
+K8_FC_USD,"Bonds outstanding by currency of payments and issuers - Foreign currencies - United States dollars",https://www.bankofcanada.ca/valet/groups/K8_FC_USD
+K8_FC_EURO,"Bonds outstanding by currency of payments and issuers - Foreign currencies - Euro",https://www.bankofcanada.ca/valet/groups/K8_FC_EURO
+K8_FC_SWISS,"Bonds outstanding by currency of payments and issuers - Foreign currencies - Swiss francs",https://www.bankofcanada.ca/valet/groups/K8_FC_SWISS
+K8_FC_POUND,"Bonds outstanding by currency of payments and issuers - Foreign currencies - Pound sterling",https://www.bankofcanada.ca/valet/groups/K8_FC_POUND
+K8_FC_JAPAN,"Bonds outstanding by currency of payments and issuers - Foreign currencies - Japanese yen",https://www.bankofcanada.ca/valet/groups/K8_FC_JAPAN
+K8_FC_OTHER,"Bonds outstanding by currency of payments and issuers - Foreign currencies - Other",https://www.bankofcanada.ca/valet/groups/K8_FC_OTHER
+C10_QUARTERLY,"Chartered banks: Total claims and liabilities booked worldwide vis-à-vis non-residents",https://www.bankofcanada.ca/valet/groups/C10_QUARTERLY
+K12_QUARTERLY,"Chartered banks: Classification of deposit liabilities",https://www.bankofcanada.ca/valet/groups/K12_QUARTERLY
+B4_ANNUAL,"Statistics pertaining to counterfeit Canadian bank notes",https://www.bankofcanada.ca/valet/groups/B4_ANNUAL
+B4_QUARTERLY,"Statistics pertaining to counterfeit Canadian bank notes ",https://www.bankofcanada.ca/valet/groups/B4_QUARTERLY
+E1_MONTHLY,"Selected monetary aggregates and their components",https://www.bankofcanada.ca/valet/groups/E1_MONTHLY
+F4F10_MONTHLY,"Capital markets activities: Gross new issues, retirements and net new issues of securities",https://www.bankofcanada.ca/valet/groups/F4F10_MONTHLY
+E2_MONTHLY,"Selected credit measures",https://www.bankofcanada.ca/valet/groups/E2_MONTHLY
+C7_QUARTERLY,"Chartered banks: Classification of non-mortgage loans",https://www.bankofcanada.ca/valet/groups/C7_QUARTERLY
+C7_CANADIAN,"Chartered banks: Classification of non-mortgage loans - Canadian dollar loans",https://www.bankofcanada.ca/valet/groups/C7_CANADIAN
+C7_FOREIGN,"Chartered banks: Classification of non-mortgage loans - Foreign currency loans",https://www.bankofcanada.ca/valet/groups/C7_FOREIGN
+C7_GRAPH,"Chartered banks: Classification of non-mortgage loans",https://www.bankofcanada.ca/valet/groups/C7_GRAPH
+K12_GRAPH,"Chartered banks: Classification of deposit liabilities",https://www.bankofcanada.ca/valet/groups/K12_GRAPH
+K12_CANADIAN,"Chartered banks: Classification of deposit liabilities - Canadian dollar deposits",https://www.bankofcanada.ca/valet/groups/K12_CANADIAN
+K12_FOREIGN,"Chartered banks: Classification of deposit liabilities - Foreign currency deposits",https://www.bankofcanada.ca/valet/groups/K12_FOREIGN
+C10_CLAIMS_TOTAL,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Total booked claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_TOTAL
+C10_CLAIMS_US,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - United States claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_US
+C10_CLAIMS_WESTERNEUR,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Western Europe claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_WESTERNEUR
+C10_CLAIMS_CENTRALEUR,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Central Europe and Central Asia claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_CENTRALEUR
+C10_CLAIMS_EASTASIA,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - East Asia and the Pacific claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_EASTASIA
+C10_CLAIMS_LATINAMERICA,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Latin America and Caribbean claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_LATINAMERICA
+C10_CLAIMS_NORTHAFRICA,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - North Africa and Middle East claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_NORTHAFRICA
+C10_CLAIMS_SUBSAHARAN,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Sub-Saharan Africa claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_SUBSAHARAN
+C10_CLAIMS_OFFSHORE,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Offshore banking centers claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_OFFSHORE
+C10_CLAIMS_UNALLOCATED,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Unallocated claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_UNALLOCATED
+C10_CLAIMS_FOREIGN,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents - Total claims on non-residents - Foreign currency on Canadian residents claims",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS_FOREIGN
+C10_LIABILITIES_TOTAL,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Total booked liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_TOTAL
+C10_LIABILITIES_US,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - United States liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_US
+C10_LIABILITIES_WESTERNEUR,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Western Europe liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_WESTERNEUR
+C10_LIABILITIES_CENTRALEUR,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Central Europe and Central Asia liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_CENTRALEUR
+C10_LIABILITIES_EASTASIA,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - East Asia and the Pacific liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_EASTASIA
+C10_LIABILITIES_LATINAMERICA,"Chartered banks: Total claims and liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Latin America and Caribbean liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_LATINAMERICA
+C10_LIABILITIES_NORTHAFRICA,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - North Africa and Middle East liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_NORTHAFRICA
+C10_LIABILITIES_OFFSHORE,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Offshore banking centers liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_OFFSHORE
+C10_LIABILITIES_SUBSAHARAN,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Sub-Saharan Africa liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_SUBSAHARAN
+C10_LIABILITIES_UNALLOCATED,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Unallocated liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_UNALLOCATED
+C10_LIABILITIES_FOREIGN,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents - Total liabilities to non-residents - Foreign currency on Canadian residents liabilities",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES_FOREIGN
+F4F10_CANADAABROAD,"Capital markets activities: Gross new issues, retirements and net new issues of securities - Canada and abroad",https://www.bankofcanada.ca/valet/groups/F4F10_CANADAABROAD
+F4F10_CANADA,"Capital markets activities: Gross new issues, retirements and net new issues of securities - Canada",https://www.bankofcanada.ca/valet/groups/F4F10_CANADA
+F4F10_ABROAD,"Capital markets activities: Gross new issues, retirements and net new issues of securities - Abroad",https://www.bankofcanada.ca/valet/groups/F4F10_ABROAD
+F4F10_US,"Capital markets activities: Gross new issues, retirements and net new issues of securities - United States",https://www.bankofcanada.ca/valet/groups/F4F10_US
+F4F10_OTHER,"Capital markets activities: Gross new issues, retirements and net new issues of securities - Other countries",https://www.bankofcanada.ca/valet/groups/F4F10_OTHER
+SAN_LEBM180118,"Is the Excess Bond Premium a Leading Indicator of Canadian Economic Activity?",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118
+SAN_LEBM180118_CHART1,"Canadian excess bond premium is highly informative about the outlook for Canadian GDP",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118_CHART1
+SAN_LEBM180118_CHART2A,"Real GDP",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118_CHART2A
+SAN_LEBM180118_CHART2B,"Headline consumer price index",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118_CHART2B
+SAN_LEBM180118_CHART2C,"Canadian excess bond premium",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118_CHART2C
+SAN_LEBM180118_CHART2D,"S&P/TSX composite index",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118_CHART2D
+SAN_LEBM180118_CHART2E,"10-year Government of Canada yield",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118_CHART2E
+SAN_LEBM180118_CHART2F,"Overnight rate",https://www.bankofcanada.ca/valet/groups/SAN_LEBM180118_CHART2F
+A4_FUNDS_MONTHLY,"Funds advanced and outstanding balances for new and existing household lending",https://www.bankofcanada.ca/valet/groups/A4_FUNDS_MONTHLY
+A4_FUNDS_MORTGAGES,"Funds advanced and outstanding balances for new and existing household lending - Mortgages",https://www.bankofcanada.ca/valet/groups/A4_FUNDS_MORTGAGES
+A4_FUNDS_VARIABLE,"Funds advanced and outstanding balances for new and existing household lending - Residential variable rate mortgages",https://www.bankofcanada.ca/valet/groups/A4_FUNDS_VARIABLE
+A4_FUNDS_CONSUMER,"Funds advanced and outstanding balances for new and existing household lending - Consumer credit",https://www.bankofcanada.ca/valet/groups/A4_FUNDS_CONSUMER
+A4_FUNDS_GRAPH,"Funds advanced and outstanding balances for new and existing household lending",https://www.bankofcanada.ca/valet/groups/A4_FUNDS_GRAPH
+A4_FUNDS_EXTENDED,"Funds advanced and outstanding balances for new and existing household lending - Credit extended to business sector",https://www.bankofcanada.ca/valet/groups/A4_FUNDS_EXTENDED
+A4_RATES_MONTHLY,"Interest rates for new and existing household lending",https://www.bankofcanada.ca/valet/groups/A4_RATES_MONTHLY
+A4_RATES_MORTGAGES,"Interest rates for new and existing household lending - Mortgages",https://www.bankofcanada.ca/valet/groups/A4_RATES_MORTGAGES
+A4_RATES_VARIABLE,"Interest rates for new and existing household lending - Residential variable rate mortgages",https://www.bankofcanada.ca/valet/groups/A4_RATES_VARIABLE
+A4_RATES_CONSUMER,"Interest rates for new and existing household lending - Consumer credit",https://www.bankofcanada.ca/valet/groups/A4_RATES_CONSUMER
+A4_RATES_EXTENDED,"Interest rates for new and existing household lending - Credit extended to business sector",https://www.bankofcanada.ca/valet/groups/A4_RATES_EXTENDED
+A4_RATES_GRAPH,"Interest rates for new and existing household lending",https://www.bankofcanada.ca/valet/groups/A4_RATES_GRAPH
+E2_GRAPH,"Selected credit measures",https://www.bankofcanada.ca/valet/groups/E2_GRAPH
+C10_CLAIMS,"Chartered banks: Total claims booked worldwide vis-à-vis non-residents",https://www.bankofcanada.ca/valet/groups/C10_CLAIMS
+C10_LIABILITIES,"Chartered banks: Total liabilities booked worldwide vis-à-vis non-residents ",https://www.bankofcanada.ca/valet/groups/C10_LIABILITIES
+SAN_AROO180322,"Staff Analytical Note 2018-7",https://www.bankofcanada.ca/valet/groups/SAN_AROO180322
+SAN_AROO180322_CHART2,"SAN Chart 2",https://www.bankofcanada.ca/valet/groups/SAN_AROO180322_CHART2
+SAN_BRJO20180418,"Potential Output in Canada: 2018 Reassessment",https://www.bankofcanada.ca/valet/groups/SAN_BRJO20180418
+SAN_FONJ20180328,"The Share of Systematic Variations in the Canadian Dollar—Part III",https://www.bankofcanada.ca/valet/groups/SAN_FONJ20180328
+SAN_FONJ20180328_CHART1,"The sensitivity of commodity exporters' cross-border lending activities to global cross-border lending activity. Adjusted R2, 10-year rolling regressions",https://www.bankofcanada.ca/valet/groups/SAN_FONJ20180328_CHART1
+SAN_GARO20180319,"Customer Liquidity Provision in Canadian Bond Markets",https://www.bankofcanada.ca/valet/groups/SAN_GARO20180319
+SAN_GARO20180319_CHART1,"Customer liquidity provision is rare across major Canadian bond classes",https://www.bankofcanada.ca/valet/groups/SAN_GARO20180319_CHART1
+SAN_GARO20180319_CHART2,"Trades that draw on customer liquidity have higher average spreads",https://www.bankofcanada.ca/valet/groups/SAN_GARO20180319_CHART2
+SAN_GARO20180319_CHART3,"Using customer liquidity reduces dealer revenues",https://www.bankofcanada.ca/valet/groups/SAN_GARO20180319_CHART3
+SAN_GARO20180319_CHART4,"Customer liquidity is more prevalent when liquidity is expensive",https://www.bankofcanada.ca/valet/groups/SAN_GARO20180319_CHART4
+SAN_GARO20180319_CHART5,"Customer liquidity is more prevalent when trading volumes are higher",https://www.bankofcanada.ca/valet/groups/SAN_GARO20180319_CHART5
+SAN_GUNG20171001,"Has Liquidity in Canadian Government Bond Markets Deteriorated?",https://www.bankofcanada.ca/valet/groups/SAN_GUNG20171001
+SAN_GUNG20171001_CHART1,"Bid-ask spreads for benchmark and non-benchmark bonds in basis points.",https://www.bankofcanada.ca/valet/groups/SAN_GUNG20171001_CHART1
+SAN_GUNG20171001_CHART2,"Average price impact (Kyle’s lambda) of trades of $1 million in basis points.",https://www.bankofcanada.ca/valet/groups/SAN_GUNG20171001_CHART2
+SAN_GUNG20171001_CHART3,"Price-impact (Amihud’s measure) and bid-ask (Roll’s measure) in cents.",https://www.bankofcanada.ca/valet/groups/SAN_GUNG20171001_CHART3
+SAN_GUNG20171001_CHART4,"Average trading volume and trade size.",https://www.bankofcanada.ca/valet/groups/SAN_GUNG20171001_CHART4
+SAN_LEBO20180425,"How do Canadian Corporate Bond Mutual Funds Meet Investor Redemptions?",https://www.bankofcanada.ca/valet/groups/SAN_LEBO20180425
+SAN_LEBO20180425_F1A,"Horizontal slicing strategy",https://www.bankofcanada.ca/valet/groups/SAN_LEBO20180425_F1A
+SAN_LEBO20180425_F1B,"Vertical slicing strategy",https://www.bankofcanada.ca/valet/groups/SAN_LEBO20180425_F1B
+SAN_LEBO20180425_C1,"Fund's holdings change in basis point in response to a one standard deviation increase in redemptions",https://www.bankofcanada.ca/valet/groups/SAN_LEBO20180425_C1
+SAN_LEBO20180425_C2,"Fund's holdings change in basis point in response to a one standard deviation increase in redemptions",https://www.bankofcanada.ca/valet/groups/SAN_LEBO20180425_C2
+swp-2017-44,"International Relative Value Indices",https://www.bankofcanada.ca/valet/groups/swp-2017-44
+SAN_JLAC20180528,"Applying the Wage-Common to Canadian Provinces",https://www.bankofcanada.ca/valet/groups/SAN_JLAC20180528
+FSR-2018-JUNE,"Financial System Review - June 2018",https://www.bankofcanada.ca/valet/groups/FSR-2018-JUNE
+SAN_AROO20180622,"Redemption Runs in Canadian Corporate Bond Funds?",https://www.bankofcanada.ca/valet/groups/SAN_AROO20180622
+SAN_AROO20180622_C2,"The flow-performance asymmetry increases during higher market volatility",https://www.bankofcanada.ca/valet/groups/SAN_AROO20180622_C2
+SAN_AROO20180622_C3,"A higher liquidity ratio lowers the flow-performance asymmetry in Canadian funds",https://www.bankofcanada.ca/valet/groups/SAN_AROO20180622_C3
+SAN_DESR20180627,"Readability and the Bank of Canada: Preliminary Results",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627
+SAN_DESR20180627_C1,"Average GFI for sampled text",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C1
+SAN_DESR20180627_C2,"Average GFI for similar organizations",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C2
+SAN_DESR20180627_C3,"Speech Readability - Gunning Fog Index",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C3
+SAN_DESR20180627_C4,"FSR Readability - GFI",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C4
+SAN_DESR20180627_C5,"Readability by topic",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C5
+SAN_DESR20180627_C6,"Adult literacy in Canada as measured by OECD",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C6
+SAN_DESR20180627_C7,"GFI for content on the same topic and for the same audience",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C7
+SAN_DESR20180627_C8,"GFI for FADs",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C8
+SAN_DESR20180627_C9,"MPR readability - Gunning Fog Index",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C9
+SAN_DESR20180627_C10,"Speeches by Sabine Lautenschläger, gunning Fog Index",https://www.bankofcanada.ca/valet/groups/SAN_DESR20180627_C10
+INDINF_WAGES,"Wages and Costs",https://www.bankofcanada.ca/valet/groups/INDINF_WAGES
+CPI_MONTHLY,"Consumer Price Index",https://www.bankofcanada.ca/valet/groups/CPI_MONTHLY
+SAN_NOLI20180817,"Have Liquidity and Trading Activity in the Canadian Corporate Bond Market Deteriorated?",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817
+SAN_NOLI20180817_C1,"Liquidity in the corporate bond market has improved",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C1
+SAN_NOLI20180817_C2,"The number of trades and trade size have increased",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C2
+SAN_NOLI20180817_C3,"Zero-trade days and turnover have been stable",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C3
+SAN_NOLI20180817_C4A,"Liquidity has improved for safer bonds and remained stable for riskier bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C4A
+SAN_NOLI20180817_C4B,"Liquidity has improved for safer bonds and remained stable for riskier bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C4B
+SAN_NOLI20180817_C5A,"Trading activity is stable for both safer and riskier bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C5A
+SAN_NOLI20180817_C5B,"Trading activity is stable for both safer and riskier bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C5B
+SAN_NOLI20180817_C5C,"Trading activity is stable for both safer and riskier bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C5C
+SAN_NOLI20180817_C5D,"Trading activity is stable for both safer and riskier bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C5D
+SAN_NOLI20180817_C6A,"Bank bonds exhibit higher liquidity than other corporate bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C6A
+SAN_NOLI20180817_C6B,"Bank bonds exhibit higher liquidity than other corporate bonds",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C6B
+SAN_NOLI20180817_C7A,"Trading activity has increased for bonds issued by banks",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C7A
+SAN_NOLI20180817_C7B,"Trading activity has increased for bonds issued by banks",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C7B
+SAN_NOLI20180817_C7C,"Trading activity has increased for bonds issued by banks",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C7C
+SAN_NOLI20180817_C7D,"Trading activity has increased for bonds issued by banks",https://www.bankofcanada.ca/valet/groups/SAN_NOLI20180817_C7D
+SAN_BEDP20180709,"Have Liquidity and Trading Activity in the Canadian Provincial Bond Market Deteriorated?",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709
+SAN_BEDP20180709_C1,"The amount of provincial bonds outstanding has surpassed that of Government of Canada and corporate bonds",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C1
+SAN_BEDP20180709_C2,"Aggregate liquidity in the provincial bond market remains stable",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C2
+SAN_BEDP20180709_C3,"Number of trades and trade size have increased",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C3
+SAN_BEDP20180709_C4,"Turnover and zero-trade days remain stable",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C4
+SAN_BEDP20180709_C5A,"Newly issued bonds with large outstanding size are traded more frequently",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C5A
+SAN_BEDP20180709_C5B,"Newly issued bonds with large outstanding size are traded more frequently",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C5B
+SAN_BEDP20180709_C6A,"Trading activity for Albertan bonds increased following the fall in oil prices",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C6A
+SAN_BEDP20180709_C6B,"Trading activity for Albertan bonds increased following the fall in oil prices",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C6B
+SAN_BEDP20180709_C6C,"Trading activity for Albertan bonds increased following the fall in oil prices",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C6C
+SAN_BEDP20180709_C6D,"Trading activity for Albertan bonds increased following the fall in oil prices",https://www.bankofcanada.ca/valet/groups/SAN_BEDP20180709_C6D
+SAN_FEUN20171101,"The Impacts of Monetary Policy Statements",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20171101
+SAN_FEUN20171101_C1,"The slope component and the tone are positively related",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20171101_C1
+SAN_FEUN20171101_C2A,"Change in Canadian dollar and level component",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20171101_C2A
+SAN_FEUN20171101_C2B,"Change in Canadian dollar and slope component",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20171101_C2B
+SAN_FEUN20171101_C3A,"Change in implied 10-year Government of Canada yield and level component",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20171101_C3A
+SAN_FEUN20171101_C3B,"Change in implied 10-year Government of Canada yield and slope component",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20171101_C3B
+BOS_2018_FALL_CHART1-A,"Strong demand and capacity constraints are key drivers of firms’ investment plans",https://www.bankofcanada.ca/valet/groups/BOS_2018_FALL_CHART1-A
+SWP-C,"Personal consumption expenditures",https://www.bankofcanada.ca/valet/groups/SWP-C
+SWP-CIRINV,"Sum of Personal consumption expenditures, residential investment and investment in inventories",https://www.bankofcanada.ca/valet/groups/SWP-CIRINV
+SWP-G,"Government expenditures",https://www.bankofcanada.ca/valet/groups/SWP-G
+SWP-GNEN,"Nominal Gross National Expenditure",https://www.bankofcanada.ca/valet/groups/SWP-GNEN
+SWP-I,"Investment (Gross fixed capital formation)",https://www.bankofcanada.ca/valet/groups/SWP-I
+SWP-IINVT,"Inventory investment",https://www.bankofcanada.ca/valet/groups/SWP-IINVT
+SWP-IRES,"Residential Investment",https://www.bankofcanada.ca/valet/groups/SWP-IRES
+SWP-LYGAP,"Output gap",https://www.bankofcanada.ca/valet/groups/SWP-LYGAP
+SWP-M,"Imports of Goods and Services",https://www.bankofcanada.ca/valet/groups/SWP-M
+SWP-PC,"Deflator for Personal Consumption Expenditures",https://www.bankofcanada.ca/valet/groups/SWP-PC
+SWP-PCIRINV,"Deflator for CIRINV",https://www.bankofcanada.ca/valet/groups/SWP-PCIRINV
+SWP-PCPI,"Consumer Price Index",https://www.bankofcanada.ca/valet/groups/SWP-PCPI
+SWP-PCPIX,"Core Consumer Price Index",https://www.bankofcanada.ca/valet/groups/SWP-PCPIX
+SWP-PGDP,"Implicit Price Deflator for GDP",https://www.bankofcanada.ca/valet/groups/SWP-PGDP
+SWP-PGNE,"Implicit Price Deflator for GNE",https://www.bankofcanada.ca/valet/groups/SWP-PGNE
+SWP-R1N,"Staff projection policy rate",https://www.bankofcanada.ca/valet/groups/SWP-R1N
+SWP-R20N,"5-year Federal Government bonds rate",https://www.bankofcanada.ca/valet/groups/SWP-R20N
+SWP-URATE,"Unemployment rate",https://www.bankofcanada.ca/valet/groups/SWP-URATE
+SWP-USCANPFX,"U.S. / CAD nominal exchange rate",https://www.bankofcanada.ca/valet/groups/SWP-USCANPFX
+SWP-X,"Exports of Goods and Services",https://www.bankofcanada.ca/valet/groups/SWP-X
+SWP-GDP,"Real Gross Domestic Product",https://www.bankofcanada.ca/valet/groups/SWP-GDP
+SWP-GDPN,"Nominal Gross Domestic Product",https://www.bankofcanada.ca/valet/groups/SWP-GDPN
+SAN_BILO20181003,"The impact of recent policy changes on the Canadian mortgage market",https://www.bankofcanada.ca/valet/groups/SAN_BILO20181003
+SAN_BILO20181003_C1,"The quality of lending has improved, with fewer mortgages going to highly indebted borrowers",https://www.bankofcanada.ca/valet/groups/SAN_BILO20181003_C1
+SAN_BILO20181003_C3,"New mortgage activity has weakened",https://www.bankofcanada.ca/valet/groups/SAN_BILO20181003_C3
+SAN_BILO20181003_C4,"Highly indebted borrowers across all major cities have been affected, with the strongest impact in Toronto and surrounding areas",https://www.bankofcanada.ca/valet/groups/SAN_BILO20181003_C4
+SAN_BILO20181003_C5,"The largest declines in lending occurred in cities with relatively high house prices",https://www.bankofcanada.ca/valet/groups/SAN_BILO20181003_C5
+SAN_BILO20181003_C6,"Mortgage originations in Toronto have decreased for all lender types, with a small shift in market share away from banks",https://www.bankofcanada.ca/valet/groups/SAN_BILO20181003_C6
+FSS_2018FALL,"Financial System Survey Highlights",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL
+FSS_2018FALL_C1,"Just under half of respondents see a slight increase in the probability of an adverse high-impact event over the past six months",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL_C1
+FSS_2018FALL_C2,"Around 95 per cent of respondents are at least fairly confident that the financial system would be resilient in the event of a large adverse shock",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL_C2
+FSS_2018FALL_C3,"Cyber attacks and a deterioration in the global economic outlook were identified as the most important risks to the Canadian financial system",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL_C3
+FSS_2018FALL_C4,"About a quarter of respondents believe a 150- to 200-basis-point rise in the 5-year GoC bond yield over the next 12 months is enough to trigger a house price correction in Canada or a large increase in household defaults",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL_C4
+FSS_2018FALL_C5,"A majority of respondents believe a house price correction or a large increase in household defaults would be somewhat likely, likely or very likely to impair the financial system",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL_C5
+FSS_2018FALL_C6,"Respondents estimate a 5 per cent chance that the 5-year GoC bond yield will rise more than 150 basis points over the next 12 months",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL_C6
+FSS_2018FALL_C7,"Machine learning/artificial intelligence and big data are still expected to be the most important financial innovations over the next three years",https://www.bankofcanada.ca/valet/groups/FSS_2018FALL_C7
+SAN_FEUN20180820,"Markets Look Beyond the Headline",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20180820
+SAN_FEUN20180820_C1A,"Non-headline news explains a significant portion of asset price changes",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20180820_C1A
+SAN_FEUN20180820_C1B,"Non-headline news has a bigger impact on asset prices",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20180820_C1B
+SAN_FEUN20180820_C2A,"Headline news alone explains a small portion of asset price changes",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20180820_C2A
+SAN_FEUN20180820_C2B,"Non-headline news sometimes explains most asset price changes",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20180820_C2B
+SAN_SEKK20181018,"Does US or Canadian Macro News Drive Canadian Bond Yields?",https://www.bankofcanada.ca/valet/groups/SAN_SEKK20181018
+SAN_SEKK20181018_C1,"Daily variation in Canadian bond yields explained by macro news",https://www.bankofcanada.ca/valet/groups/SAN_SEKK20181018_C1
+SAN_SEKK20181018_C2,"Monthly variation in Canadian bond yields explained by macro news",https://www.bankofcanada.ca/valet/groups/SAN_SEKK20181018_C2
+SAN_SEKK20181018_C3,"Quarterly variation in Canadian bond yields explained by macro news",https://www.bankofcanada.ca/valet/groups/SAN_SEKK20181018_C3
+SAN_SEKK20181018_C4,"Quarterly variation in the 10-year Canadian BEIR and real bond yields explained by macro news",https://www.bankofcanada.ca/valet/groups/SAN_SEKK20181018_C4
+SAN_JABS20181014,"The Impact of Surprising Monetary Policy Announcements on Exchange Rate Volatility",https://www.bankofcanada.ca/valet/groups/SAN_JABS20181014
+SAN_JABS20181014_C1,"Excess CAD/USD volatility in the hours after surprising FAD releases",https://www.bankofcanada.ca/valet/groups/SAN_JABS20181014_C1
+SAN_JABS20181014_C2,"Excess CAD/USD bid-ask spread in the hours after surprising FAD releases",https://www.bankofcanada.ca/valet/groups/SAN_JABS20181014_C2
+SAN_JABS20181014_C3,"Excess CAD/USD volatility in the hours after surprising FOMC, CPI and GDP releases",https://www.bankofcanada.ca/valet/groups/SAN_JABS20181014_C3
+SAN_JABS20181014_C4,"Excess CAD/USD bid-ask spread in the hours after surprising FOMC, CPI and GDP releases",https://www.bankofcanada.ca/valet/groups/SAN_JABS20181014_C4
+BOS_2018_WINTER_CHART1-A,"Since the summer 2017 survey, reports that labour shortages were more intense than a year ago have been widespread, particularly outside the Prairies",https://www.bankofcanada.ca/valet/groups/BOS_2018_WINTER_CHART1-A
+SAN_FEUN20181109,"The Secular Decline of Forecasted Interest Rates",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20181109
+SAN_FEUN20181109_C1,"Nominal yields have trended down in Canada",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20181109_C1
+SAN_FEUN20181109_C2,"Survey forecasts of the nominal yields have also declined",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20181109_C2
+SAN_FEUN20181109_C3,"The estimated interest rate endpoint in Canada",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20181109_C3
+SAN_FEUN20181109_C4,"Interest rate endpoint speed of adjustment",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20181109_C4
+SAN_FEUN20181109_C5,"Estimates of the 10-year term premium",https://www.bankofcanada.ca/valet/groups/SAN_FEUN20181109_C5
+SAN_WALC20181002,"Price Caps in Canadian Bond Borrowing Markets",https://www.bankofcanada.ca/valet/groups/SAN_WALC20181002
+SAN_WALC20181002_C1,"History of maximum bond borrowing prices",https://www.bankofcanada.ca/valet/groups/SAN_WALC20181002_C1
+SAN_WALC20181002_C2,"Estimated probability of hitting the price cap",https://www.bankofcanada.ca/valet/groups/SAN_WALC20181002_C2
+SAN_WALC20181002_C3,"Price differences after removing the price cap",https://www.bankofcanada.ca/valet/groups/SAN_WALC20181002_C3
+SAN_WALC20181002_C4,"Borrowing prices before and after the fail charge was implemented in the United States",https://www.bankofcanada.ca/valet/groups/SAN_WALC20181002_C4
+BOS_CHART_1,"PAST SALES GROWTH",https://www.bankofcanada.ca/valet/groups/BOS_CHART_1
+BOS_CHART_2_FUTURE,"Chart 2 FUTURE SALES GROWTH",https://www.bankofcanada.ca/valet/groups/BOS_CHART_2_FUTURE
+BOS_CHART_2_INDICATORS,"INDICATORS OF FUTURE SALES",https://www.bankofcanada.ca/valet/groups/BOS_CHART_2_INDICATORS
+BOS_CHART_3,"INVESTMENT IN MACHINERY AND EQUIPMENT",https://www.bankofcanada.ca/valet/groups/BOS_CHART_3
+BOS_CHART_4,"FUTURE EMPLOYMENT LEVEL",https://www.bankofcanada.ca/valet/groups/BOS_CHART_4
+BOS_CHART_5,"ABILITY TO MEET DEMAND",https://www.bankofcanada.ca/valet/groups/BOS_CHART_5
+BOS_CHART_6_SHORTAGE,"LABOUR SHORTAGES",https://www.bankofcanada.ca/valet/groups/BOS_CHART_6_SHORTAGE
+BOS_CHART_6_INTENSITY,"INTENSITY OF LABOUR SHORTAGES",https://www.bankofcanada.ca/valet/groups/BOS_CHART_6_INTENSITY
+BOS_CHART_7,"INPUT PRICE INFLATION",https://www.bankofcanada.ca/valet/groups/BOS_CHART_7
+BOS_CHART_8,"OUTPUT PRICE INFLATION",https://www.bankofcanada.ca/valet/groups/BOS_CHART_8
+BOS_CHART_9,"INFLATION EXPECTATIONS",https://www.bankofcanada.ca/valet/groups/BOS_CHART_9
+BOS_CHART_10,"CREDIT CONDITIONS",https://www.bankofcanada.ca/valet/groups/BOS_CHART_10
+BOS_CHART_11,"BUSINESS OUTLOOK SURVEY INDICATOR",https://www.bankofcanada.ca/valet/groups/BOS_CHART_11
+SAN_LEBO20190110,"Liquidity Management of Canadian Corporate Bond Mutual Funds: A Machine Learning Approach",https://www.bankofcanada.ca/valet/groups/SAN_LEBO20190110
+SAN_LEBO20190110_C1,"Drivers of liquidity-management decisions",https://www.bankofcanada.ca/valet/groups/SAN_LEBO20190110_C1
+SAN_KOST20190306,"The State of Labour Market Churn in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306
+SAN_KOST20190306_C1,"The likelihood of changing jobs in Canada has risen following the oil price shock",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C1
+SAN_KOST20190306_C2,"Job-to-job transitions have risen for prime-age and older workers but remain weak for youth",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C2
+SAN_KOST20190306_C3,"Job-finding rates recovered strongly between 2016–17 in Canada, but have recently moderated slightly",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C3
+SAN_KOST20190306_C4,"Movements from not in the labour force to employment have trended down since the early 2000s in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C4
+SAN_KOST20190306_C5,"Job separations have trended down in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C5
+SAN_KOST20190306_C6,"Transitions from employment into unemployment by reason in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C6
+SAN_KOST20190306_C7,"Transitions from employment to not in the labour force by reason in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C7
+SAN_KOST20190306_C8,"Wage growth for job changers tends to be higher than for job stayers in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C8
+SAN_KOST20190306_C9,"Wage growth for job changers tends to be weak around periods of negative real GDP growth in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C9
+SAN_KOST20190306_C1-A,"The likelihood of changing jobs and earning higher wages in Canada has recovered after the oil price shock",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C1-A
+SAN_KOST20190306_C2-A,"Job changers as a percentage of continuously employed, by province",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C2-A
+SAN_KOST20190306_C2-B,"Job changers as a percentage of continuously employed, by province",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C2-B
+SAN_KOST20190306_C2-C,"A higher pace of job-to-job churn is associated with higher provincial wage growth",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_C2-C
+SAN_KOST20190306_CA-1,"The likelihood of becoming involuntarily part-time remains elevated in Canada",https://www.bankofcanada.ca/valet/groups/SAN_KOST20190306_CA-1

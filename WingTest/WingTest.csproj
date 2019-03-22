@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankOfCanadaTest\ValetTest.cs" />
     <Compile Include="ClimaTest\ClimaTest.cs" />
     <Compile Include="CsvierTest\CsvBase.cs" />
     <Compile Include="CsvierTest\ICsv.cs" />
@@ -66,8 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\past-weather.ashx-q-37-017--7-933-date-2019-00-01-enddate-2019-00-30" />
-    <None Include="Resources\search.ashx-query-oporto-format-tab-key-88bcf72882994515b56161022192" />
+    <None Include="Resources\apiworldweatheronlinecompremiumv1pastweatherashxq370177933date20190001enddate20190030tp24formatcsvke" />
+    <None Include="Resources\apiworldweatheronlinecompremiumv1searchashxqueryoportoformattabkey88bcf72882994515b56161022192302" />
+    <None Include="Resources\bankofcanadacavaletgroupsFX_RATES_DAILYcsv" />
+    <None Include="Resources\bankofcanadacavaletlistsgroupscsv" />
+    <None Include="Resources\Test_MockRequest" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -76,6 +80,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BankOfCanada\BankOfCanada.csproj">
+      <Project>{440b3d11-9617-4ec0-92b4-59a0196ea2ad}</Project>
+      <Name>BankOfCanada</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Clima\Clima.csproj">
       <Project>{edb6b12d-1a1b-4c9c-a14f-6084f742d4c3}</Project>
       <Name>Clima</Name>
@@ -88,9 +96,6 @@
       <Project>{74B49F1B-C790-4809-8488-1C97CF567995}</Project>
       <Name>Request</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\Test_MockRequest.txt" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

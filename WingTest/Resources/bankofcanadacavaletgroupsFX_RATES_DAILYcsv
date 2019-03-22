@@ -1,0 +1,35 @@
+TERMS AND CONDITIONS
+https://www.bankofcanada.ca/terms/
+
+GROUP DETAILS
+name,label,description
+FX_RATES_DAILY,"Daily exchange rates","Daily average exchange rates - published once each business day by 16:30 ET. All Bank of Canada exchange rates are indicative rates only."
+
+GROUP SERIES
+series,label,link
+FXAUDCAD,AUD/CAD,https://www.bankofcanada.ca/valet/series/FXAUDCAD
+FXBRLCAD,BRL/CAD,https://www.bankofcanada.ca/valet/series/FXBRLCAD
+FXCNYCAD,CNY/CAD,https://www.bankofcanada.ca/valet/series/FXCNYCAD
+FXEURCAD,EUR/CAD,https://www.bankofcanada.ca/valet/series/FXEURCAD
+FXHKDCAD,HKD/CAD,https://www.bankofcanada.ca/valet/series/FXHKDCAD
+FXINRCAD,INR/CAD,https://www.bankofcanada.ca/valet/series/FXINRCAD
+FXIDRCAD,IDR/CAD,https://www.bankofcanada.ca/valet/series/FXIDRCAD
+FXJPYCAD,JPY/CAD,https://www.bankofcanada.ca/valet/series/FXJPYCAD
+FXMYRCAD,MYR/CAD,https://www.bankofcanada.ca/valet/series/FXMYRCAD
+FXMXNCAD,MXN/CAD,https://www.bankofcanada.ca/valet/series/FXMXNCAD
+FXNZDCAD,NZD/CAD,https://www.bankofcanada.ca/valet/series/FXNZDCAD
+FXNOKCAD,NOK/CAD,https://www.bankofcanada.ca/valet/series/FXNOKCAD
+FXPENCAD,PEN/CAD,https://www.bankofcanada.ca/valet/series/FXPENCAD
+FXRUBCAD,RUB/CAD,https://www.bankofcanada.ca/valet/series/FXRUBCAD
+FXSARCAD,SAR/CAD,https://www.bankofcanada.ca/valet/series/FXSARCAD
+FXSGDCAD,SGD/CAD,https://www.bankofcanada.ca/valet/series/FXSGDCAD
+FXZARCAD,ZAR/CAD,https://www.bankofcanada.ca/valet/series/FXZARCAD
+FXKRWCAD,KRW/CAD,https://www.bankofcanada.ca/valet/series/FXKRWCAD
+FXSEKCAD,SEK/CAD,https://www.bankofcanada.ca/valet/series/FXSEKCAD
+FXCHFCAD,CHF/CAD,https://www.bankofcanada.ca/valet/series/FXCHFCAD
+FXTWDCAD,TWD/CAD,https://www.bankofcanada.ca/valet/series/FXTWDCAD
+FXTHBCAD,THB/CAD,https://www.bankofcanada.ca/valet/series/FXTHBCAD
+FXTRYCAD,TRY/CAD,https://www.bankofcanada.ca/valet/series/FXTRYCAD
+FXGBPCAD,GBP/CAD,https://www.bankofcanada.ca/valet/series/FXGBPCAD
+FXUSDCAD,USD/CAD,https://www.bankofcanada.ca/valet/series/FXUSDCAD
+FXVNDCAD,VND/CAD,https://www.bankofcanada.ca/valet/series/FXVNDCAD

@@ -10,9 +10,7 @@ namespace Clima {
         const string PATH_WEATHER = WEATHER_HOST + "past-weather.ashx?q={0},{1}&date={2}&enddate={3}&tp=24&format=csv&key=" + WEATHER_KEY;
         const string SEARCH = WEATHER_HOST + "search.ashx?query={0}&format=tab&key=" + WEATHER_KEY;
         const string DATE_FORMAT = "yyyy-mm-dd";        
-
-        readonly CsvParser pastWeather;
-        readonly CsvParser locations;
+        
         readonly IRequest req;
 
         public WeatherWebApi() : this(new HttpRequest()) {

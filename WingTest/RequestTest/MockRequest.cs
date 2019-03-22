@@ -20,16 +20,19 @@ namespace Request.Test {
         }
 
         private string ConvertUrlToFilename(string url) {
-            String[] parts = url.Split('/');
-            if (parts.Length>1) {
-                return parts[parts.Length-1]
-                    .Replace('?', '-')
-                    .Replace('&', '-')
-                    .Replace('=', '-')
-                    .Replace(',', '-')
-                    .Substring(0, 68);
-            }
-            return url;
+            string formatedUrl = url
+                .Replace("http://", "")
+                .Replace("https://", "")
+                .Replace("www", "")
+                .Replace("/", "")
+                .Replace("-", "")
+                .Replace("?", "")
+                .Replace("&", "")
+                .Replace("=", "")
+                .Replace(",", "")
+                .Replace(".", "");
+
+            return formatedUrl?.Substring(0, Math.Min(formatedUrl.Length, 100));
         }
     }
 }
