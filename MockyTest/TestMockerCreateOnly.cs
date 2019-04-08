@@ -7,13 +7,13 @@ namespace Mocky.Test {
     [TestClass]
     public class TestMockerCreateOnly {
         readonly ICalculator calc;
-        readonly HttpRequest req;
+        readonly IRequest req;
 
         public TestMockerCreateOnly() {
             Mocker mockCalc = new Mocker(typeof(ICalculator));
             calc = (ICalculator)mockCalc.Create();
-            Mocker mockReq = new Mocker(typeof(HttpRequest));
-            req = (HttpRequest) mockReq.Create();
+            Mocker mockReq = new Mocker(typeof(IRequest));
+            req = (IRequest) mockReq.Create();
         }
 
         [TestMethod]
