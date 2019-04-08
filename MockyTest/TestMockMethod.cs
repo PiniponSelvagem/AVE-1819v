@@ -1,16 +1,14 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Mocky.Test
-{
+namespace Mocky.Test {
+
     [TestClass]
-    public class TestMockMethod
-    {
+    public class TestMockMethod {
         MockMethod[] ms = null;
 
         [TestMethod]
-        public void TestMockMethodForAdd()
-        {
+        public void TestMockMethodForAdd() {
             MockMethod add = new MockMethod(typeof(ICalculator), "Add");
             add.With(5, 3).Return(8);
             add.With(2, 7).Return(9);
@@ -23,8 +21,7 @@ namespace Mocky.Test
             return (int) ms[3].Call(a, b);
         }
 
-        public string SimulateGetBodyMockImplementatioToCheckIL(string url)
-        {
+        public string SimulateGetBodyMockImplementatioToCheckIL(string url) {
             return (string) ms[7].Call(url);
         }
     }

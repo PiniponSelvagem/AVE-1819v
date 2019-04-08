@@ -1,15 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Mocky.Test
-{
+namespace Mocky.Test {
+
     [TestClass]
-    public class TestMockerForPartialCalculator
-    {
+    public class TestMockerForPartialCalculator {
         readonly ICalculator calc;
 
-        public TestMockerForPartialCalculator()
-        {
+        public TestMockerForPartialCalculator() {
             Mocker mock = new Mocker(typeof(ICalculator));
             mock.When("Add").With(5, 7).Return(12);
             mock.When("Add").With(3, 4).Return(7);
@@ -18,8 +16,7 @@ namespace Mocky.Test
         }
         
         [TestMethod]
-        public void TestCalculatorSuccessfully()
-        {
+        public void TestCalculatorSuccessfully() {
             Assert.AreEqual(calc.Add(5, 7), 12);
             Assert.AreEqual(calc.Add(3, 4), 7);
             Assert.AreEqual(calc.Add(4, 1), 0); // Returns 0 rather than 5 because that behavior was not defined for Add
@@ -28,8 +25,7 @@ namespace Mocky.Test
 
         [TestMethod]
         [ExpectedException(typeof(NotImplementedException))]
-        public void TestCalculatorFailing()
-        {
+        public void TestCalculatorFailing() {
             Assert.AreEqual(calc.Sub(2, 1), 1); // NotImplementedException
         }
     }

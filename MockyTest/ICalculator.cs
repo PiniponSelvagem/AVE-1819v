@@ -1,7 +1,5 @@
-﻿namespace Mocky.Test
-{
-    public interface ICalculator
-    {
+﻿namespace Mocky.Test {
+    public interface ICalculator {
         int Add(int a, int b);
         int Sub(int a, int b);
         int Mul(int a, int b);
