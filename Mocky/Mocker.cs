@@ -28,9 +28,8 @@ namespace Mocky {
         }
 
         private Type BuildType() {
-            // !!!!!! TO DO !!!!!!
-
-            throw new NotImplementedException();
+            return Generator.For(klass);
+            //return typeof(MockICalculator);
         }
     }
 }

@@ -11,10 +11,11 @@ namespace Mocky.Test {
 
         public TestMockerCreateOnly() {
             Mocker mockCalc = new Mocker(typeof(ICalculator));
-            calc = (ICalculator)mockCalc.Create();
+            calc = (ICalculator) mockCalc.Create();
             Mocker mockReq = new Mocker(typeof(IRequest));
             req = (IRequest) mockReq.Create();
         }
+
 
         [TestMethod]
         public void TestCalculatorTypeName() {

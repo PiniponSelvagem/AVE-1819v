@@ -20,7 +20,7 @@ namespace Request.Test {
         }
 
         private string ConvertUrlToFilename(string url) {
-            string formatedUrl = url
+            string formattedUrl = url
                 .Replace("http://", "")
                 .Replace("https://", "")
                 .Replace("www", "")
@@ -32,7 +32,7 @@ namespace Request.Test {
                 .Replace(",", "")
                 .Replace(".", "");
 
-            return formatedUrl?.Substring(0, Math.Min(formatedUrl.Length, 100));
+            return formattedUrl?.Substring(0, Math.Min(formattedUrl.Length, 100));
         }
     }
 }
