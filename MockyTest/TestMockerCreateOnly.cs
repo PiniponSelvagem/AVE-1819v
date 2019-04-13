@@ -48,7 +48,7 @@ namespace Mocky.Test {
         [TestMethod]
         public void TestRequestTypeName() {
             string klassName = req.ToString(); // OK ToString() inherited from Object
-            Assert.AreEqual("MockIHttpRequest", klassName);
+            Assert.AreEqual("MockIRequest", klassName);
         }
 
         [TestMethod]

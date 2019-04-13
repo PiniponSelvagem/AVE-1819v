@@ -71,7 +71,11 @@ public class Generator {
         il.Emit(OpCodes.Ret);
         
         // Generate methods
-        ImplementMethods(typBuilder, type);
+        ImplementMethods(typBuilder, type); //for this type
+        Type[] typeInterfaces = type.GetInterfaces();
+        for (int i=0; i<typeInterfaces.Length; ++i) {
+            ImplementMethods(typBuilder, typeInterfaces[i]);
+        }
 
         // Create type 
         Type retType = typBuilder.CreateTypeInfo().AsType();
@@ -90,11 +94,10 @@ public class Generator {
     
     private static void ImplementMethods(TypeBuilder typBuilder, Type type) {
         MethodInfo[] methods = type.GetMethods(
-            BindingFlags.Public   |
-            BindingFlags.Instance |
+            BindingFlags.Public       |
+            BindingFlags.Instance     |
             BindingFlags.DeclaredOnly
         );
-        //TODO: not getting dispose() for IRequest
 
         ConstructorInfo ctorNIE = typeof(NotImplementedException).GetConstructor(Type.EmptyTypes);
 
