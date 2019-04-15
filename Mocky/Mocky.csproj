@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Calculator.cs" />
+    <Compile Include="MockICalculator.cs" />
     <Compile Include="Generator.cs" />
     <Compile Include="ICalculator.cs" />
     <Compile Include="Mocker.cs" />

@@ -9,7 +9,10 @@ class MockICalculator : ICalculator {
     }
 
     public int Add(int a, int b) {
-        throw new NotImplementedException();
+        if (a==5 && b==3) {
+            return 8;
+        }
+        return 0;
     }
 
     public int Div(int a, int b) {

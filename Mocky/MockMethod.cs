@@ -9,7 +9,7 @@ namespace Mocky {
         private Dictionary<object[], object> results;
         private object[] args;
 
-        public MethodInfo Method { get { return meth;  } }
+        public MethodInfo Method { get { return meth; } }
 
         public MockMethod(Type type, string name) {
             this.klass = type;
@@ -17,7 +17,6 @@ namespace Mocky {
             if (meth == null)
                 throw new ArgumentException("There is no method " + name + " in type " + type);
             this.results = new Dictionary<object[], object>();
-
         }
 
         public MockMethod With(params object[] args) {
@@ -39,9 +38,12 @@ namespace Mocky {
         }
 
         public object Call(params object [] args) {
-            // !!!!! TO DO !!!!!
-
-            throw new NotImplementedException();
+            foreach (KeyValuePair<object[], object> entry in results) {
+                if (KeyEquals(entry.Key, args)) {
+                    return entry.Value;
+                }
+            }
+            return Activator.CreateInstance(meth.ReturnType);
         }
         
         private static bool areAllArgumentsCompatible(ParameterInfo[] argTypes, object[] args) {
@@ -50,6 +52,21 @@ namespace Mocky {
                 Type a = args[i++].GetType();
                 if (!p.ParameterType.IsAssignableFrom(a))
                     return false;
+            }
+            return true;
+        }
+
+        
+
+        private bool KeyEquals(object[] key, object[] args) {
+            if (key.Length != args.Length) {
+                return false;
+            }
+
+            for (int i=0; i<key.Length; ++i) {
+                if (!key[i].Equals(args[i])) {
+                    return false;
+                }
             }
             return true;
         }

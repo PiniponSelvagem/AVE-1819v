@@ -21,37 +21,60 @@ public class Generator {
         string ASM_NAME = TheName;
         string MOD_NAME = TheName;
         string TYP_NAME = TheName;
-
-        // If using RunAndSave then uncomment
         string DLL_NAME = TheName + ".dll";
-
-        // Define assembly
-        AssemblyBuilder asmBuilder =
-            AssemblyBuilder.DefineDynamicAssembly(
-                new AssemblyName(ASM_NAME),
-				//AssemblyBuilderAccess.Run 	// use "RunAndSave" if you wan't to save to a file
-                AssemblyBuilderAccess.RunAndSave
-            );
-
-        // Define module in assembly
-        ModuleBuilder modBuilder =
-			//asmBuilder.DefineDynamicModule(MOD_NAME /*, DLL_NAME */);
-            // If using RunAndSave then use line below
-            asmBuilder.DefineDynamicModule(MOD_NAME, DLL_NAME);
-
-        // Define type in module
-        TypeBuilder typBuilder = modBuilder.DefineType(TYP_NAME);
+        AssemblyBuilder asmBuilder;
+        TypeBuilder typeBuilder;
+        CreateAssemblyBuilderAndTypeBuilder(
+            ASM_NAME,
+            MOD_NAME,
+            TYP_NAME,
+            DLL_NAME,
+            out asmBuilder, out typeBuilder);
 
         // Make the type implement the interfaces
-        typBuilder.AddInterfaceImplementation(type);
+        typeBuilder.AddInterfaceImplementation(type);
+        CreateContructor(type, typeBuilder);
 
+        // Generate methods
+        ImplementMethods(typeBuilder, type); //for this type
+        Type[] typeInterfaces = type.GetInterfaces();
+        for (int i = 0; i<typeInterfaces.Length; ++i) {
+            ImplementMethods(typeBuilder, typeInterfaces[i]);
+        }
+
+        // Create type 
+        Type retType = typeBuilder.CreateTypeInfo().AsType();
+
+        // Save the assembly
+        asmBuilder.Save(DLL_NAME);
+
+        return retType;
+    }
+
+
+    private static void CreateAssemblyBuilderAndTypeBuilder(string ASM_NAME, string MOD_NAME, string TYP_NAME, string DLL_NAME,
+                                        out AssemblyBuilder asmBuilder, out TypeBuilder typBuilder) {
+        // Define assembly
+        asmBuilder = AssemblyBuilder.DefineDynamicAssembly(
+                new AssemblyName(ASM_NAME),
+                AssemblyBuilderAccess.RunAndSave
+        );
+
+        // Define module in assembly
+        ModuleBuilder modBuilder = asmBuilder.DefineDynamicModule(MOD_NAME, DLL_NAME);
+
+        // Define type in module
+        typBuilder = modBuilder.DefineType(TYP_NAME);
+    }
+
+    private static void CreateContructor(Type type, TypeBuilder typBuilder) {
         FieldBuilder fieldBuilder =
             typBuilder.DefineField(
                 "obj",
                 typeof(MockMethod[]),
                 FieldAttributes.Private
             );
-        
+
         ConstructorBuilder ctorBuilder =
             typBuilder.DefineConstructor(
                 MethodAttributes.Public,
@@ -60,7 +83,6 @@ public class Generator {
             );
 
         ILGenerator il = ctorBuilder.GetILGenerator();
-        // Represents a local variable within a method or constructor.
         LocalBuilder tobj = il.DeclareLocal(type);
 
         il.Emit(OpCodes.Ldarg_0);
@@ -69,29 +91,8 @@ public class Generator {
         il.Emit(OpCodes.Ldarg_1);
         il.Emit(OpCodes.Stfld, fieldBuilder);
         il.Emit(OpCodes.Ret);
-        
-        // Generate methods
-        ImplementMethods(typBuilder, type); //for this type
-        Type[] typeInterfaces = type.GetInterfaces();
-        for (int i=0; i<typeInterfaces.Length; ++i) {
-            ImplementMethods(typBuilder, typeInterfaces[i]);
-        }
-
-        // Create type 
-        Type retType = typBuilder.CreateTypeInfo().AsType();
-
-        // Save the assembly
-        // If using RunAndSave then uncomment
-        asmBuilder.Save(DLL_NAME);
-
-        // Create instance
-        //ICalculator calculator = (ICalculator) Activator.CreateInstance(calculatorType);
-
-        // Return
-
-        return retType;
     }
-    
+
     private static void ImplementMethods(TypeBuilder typBuilder, Type type) {
         MethodInfo[] methods = type.GetMethods(
             BindingFlags.Public       |
