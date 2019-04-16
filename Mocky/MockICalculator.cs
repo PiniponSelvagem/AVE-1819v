@@ -9,10 +9,7 @@ class MockICalculator : ICalculator {
     }
 
     public int Add(int a, int b) {
-        if (a==5 && b==3) {
-            return 8;
-        }
-        return 0;
+        return (int) obj[3].Call(a, b);
     }
 
     public int Div(int a, int b) {

@@ -43,7 +43,7 @@ namespace Mocky {
                     return entry.Value;
                 }
             }
-            return Activator.CreateInstance(meth.ReturnType);
+            return Activator.CreateInstance(meth.ReturnType);   //return default value for the return type
         }
         
         private static bool areAllArgumentsCompatible(ParameterInfo[] argTypes, object[] args) {
