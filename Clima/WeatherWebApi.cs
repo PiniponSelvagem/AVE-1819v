@@ -4,7 +4,7 @@ using System;
 using System.Globalization;
 
 namespace Clima {
-    public class WeatherWebApi : IDisposable {
+    public class WeatherWebApi : IWeatherWebApi {
         const string WEATHER_KEY = "88bcf72882994515b56161022192302";
         const string WEATHER_HOST = "http://api.worldweatheronline.com/premium/v1/";
         const string PATH_WEATHER = WEATHER_HOST + "past-weather.ashx?q={0},{1}&date={2}&enddate={3}&tp=24&format=csv&key=" + WEATHER_KEY;

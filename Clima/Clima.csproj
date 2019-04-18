@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="LocationInfo.cs" />
     <Compile Include="WeatherInfo.cs" />
+    <Compile Include="IWeatherWebApi.cs" />
     <Compile Include="WeatherWebApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -49,6 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BankOfCanadaTest\ValetTest.cs" />
+    <Compile Include="ClimaTest\ClimaTestMockerRequest.cs" />
+    <Compile Include="ClimaTest\ClimaTestMocker.cs" />
     <Compile Include="ClimaTest\ClimaTest.cs" />
     <Compile Include="CsvierTest\CsvBase.cs" />
     <Compile Include="CsvierTest\ICsv.cs" />
@@ -91,6 +93,10 @@
     <ProjectReference Include="..\Csvier\Csvier.csproj">
       <Project>{de857858-8828-4bac-9c05-c5d38a5f3d05}</Project>
       <Name>Csvier</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Mocky\Mocky.csproj">
+      <Project>{5543e351-620a-4fdf-a9f4-c9a471604337}</Project>
+      <Name>Mocky</Name>
     </ProjectReference>
     <ProjectReference Include="..\Request\Request.csproj">
       <Project>{74B49F1B-C790-4809-8488-1C97CF567995}</Project>
