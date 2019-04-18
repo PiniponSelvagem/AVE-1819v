@@ -18,12 +18,22 @@ namespace Clima.Test {
                   .With("http://api.worldweatheronline.com/premium/v1/search.ashx?query=oporto&format=tab&key=88bcf72882994515b56161022192302")
                   .Return(sample_ForSearchOporto);
 
-            IRequest req = (IRequest)mocker.Create();
+            int length = -1;
+            string name = null;
 
-            IWeatherWebApi api = new WeatherWebApi(req);
-            LocationInfo[] locals = api.Search("oporto");
-            Assert.AreEqual(6, locals.Length);
-            Assert.AreEqual("Cuba", locals[5].Country);
+            try {
+                using (IRequest req = (IRequest)mocker.Create()) {
+                    IWeatherWebApi api = new WeatherWebApi(req);
+                    LocationInfo[] locals = api.Search("oporto");
+                    length = 6;
+                    name = locals[5].Country;
+                }
+            }
+            catch (NotImplementedException e) {
+                Assert.AreEqual("Dispose", e.TargetSite.Name);
+            }
+            Assert.AreEqual(6, length);
+            Assert.AreEqual("Cuba", name);
         }
 
         [TestMethod]
@@ -33,13 +43,20 @@ namespace Clima.Test {
                   .When("GetBody")
                   .With("http://api.worldweatheronline.com/premium/v1/past-weather.ashx?q=37,017,-7,933&date=2019-00-01&enddate=2019-00-30&tp=24&format=csv&key=88bcf72882994515b56161022192302")
                   .Return(sample_ForPastWeatherOnJanuaryAndCheckMaximumTempC);
-            IRequest req = (IRequest)mocker.Create();
 
-            IWeatherWebApi api = new WeatherWebApi(req);
-            IEnumerable<WeatherInfo> infos = api.PastWeather(37.017, -7.933, DateTime.Parse("2019-01-01"), DateTime.Parse("2019-01-30"));
             int max = int.MinValue;
-            foreach (WeatherInfo wi in infos) {
-                if (wi.TempC > max) max = wi.TempC;
+
+            try {
+                using (IRequest req = (IRequest)mocker.Create()) {
+                    IWeatherWebApi api = new WeatherWebApi(req);
+                    IEnumerable<WeatherInfo> infos = api.PastWeather(37.017, -7.933, DateTime.Parse("2019-01-01"), DateTime.Parse("2019-01-30"));
+                    foreach (WeatherInfo wi in infos) {
+                        if (wi.TempC > max) max = wi.TempC;
+                    }
+                }
+            }
+            catch (NotImplementedException e) {
+                Assert.AreEqual("Dispose", e.TargetSite.Name);
             }
             Assert.AreEqual(19, max);
         }

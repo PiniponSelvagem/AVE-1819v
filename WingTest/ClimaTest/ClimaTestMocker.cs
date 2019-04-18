@@ -24,10 +24,21 @@ namespace Clima.Test {
                   }
             );
 
-            IWeatherWebApi api = (IWeatherWebApi)mocker.Create();
-            LocationInfo[] locals = api.Search("oporto");
-            Assert.AreEqual(6, locals.Length);
-            Assert.AreEqual("Cuba", locals[5].Country);
+            int length = -1;
+            string name = null;
+
+            try {
+                using (IWeatherWebApi api = (IWeatherWebApi)mocker.Create()) {
+                    LocationInfo[] locals = api.Search("oporto");
+                    length = 6;
+                    name = locals[5].Country;
+                }
+            }
+            catch(NotImplementedException e) {
+                Assert.AreEqual("Dispose", e.TargetSite.Name);
+            }
+            Assert.AreEqual(6, length);
+            Assert.AreEqual("Cuba", name);
         }
 
         [TestMethod]
@@ -69,12 +80,19 @@ namespace Clima.Test {
                         new WeatherInfo(DateTime.Parse("2019-01-30"), 16)
                   }
             );
-            IWeatherWebApi api = (IWeatherWebApi)mocker.Create();
 
-            IEnumerable<WeatherInfo> infos = api.PastWeather(37.017, -7.933, DateTime.Parse("2019-01-01"), DateTime.Parse("2019-01-30"));
             int max = int.MinValue;
-            foreach (WeatherInfo wi in infos) {
-                if (wi.TempC > max) max = wi.TempC;
+
+            try {
+                using (IWeatherWebApi api = (IWeatherWebApi)mocker.Create()) {
+                    IEnumerable<WeatherInfo> infos = api.PastWeather(37.017, -7.933, DateTime.Parse("2019-01-01"), DateTime.Parse("2019-01-30"));
+                    foreach (WeatherInfo wi in infos) {
+                        if (wi.TempC > max) max = wi.TempC;
+                    }
+                }
+            }
+            catch(NotImplementedException e) {
+                Assert.AreEqual("Dispose", e.TargetSite.Name);
             }
             Assert.AreEqual(19, max);
         }
