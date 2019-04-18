@@ -48,8 +48,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ICalculator.cs" />
     <Compile Include="TestMockerCreateOnly.cs" />
+    <Compile Include="TestMockerForPartialResquest.cs" />
     <Compile Include="TestMockerForPartialCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestMockMethod.cs" />

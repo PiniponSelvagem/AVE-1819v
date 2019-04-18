@@ -43,7 +43,11 @@ namespace Mocky {
                     return entry.Value;
                 }
             }
-            return Activator.CreateInstance(meth.ReturnType);   //return default value for the return type
+
+            if (Method.ReturnType.IsPrimitive)
+                return Activator.CreateInstance(meth.ReturnType);   //return default value for the return type
+
+            return null;
         }
         
         private static bool areAllArgumentsCompatible(ParameterInfo[] argTypes, object[] args) {

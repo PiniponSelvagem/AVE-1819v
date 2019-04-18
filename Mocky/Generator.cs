@@ -1,4 +1,7 @@
-﻿using Mocky;
+﻿
+//#define DEBUG //uncomment to save the DLLs generated
+
+using Mocky;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -66,7 +69,9 @@ public class Generator {
         Type retType = typeBuilder.CreateTypeInfo().AsType();
 
         // Save the assembly
-        //asmBuilder.Save(DLL_NAME);
+        #if (DEBUG)
+            asmBuilder.Save(DLL_NAME);
+        #endif
 
         return retType;
     }
@@ -77,12 +82,20 @@ public class Generator {
         // Define assembly
         asmBuilder = AssemblyBuilder.DefineDynamicAssembly(
                 new AssemblyName(ASM_NAME),
-                //AssemblyBuilderAccess.RunAndSave
-                AssemblyBuilderAccess.Run
+                #if (DEBUG)
+                    AssemblyBuilderAccess.RunAndSave
+                #else
+                    AssemblyBuilderAccess.Run
+                #endif
         );
 
         // Define module in assembly
-        ModuleBuilder modBuilder = asmBuilder.DefineDynamicModule(MOD_NAME);    //asmBuilder.DefineDynamicModule(MOD_NAME, DLL_NAME);
+        ModuleBuilder modBuilder;
+        #if (DEBUG)
+            modBuilder = asmBuilder.DefineDynamicModule(MOD_NAME, DLL_NAME);
+        #else
+            modBuilder = asmBuilder.DefineDynamicModule(MOD_NAME);    //asmBuilder.DefineDynamicModule(MOD_NAME, DLL_NAME);
+        #endif
 
         // Define type in module
         typBuilder = modBuilder.DefineType(TYP_NAME);
@@ -163,7 +176,7 @@ public class Generator {
         il.Emit(OpCodes.Ldfld, fieldBuilder);
         il.Emit(OpCodes.Ldc_I4, methodIdx);       //pos in array
         il.Emit(OpCodes.Ldelem_Ref);
-        il.Emit(OpCodes.Ldc_I4_2);
+        il.Emit(OpCodes.Ldc_I4, parms.Length);
         il.Emit(OpCodes.Newarr, typeof(Object));
 
         for (int i=0; i<parms.Length; ++i) {
@@ -175,7 +188,12 @@ public class Generator {
         }
 
         il.EmitCall(OpCodes.Callvirt, typeof(MockMethod).GetMethod("Call"), new Type[] { typeof(Object[]) });        //callvirt instance object[Mocky] Mocky.MockMethod::Call(object[])
-        il.Emit(OpCodes.Unbox_Any, returnType);
+
+        if (returnType.IsPrimitive)
+            il.Emit(OpCodes.Unbox_Any, returnType);
+        else
+            il.Emit(OpCodes.Castclass, returnType);
+
         il.Emit(OpCodes.Ret);
     }
 
