@@ -1,7 +1,4 @@
-﻿using Csvier;
-using Request;
-using System;
-using System.Globalization;
+﻿using System;
 
 namespace Clima {
     public interface IWeatherWebApi : IDisposable {
