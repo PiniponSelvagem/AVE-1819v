@@ -5,20 +5,20 @@ using System.Linq;
 namespace Mocky {
 
     public class Mocker {
-        private readonly Type type;
+        private readonly Type klass;
         private readonly Generator generator;
         private Dictionary<string, MockMethod> ms;
 
-        public Mocker(Type type) {
-            this.type = type;
-            this.generator = new Generator();
+        public Mocker(Type klass) {
+            this.klass = klass;
+            this.generator = new Generator(klass);
             this.ms = new Dictionary<string, MockMethod>();
         }
 
         public MockMethod When(string name) {
             MockMethod m;
             if (!ms.TryGetValue(name, out m)) {
-                m = new MockMethod(type, name);
+                m = new MockMethod(klass, name);
                 ms.Add(name, m);
             }
             return m;
@@ -30,7 +30,7 @@ namespace Mocky {
         }
 
         private Type BuildType() {
-            return generator.For(type, ms);
+            return generator.GenWith(ms);
         }
     }
 }
