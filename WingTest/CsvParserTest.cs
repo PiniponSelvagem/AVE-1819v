@@ -2,14 +2,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Clima;
 
-namespace Csvier.Test
-{
+namespace Csvier.Test {
+
     [TestClass]
-    public class CsvParserTest
-    {
+    public class CsvParserTest {
         [TestMethod]
-        public void TestMethod1()
-        {
+        public void TestMethod1() {
 string sampleWeatherInLisbonFiltered =
 @"2019-01-01,24,17,63,6,10,74,ENE,116,http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png,Partly cloudy,0.0,59,10,1031,43,14,57,6,43,13,56,11,17,13,56
 2019-01-02,24,18,64,6,9,179,S,116,http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png,Partly cloudy,0.0,57,10,1030,15,14,57,6,42,13,56,11,17,13,56
