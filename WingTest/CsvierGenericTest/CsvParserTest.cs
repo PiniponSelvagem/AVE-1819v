@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Clima;
 
-namespace Csvier.Test {
+namespace CsvierGeneric.Test {
 
     [TestClass]
     public class CsvParserTest {
@@ -14,7 +14,8 @@ string sampleWeatherInLisbonFiltered =
 2019-01-03,24,16,60,7,11,89,E,113,http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0001_sunny.png,Sunny,0.0,67,10,1026,3,13,55,7,45,12,54,11,18,12,54
 2019-01-04,24,16,60,9,15,78,ENE,116,http://cdn.worldweatheronline.net/images/wsymbols01_png_64/wsymbol_0002_sunny_intervals.png,Partly cloudy,0.1,73,10,1028,27,14,57,9,48,13,55,14,23,13,55
 ";
-            CsvParser pastWeather = new CsvParser(typeof(WeatherInfo))
+
+            CsvParserGeneric pastWeather = new CsvParserGeneric(typeof(WeatherInfo))
                             .CtorArg("date", 0)
                             .CtorArg("tempC", 2);
             object[] items = pastWeather

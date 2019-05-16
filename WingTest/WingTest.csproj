@@ -63,7 +63,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="CsvParserTest.cs" />
+    <Compile Include="CsvierGenericTest\CsvParserTest.cs" />
     <Compile Include="RequestTest\MockRequest.cs" />
     <Compile Include="RequestTest\RequestTest.cs" />
     <Compile Include="CsvierTest\CsvParserExplicitTest.cs" />
@@ -90,6 +90,10 @@
     <ProjectReference Include="..\Clima\Clima.csproj">
       <Project>{edb6b12d-1a1b-4c9c-a14f-6084f742d4c3}</Project>
       <Name>Clima</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CsvierGeneric\CsvierGeneric.csproj">
+      <Project>{0f1fcef0-d00b-4aad-8f2a-36cbc9dd8fe5}</Project>
+      <Name>CsvierGeneric</Name>
     </ProjectReference>
     <ProjectReference Include="..\Csvier\Csvier.csproj">
       <Project>{de857858-8828-4bac-9c05-c5d38a5f3d05}</Project>
