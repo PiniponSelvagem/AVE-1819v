@@ -54,6 +54,10 @@
       <Project>{EDB6B12D-1A1B-4C9C-A14F-6084F742D4C3}</Project>
       <Name>Clima</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CsvierGeneric\CsvierGeneric.csproj">
+      <Project>{0f1fcef0-d00b-4aad-8f2a-36cbc9dd8fe5}</Project>
+      <Name>CsvierGeneric</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Csvier\Csvier.csproj">
       <Project>{DE857858-8828-4BAC-9C05-C5D38A5F3D05}</Project>
       <Name>Csvier</Name>

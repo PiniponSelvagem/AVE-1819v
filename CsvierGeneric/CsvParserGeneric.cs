@@ -13,11 +13,11 @@ namespace CsvierGeneric {
         private const char DEFAULT_SEPARATOR = ',';
         private readonly char separator;
         private string[] textData;
-
+        
         public CsvParserGeneric(char separator) {
             this.type = typeof(T);
             this.separator = separator;
-
+            
             KlassInfo klassInfo = new KlassInfo(type);
             ctorArgs  = new CtorArgs(klassInfo);
             propArgs  = new PropArgs(klassInfo);
@@ -91,7 +91,15 @@ namespace CsvierGeneric {
             return ret;
         }
 
-        
+        public T[] Parse(Func<string, T> parser) {
+            T[] ret = new T[textData.Length]; // place to store the instances
+            
+
+
+            return ret;
+        }
+
+
 
         /* -----------------------------------
          * -------- AUXILIARY METHODS --------
