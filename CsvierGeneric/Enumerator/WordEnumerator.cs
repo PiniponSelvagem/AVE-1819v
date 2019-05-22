@@ -3,14 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace CsvierGeneric.Enumerator {
-    public class LineEnumerator : IEnumerator<string> {
+    public class WordEnumerator : IEnumerator<string> {
         private CharEnumerator charEnum;
         private string src;
         private string currStr;
         private bool isEOF = false;
         private int lastIndex = 0;
 
-        public LineEnumerator(string src) {
+        public WordEnumerator(string src) {
             this.src = src;
             charEnum = src.GetEnumerator();
         }
@@ -18,9 +18,7 @@ namespace CsvierGeneric.Enumerator {
         public string Current => currStr;
 
         object IEnumerator.Current => Current;
-
-        //SIDE NOTE: Currently is skiping lines that are "empty" (only have \r\n)
-        //Atm its staying like this, since it works for now.
+        
         public bool MoveNext() {
             int count = 0;
             int length = 0;
@@ -33,7 +31,7 @@ namespace CsvierGeneric.Enumerator {
                     isEOF = true;
                     return true;
                 }
-                foundNR = src[lastIndex + count] == '\n' || src[lastIndex + count] == '\r'; // "\r\n", "\r", "\n"
+                foundNR = src[lastIndex + count] == ' ';
                 if (!ignore && foundNR) {
                     currStr = src.Substring(lastIndex, length);
                     ignore = true;

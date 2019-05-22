@@ -11,9 +11,20 @@ namespace ConsoleApp {
             //CtorArgsTest();
             //PastWeather();
 
-            TestLineEnumerator();
+            //TestLineEnumerator();
+            TestWordEnumerator();
 
             Console.ReadLine();
+        }
+
+        static void TestWordEnumerator() {
+            string sample = "This is just a simple sample.";
+            WordEnumerable wordEnumerable = new WordEnumerable(sample);
+            IEnumerator<string> wordEnumerator = wordEnumerable.GetEnumerator();
+            int i = 1;
+            while (wordEnumerator.MoveNext()) {
+                Console.WriteLine("LINE {0}: {1}", i++, wordEnumerator.Current);
+            }
         }
 
         static void TestLineEnumerator() {

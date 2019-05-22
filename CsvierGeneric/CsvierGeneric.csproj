@@ -54,7 +54,9 @@
     <Compile Include="Attributes\CsvAttribute.cs" />
     <Compile Include="Attributes\CsvAutoCreator.cs" />
     <Compile Include="CsvParserGeneric.cs" />
+    <Compile Include="Enumerator\WordEnumerable.cs" />
     <Compile Include="Enumerator\LineEnumerable.cs" />
+    <Compile Include="Enumerator\WordEnumerator.cs" />
     <Compile Include="Enumerator\LineEnumerator.cs" />
     <Compile Include="Exceptions\CsvExceptions.cs" />
     <Compile Include="KlassInfo.cs" />
