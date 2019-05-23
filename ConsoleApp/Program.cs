@@ -19,7 +19,7 @@ namespace ConsoleApp {
 
         static void TestWordEnumerator() {
             string sample = "This is just a simple sample.";
-            WordEnumerable wordEnumerable = new WordEnumerable(sample);
+            WordEnumerable wordEnumerable = new WordEnumerable(sample, ' ');
             IEnumerator<string> wordEnumerator = wordEnumerable.GetEnumerator();
             int i = 1;
             while (wordEnumerator.MoveNext()) {

@@ -19,6 +19,12 @@ namespace CsvierGeneric.Enumerator {
 
         object IEnumerator.Current => Current;
 
+        //TODO: TESTS
+        //TODO: TESTS
+        //TODO: TESTS
+        //TODO: TESTS
+        //TODO: TESTS
+
         //SIDE NOTE: Currently is skiping lines that are "empty" (only have \r\n)
         //Atm its staying like this, since it works for now.
         public bool MoveNext() {

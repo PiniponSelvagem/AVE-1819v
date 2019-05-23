@@ -6,19 +6,28 @@ namespace CsvierGeneric.Enumerator {
     public class WordEnumerator : IEnumerator<string> {
         private CharEnumerator charEnum;
         private string src;
+        private char separator;
+
         private string currStr;
         private bool isEOF = false;
         private int lastIndex = 0;
 
-        public WordEnumerator(string src) {
+        public WordEnumerator(string src, char separator) {
             this.src = src;
+            this.separator = separator;
             charEnum = src.GetEnumerator();
         }
         
         public string Current => currStr;
 
         object IEnumerator.Current => Current;
-        
+
+        //TODO: TESTS
+        //TODO: TESTS
+        //TODO: TESTS
+        //TODO: TESTS
+        //TODO: TESTS
+
         public bool MoveNext() {
             int count = 0;
             int length = 0;
@@ -31,7 +40,7 @@ namespace CsvierGeneric.Enumerator {
                     isEOF = true;
                     return true;
                 }
-                foundNR = src[lastIndex + count] == ' ';
+                foundNR = src[lastIndex + count] == separator;
                 if (!ignore && foundNR) {
                     currStr = src.Substring(lastIndex, length);
                     ignore = true;

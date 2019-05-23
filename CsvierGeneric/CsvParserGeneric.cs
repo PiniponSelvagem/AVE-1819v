@@ -1,6 +1,8 @@
 ﻿using CsvierGeneric.ArgsContainers;
 using CsvierGeneric.Attributes;
+using CsvierGeneric.Enumerator;
 using System;
+using System.Collections.Generic;
 
 namespace CsvierGeneric {
     public class CsvParserGeneric<T> {
@@ -94,7 +96,17 @@ namespace CsvierGeneric {
         public T[] Parse(Func<string, T> parser) {
             T[] ret = new T[textData.Length]; // place to store the instances
             
+            //TODO: Change textData to LineEnumerable
+            //TODO: Change textData to LineEnumerable
+            //TODO: Change textData to LineEnumerable
+            LineEnumerable lineEnumerable = new LineEnumerable(string.Join("\n", textData));
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
 
+            //TODO: this can be a problem if the Current is null
+            int i = 0;
+            while (lineEnumerator.MoveNext()) {
+                ret[i++] = parser.Invoke(lineEnumerator.Current);
+            }
 
             return ret;
         }
