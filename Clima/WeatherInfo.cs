@@ -6,7 +6,7 @@ namespace Clima {
         [Csv("Date", 0)]
         public DateTime Date { get; }
 
-        [Csv("TempC", 1)]
+        [Csv("TempC", 2)]
         public int TempC { get; }
 
         [Csv("PrecipMM", 11)]
@@ -26,7 +26,7 @@ namespace Clima {
         }
 
         [Csv("date", 0)]
-        [Csv("tempC", 1)]
+        [Csv("tempC", 2)]
         public WeatherInfo(DateTime date, int tempC) {
             this.Date = date;
             this.TempC = tempC;
