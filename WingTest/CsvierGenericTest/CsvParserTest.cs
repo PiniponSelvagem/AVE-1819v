@@ -70,6 +70,27 @@ namespace CsvierGeneric.Test {
             AssertAllItems(items);
         }
 
+        [TestMethod]
+        public void AssertEager__Parse_WithParam_Func() {
+            // Arrange
+            int count = 0;
+            CsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGeneric<WeatherInfo>(typeof(WeatherInfo));
+
+            // Act
+            object[] items = pastWeather
+                            .Load(sampleWeatherInLisbonFiltered)
+                            .RemoveEmpties()
+                            .Parse(s => {
+                                    ++count;          
+                                    WeatherInfo w = new WeatherInfo();
+                                    return w;
+                                }
+                            );
+
+            // Assert
+            Assert.AreEqual(count, 4);
+        }
+
 
         /* -----------------------------------
          * ---------- AUX METHODS ------------

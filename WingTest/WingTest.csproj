@@ -52,6 +52,8 @@
     <Compile Include="ClimaTest\ClimaTestMockerRequest.cs" />
     <Compile Include="ClimaTest\ClimaTestMocker.cs" />
     <Compile Include="ClimaTest\ClimaTest.cs" />
+    <Compile Include="CsvierGenericTest\Enumerator\WordEnumTests.cs" />
+    <Compile Include="CsvierGenericTest\Enumerator\LineEnumTests.cs" />
     <Compile Include="CsvierTest\CsvBase.cs" />
     <Compile Include="CsvierTest\ICsv.cs" />
     <Compile Include="CsvierTest\TestInfo.cs" />

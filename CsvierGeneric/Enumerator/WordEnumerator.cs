@@ -15,18 +15,17 @@ namespace CsvierGeneric.Enumerator {
         public WordEnumerator(string src, char separator) {
             this.src = src;
             this.separator = separator;
-            charEnum = src.GetEnumerator();
+            if (src == null) {
+                isEOF = true;
+            }
+            else {
+                charEnum = src.GetEnumerator();
+            }
         }
         
         public string Current => currStr;
 
         object IEnumerator.Current => Current;
-
-        //TODO: TESTS
-        //TODO: TESTS
-        //TODO: TESTS
-        //TODO: TESTS
-        //TODO: TESTS
 
         public bool MoveNext() {
             int count = 0;
@@ -57,10 +56,12 @@ namespace CsvierGeneric.Enumerator {
         }
 
         public void Reset() {
-            currStr = null;
-            lastIndex = 0;
-            isEOF = false;
-            charEnum.Reset();
+            if (src != null) {
+                currStr = null;
+                lastIndex = 0;
+                isEOF = false;
+                charEnum.Reset();
+            }
         }
 
         public void Dispose() {
