@@ -107,5 +107,27 @@ namespace CsvierGeneric.Test {
             }
             Assert.IsFalse(wordEnumerator.MoveNext());
         }
+
+        [TestMethod]
+        public void Word_SeparatedBy_SomeSeparator_MultipleTimes() {
+            // Arrange
+            string wowBFA = "FOR THE  HORDE   !";
+            char separator = ' ';
+            string _for = "FOR", _the = "THE", _horde = "HORDE", _exclamation = "!";
+            WordEnumerable wordEnumerable = new WordEnumerable(wowBFA, separator);
+            IEnumerator<string> wordEnumerator = wordEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(wordEnumerator.MoveNext());
+            Assert.AreEqual(_for, wordEnumerator.Current);
+            Assert.IsTrue(wordEnumerator.MoveNext());
+            Assert.AreEqual(_the, wordEnumerator.Current);
+            Assert.IsTrue(wordEnumerator.MoveNext());
+            Assert.AreEqual(_horde, wordEnumerator.Current);
+            Assert.IsTrue(wordEnumerator.MoveNext());
+            Assert.AreEqual(_exclamation, wordEnumerator.Current);
+            Assert.IsFalse(wordEnumerator.MoveNext());
+        }
     }
 }

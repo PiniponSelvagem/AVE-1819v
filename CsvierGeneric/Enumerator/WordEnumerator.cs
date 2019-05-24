@@ -28,6 +28,7 @@ namespace CsvierGeneric.Enumerator {
             if (src == null || index >= src.Length)
                 return false;
             
+            AllignIndexForNextIteration();
             StringBuilder strBuilder = new StringBuilder();
             char curr;
             while (charEnum.MoveNext()) {
@@ -62,6 +63,16 @@ namespace CsvierGeneric.Enumerator {
 
         public void Dispose() {
             charEnum.Dispose();
+        }
+
+
+
+        private void AllignIndexForNextIteration() {
+            while (index+1 < src.Length && src[index+1]==separator) {
+                ++index;
+                if (!charEnum.MoveNext())
+                    break;
+            }
         }
     }
 }
