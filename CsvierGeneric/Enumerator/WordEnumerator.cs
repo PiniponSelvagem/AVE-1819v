@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CsvierGeneric.Enumerator {
     public class WordEnumerator : IEnumerator<string> {
@@ -9,16 +10,12 @@ namespace CsvierGeneric.Enumerator {
         private char separator;
 
         private string currStr;
-        private bool isEOF = false;
-        private int lastIndex = 0;
+        private int index = -1;
 
         public WordEnumerator(string src, char separator) {
             this.src = src;
             this.separator = separator;
-            if (src == null) {
-                isEOF = true;
-            }
-            else {
+            if (src != null) {
                 charEnum = src.GetEnumerator();
             }
         }
@@ -28,29 +25,29 @@ namespace CsvierGeneric.Enumerator {
         object IEnumerator.Current => Current;
 
         public bool MoveNext() {
-            int count = 0;
-            int length = 0;
-            bool ignore = false;
-            if (isEOF) return false;
-            bool foundNR = false;
-            do {
-                if (lastIndex+count>=src.Length) {
-                    currStr = src.Substring(lastIndex, length);
-                    isEOF = true;
-                    return true;
+            if (src == null || index >= src.Length)
+                return false;
+            
+            StringBuilder strBuilder = new StringBuilder();
+            char curr;
+            while (charEnum.MoveNext()) {
+                curr = charEnum.Current;
+                ++index;
+                if (index < src.Length) {
+                    if (curr != separator) {
+                        strBuilder.Append(curr);
+                    }
+                    else if (index != 0) {
+                        currStr = strBuilder.ToString();
+                        return true;
+                    }
                 }
-                foundNR = src[lastIndex + count] == separator;
-                if (!ignore && foundNR) {
-                    currStr = src.Substring(lastIndex, length);
-                    ignore = true;
-                }
-                if (ignore && !foundNR) {
-                    lastIndex += count;
-                    return true;
-                }
-                ++length;
-                ++count;
-            } while (charEnum.MoveNext());
+            }
+
+            if (strBuilder.Length != 0) {
+                currStr = strBuilder.ToString();
+                return true;
+            }
 
             return false;
         }
@@ -58,8 +55,7 @@ namespace CsvierGeneric.Enumerator {
         public void Reset() {
             if (src != null) {
                 currStr = null;
-                lastIndex = 0;
-                isEOF = false;
+                index = -1;
                 charEnum.Reset();
             }
         }

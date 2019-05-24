@@ -33,14 +33,10 @@ namespace CsvierGeneric.Test {
             IEnumerator<string> wordEnumerator = wordEnumerable.GetEnumerator();
 
             // Act
-            bool isMoved1 = wordEnumerator.MoveNext();
-            string empty  = wordEnumerator.Current;
-            bool isMoved2 = wordEnumerator.MoveNext();
-
+            bool isMoved = wordEnumerator.MoveNext();
+            
             // Assert
-            Assert.IsTrue(isMoved1);
-            Assert.AreEqual("", empty);
-            Assert.IsFalse(isMoved2);
+            Assert.IsFalse(isMoved);
         }
 
         [TestMethod]
@@ -61,28 +57,24 @@ namespace CsvierGeneric.Test {
         }
 
         [TestMethod]
-        public void Word_SingleWord_StartingWith_SomeSeperator() {
+        public void Word_SingleWord_StartingWith_SomeSeparator() {
             // Arrange
             WordEnumerable wordEnumerable = new WordEnumerable(" Thrall", ' ');
             IEnumerator<string> wordEnumerator = wordEnumerable.GetEnumerator();
 
             // Act
             bool isMoved1 = wordEnumerator.MoveNext();
-            string empty  = wordEnumerator.Current;
-            bool isMoved2 = wordEnumerator.MoveNext();
             string thrall = wordEnumerator.Current;
-            bool isMoved3 = wordEnumerator.MoveNext();
+            bool isMoved2 = wordEnumerator.MoveNext();
 
             // Assert
             Assert.IsTrue(isMoved1);
-            Assert.AreEqual("", empty);
-            Assert.IsTrue(isMoved2);
             Assert.AreEqual("Thrall", thrall);
-            Assert.IsFalse(isMoved3);
+            Assert.IsFalse(isMoved2);
         }
 
         [TestMethod]
-        public void Word_SingleWord_EndingWith_SomeSeperator() {
+        public void Word_SingleWord_EndingWith_SomeSeparator() {
             // Arrange
             WordEnumerable wordEnumerable = new WordEnumerable("Thrall ", ' ');
             IEnumerator<string> wordEnumerator = wordEnumerable.GetEnumerator();
@@ -91,24 +83,20 @@ namespace CsvierGeneric.Test {
             bool isMoved1 = wordEnumerator.MoveNext();
             string thrall = wordEnumerator.Current;
             bool isMoved2 = wordEnumerator.MoveNext();
-            string empty  = wordEnumerator.Current;
-            bool isMoved3 = wordEnumerator.MoveNext();
 
             // Assert
             Assert.IsTrue(isMoved1);
             Assert.AreEqual("Thrall", thrall);
-            Assert.IsTrue(isMoved2);
-            Assert.AreEqual("", empty);
-            Assert.IsFalse(isMoved3);
+            Assert.IsFalse(isMoved2);
         }
 
         [TestMethod]
-        public void Word_SeperatedBy_SomeSeperator() {
+        public void Word_SeparatedBy_SomeSeparator() {
             // Arrange
             string wowBFA = "Thrall is coming home boys!";
-            char seperator = ' ';
-            string[] wowBFA_split = wowBFA.Split(seperator);
-            WordEnumerable wordEnumerable = new WordEnumerable(wowBFA, seperator);
+            char separator = ' ';
+            string[] wowBFA_split = wowBFA.Split(separator);
+            WordEnumerable wordEnumerable = new WordEnumerable(wowBFA, separator);
             IEnumerator<string> wordEnumerator = wordEnumerable.GetEnumerator();
 
             // Act
