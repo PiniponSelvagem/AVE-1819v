@@ -1,21 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 
 namespace CsvierGeneric.Enumerator {
     public class LineEnumerator : IEnumerator<string> {
         private CharEnumerator charEnum;
         private string src;
+
         private string currStr;
-        private bool isEOF = false;
-        private int lastIndex = 0;
+        private int index = -1;
 
         public LineEnumerator(string src) {
             this.src = src;
-            if (src == null) {
-                isEOF = true;
-            }
-            else {
+            if (src != null) {
                 charEnum = src.GetEnumerator();
             }
         }
@@ -23,39 +21,32 @@ namespace CsvierGeneric.Enumerator {
         public string Current => currStr;
 
         object IEnumerator.Current => Current;
-
-        //TODO: TESTS
-        //TODO: TESTS
-        //TODO: TESTS
-        //TODO: TESTS
-        //TODO: TESTS
-
-        //SIDE NOTE: Currently is skiping lines that are "empty" (only have \r\n)
-        //Atm its staying like this, since it works for now.
+        
         public bool MoveNext() {
-            int count = 0;
-            int length = 0;
-            bool ignore = false;
-            if (isEOF) return false;
-            bool foundNR = false;
-            do {
-                if (lastIndex+count>=src.Length) {
-                    currStr = src.Substring(lastIndex, length);
-                    isEOF = true;
-                    return true;
+            if (src == null || index >= src.Length)
+                return false;
+
+            AllignIndexForNextIteration();
+            StringBuilder strBuilder = new StringBuilder();
+            char curr;
+            while (charEnum.MoveNext()) {
+                curr = charEnum.Current;
+                ++index;
+                if (index < src.Length) {
+                    if (curr != '\r' && curr != '\n') {
+                        strBuilder.Append(curr);
+                    }
+                    else if (index != 0) {
+                        currStr = strBuilder.ToString();
+                        return true;
+                    }
                 }
-                foundNR = src[lastIndex + count] == '\n' || src[lastIndex + count] == '\r'; // "\r\n", "\r", "\n"
-                if (!ignore && foundNR) {
-                    currStr = src.Substring(lastIndex, length);
-                    ignore = true;
-                }
-                if (ignore && !foundNR) {
-                    lastIndex += count;
-                    return true;
-                }
-                ++length;
-                ++count;
-            } while (charEnum.MoveNext());
+            }
+
+            if (strBuilder.Length != 0) {
+                currStr = strBuilder.ToString();
+                return true;
+            }
 
             return false;
         }
@@ -63,14 +54,23 @@ namespace CsvierGeneric.Enumerator {
         public void Reset() {
             if (src != null) {
                 currStr = null;
-                lastIndex = 0;
-                isEOF = false;
+                index = -1;
                 charEnum.Reset();
             }
         }
 
         public void Dispose() {
             charEnum.Dispose();
+        }
+
+
+        
+        private void AllignIndexForNextIteration() {
+            while (index+1 < src.Length && (src[index+1]=='\r' || src[index+1]=='\n')) {
+                ++index;
+                if (!charEnum.MoveNext())
+                    break;
+            }
         }
     }
 }

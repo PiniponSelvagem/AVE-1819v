@@ -33,14 +33,10 @@ namespace CsvierGeneric.Test {
             IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
 
             // Act
-            bool isMoved1 = lineEnumerator.MoveNext();
-            string empty  = lineEnumerator.Current;
-            bool isMoved2 = lineEnumerator.MoveNext();
+            bool isMoved = lineEnumerator.MoveNext();
 
             // Assert
-            Assert.IsTrue(isMoved1);
-            Assert.AreEqual("",  empty);
-            Assert.IsFalse(isMoved2);
+            Assert.IsFalse(isMoved);
         }
 
         [TestMethod]
@@ -51,13 +47,11 @@ namespace CsvierGeneric.Test {
 
             // Act
             bool isMoved1 = lineEnumerator.MoveNext();
-            string empty  = lineEnumerator.Current;
+            string thrall  = lineEnumerator.Current;
             bool isMoved2 = lineEnumerator.MoveNext();
-            string thrall = lineEnumerator.Current;
-            bool isMoved3 = lineEnumerator.MoveNext();
 
             // Assert
-            Assert_EmptyThrall(isMoved1, empty, isMoved2, thrall, isMoved3);
+            Assert_Thrall(isMoved1, thrall, isMoved2);
         }
 
         [TestMethod]
@@ -68,13 +62,11 @@ namespace CsvierGeneric.Test {
 
             // Act
             bool isMoved1 = lineEnumerator.MoveNext();
-            string empty  = lineEnumerator.Current;
-            bool isMoved2 = lineEnumerator.MoveNext();
             string thrall = lineEnumerator.Current;
-            bool isMoved3 = lineEnumerator.MoveNext();
+            bool isMoved2 = lineEnumerator.MoveNext();
 
             // Assert
-            Assert_EmptyThrall(isMoved1, empty, isMoved2, thrall, isMoved3);
+            Assert_Thrall(isMoved1, thrall, isMoved2);
         }
 
         [TestMethod]
@@ -85,13 +77,11 @@ namespace CsvierGeneric.Test {
 
             // Act
             bool isMoved1 = lineEnumerator.MoveNext();
-            string empty  = lineEnumerator.Current;
+            string thrall  = lineEnumerator.Current;
             bool isMoved2 = lineEnumerator.MoveNext();
-            string thrall = lineEnumerator.Current;
-            bool isMoved3 = lineEnumerator.MoveNext();
 
             // Assert
-            Assert_EmptyThrall(isMoved1, empty, isMoved2, thrall, isMoved3);
+            Assert_Thrall(isMoved1, thrall, isMoved2);
         }
 
         [TestMethod]
@@ -104,11 +94,9 @@ namespace CsvierGeneric.Test {
             bool isMoved1 = lineEnumerator.MoveNext();
             string thrall = lineEnumerator.Current;
             bool isMoved2 = lineEnumerator.MoveNext();
-            string empty  = lineEnumerator.Current;
-            bool isMoved3 = lineEnumerator.MoveNext();
 
             // Assert
-            Assert_ThrallEmpty(isMoved1, thrall, isMoved2, empty, isMoved3);
+            Assert_Thrall(isMoved1, thrall, isMoved2);
         }
 
         [TestMethod]
@@ -121,11 +109,9 @@ namespace CsvierGeneric.Test {
             bool isMoved1 = lineEnumerator.MoveNext();
             string thrall = lineEnumerator.Current;
             bool isMoved2 = lineEnumerator.MoveNext();
-            string empty  = lineEnumerator.Current;
-            bool isMoved3 = lineEnumerator.MoveNext();
 
             // Assert
-            Assert_ThrallEmpty(isMoved1, thrall, isMoved2, empty, isMoved3);
+            Assert_Thrall(isMoved1, thrall, isMoved2);
         }
 
         [TestMethod]
@@ -138,68 +124,189 @@ namespace CsvierGeneric.Test {
             bool isMoved1 = lineEnumerator.MoveNext();
             string thrall = lineEnumerator.Current;
             bool isMoved2 = lineEnumerator.MoveNext();
-            string empty  = lineEnumerator.Current;
-            bool isMoved3 = lineEnumerator.MoveNext();
 
             // Assert
-            Assert_ThrallEmpty(isMoved1, thrall, isMoved2, empty, isMoved3);
+            Assert_Thrall(isMoved1, thrall, isMoved2);
         }
 
         [TestMethod]
         public void Line_SingleLine_StartingWith_N() {
-            Assert.Fail();
+            // Arrange
+            string wowBFA = "\nThrall is coming home boys!";
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(wowBFA.Substring(1, 27), lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
         }
 
         [TestMethod]
         public void Line_SingleLine_StartingWith_R() {
-            Assert.Fail();
+            // Arrange
+            string wowBFA = "\rThrall is coming home boys!";
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(wowBFA.Substring(1, 27), lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
         }
 
         [TestMethod]
         public void Line_SingleLine_StartingWith_RN() {
-            Assert.Fail();
+            // Arrange
+            string wowBFA = "\r\nThrall is coming home boys!";
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(wowBFA.Substring(2, 27), lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
         }
 
         [TestMethod]
         public void Line_SingleLine_EndingWith_N() {
-            Assert.Fail();
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\n";
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(wowBFA.Substring(0, 27), lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
         }
 
         [TestMethod]
         public void Line_SingleLine_EndingWith_R() {
-            Assert.Fail();
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\r";
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(wowBFA.Substring(0, 27), lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
         }
 
         [TestMethod]
         public void Line_SingleLine_EndingWith_RN() {
-            Assert.Fail();
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\r\n";
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(wowBFA.Substring(0, 27), lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
         }
 
         [TestMethod]
         public void Line_SingleLine_WithoutEnding() {
-            Assert.Fail();
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!";
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(wowBFA, lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
         }
-        
+
+        [TestMethod]
+        public void Line_MultiLine_With_N() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\nFOR THE HORDE!!!";
+            string[] wowBFA_split = wowBFA.Split('\n');
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            for (int i = 0; i<2; ++i) {
+                Assert.IsTrue(lineEnumerator.MoveNext());
+                Assert.AreEqual(wowBFA_split[i], lineEnumerator.Current);
+            }
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_With_R() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\rFOR THE HORDE!!!";
+            string[] wowBFA_split = wowBFA.Split('\r');
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            for (int i = 0; i<2; ++i) {
+                Assert.IsTrue(lineEnumerator.MoveNext());
+                Assert.AreEqual(wowBFA_split[i], lineEnumerator.Current);
+            }
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_With_RN() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\r\nFOR THE HORDE!!!";
+            string line1 = wowBFA.Split('\r')[0];
+            string line2 = wowBFA.Split('\n')[1];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line1, lineEnumerator.Current);
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line2, lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_SkipEmpty() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\r\n\r\nFOR THE HORDE!!!";
+            string line1 = wowBFA.Split('\r')[0];
+            string line2 = wowBFA.Split('\n')[2];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line1, lineEnumerator.Current);
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line2, lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
 
 
         /* -----------------------------------
          * ---------- AUX METHODS ------------
          * ----------------------------------- */
 
-        private static void Assert_EmptyThrall(bool moved1, string empty, bool moved2, string thrall, bool moved3) {
-            Assert.IsTrue(moved1);
-            Assert.AreEqual("", empty);
-            Assert.IsTrue(moved2);
-            Assert.AreEqual("Thrall", thrall);
-            Assert.IsFalse(moved3);
-        }
-
-        private static void Assert_ThrallEmpty(bool moved1, string thrall, bool moved2, string empty, bool moved3) {
+        private static void Assert_Thrall(bool moved1, string thrall, bool moved2) {
             Assert.IsTrue(moved1);
             Assert.AreEqual("Thrall", thrall);
-            Assert.IsTrue(moved2);
-            Assert.AreEqual("", empty);
-            Assert.IsFalse(moved3);
+            Assert.IsFalse(moved2);
         }
     }
 }
