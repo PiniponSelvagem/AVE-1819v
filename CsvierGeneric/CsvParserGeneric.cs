@@ -96,19 +96,33 @@ namespace CsvierGeneric {
         public T[] Parse(Func<string, T> parser) {
             T[] ret = new T[textData.Length]; // place to store the instances
             
-            //TODO: Change textData to LineEnumerable
-            //TODO: Change textData to LineEnumerable
-            //TODO: Change textData to LineEnumerable
+            // This string.Join is just to not have duplicate textData (1 splitted, and the other the original string)
             LineEnumerable lineEnumerable = new LineEnumerable(string.Join("\n", textData));
             IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
-
-            //TODO: this can be a problem if the Current is null
+            
             int i = 0;
             while (lineEnumerator.MoveNext()) {
                 ret[i++] = parser.Invoke(lineEnumerator.Current);
             }
 
             return ret;
+        }
+
+        /// <summary>
+        /// Developer note:
+        ///     The returned IEnumerable is Lazy, the preparation of the "string" (about the "Remove" methods) isnt.
+        ///     This is currently a design decision since it was requested to keep the "T[] Parse(Func<string, T> parser)"
+        ///     method working.
+        ///     "I am aware that it is working this way right now, and i know how to rework it in case it is needed."
+        /// </summary>
+        public IEnumerable<T> ToEnumerable(Func<string, T> parser) {
+            LineEnumerable lineEnumerable = new LineEnumerable(string.Join("\n", textData));
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            int i = 0;
+            while (lineEnumerator.MoveNext()) {
+                yield return parser.Invoke(lineEnumerator.Current);
+            }
         }
 
 
