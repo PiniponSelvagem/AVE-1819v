@@ -39,12 +39,12 @@ namespace CsvierGeneric {
         }
 
         public override BaseCsvParserGeneric<T> RemoveEvenIndexes() {
-            lineEnum.SkipEvenIndexes();
+            lineEnum.SkipEvenLines();
             return this;
         }
 
         public override BaseCsvParserGeneric<T> RemoveOddIndexes() {
-            lineEnum.SkipOddIndexes();
+            lineEnum.SkipOddLines();
             return this;
         }
 

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace CsvierGeneric.Enumerator {
@@ -34,16 +35,22 @@ namespace CsvierGeneric.Enumerator {
             return this;
         }
 
-        public LineEnumerable SkipEvenIndexes() {
+        public LineEnumerable SkipEvenLines() {
+            throw new NotSupportedException();
+            /*
             //(i => i%2==0);
             lineEnumerator.skipEvenIndexes = true;
             return this;
+            */
         }
 
-        public LineEnumerable SkipOddIndexes() {
+        public LineEnumerable SkipOddLines() {
+            throw new NotSupportedException();
+            /*
             //(i => i%2==1);
             lineEnumerator.skipOddIndexes = true;
             return this;
+            */
         }
     }
 }

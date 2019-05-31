@@ -16,8 +16,8 @@ namespace CsvierGeneric.Enumerator {
         internal int    skipNLines;
         internal bool   skipEmpties;
         internal string skipStartingWith;
-        internal bool   skipEvenIndexes;
-        internal bool   skipOddIndexes;
+        //internal bool   skipEvenIndexes;
+        //internal bool   skipOddIndexes;
 
         public LineEnumerator(string src) {
             this.src = src;
@@ -69,6 +69,7 @@ namespace CsvierGeneric.Enumerator {
                 curr = charEnum.Current;
                 ++index;
                 
+                // Check if line starts with skipStartWith, if true mark it to skip
                 if (skipStartingWith != null && skipStartingWithIndex < skipStartingWith.Length && skipStartingWith[skipStartingWithIndex++] == curr) {
                     ++skipStartingWithCount;
                     if (skipStartingWithCount == skipStartingWith.Length) {
@@ -90,7 +91,7 @@ namespace CsvierGeneric.Enumerator {
                     }
                 }
             }
-
+            
             if (strBuilder.Length != 0) {
                 currStr = strBuilder.ToString();
                 return true;
