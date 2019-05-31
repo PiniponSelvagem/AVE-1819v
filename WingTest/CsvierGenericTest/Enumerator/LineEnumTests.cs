@@ -1,9 +1,7 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using CsvierGeneric.Enumerator;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CsvierGeneric.Test {
+namespace CsvierGeneric.Enumerator.Test {
 
     [TestClass]
     public class LineEnumTests {

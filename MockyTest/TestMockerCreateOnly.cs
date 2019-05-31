@@ -1,11 +1,12 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Request;
+using System;
 
 namespace Mocky.Test {
 
     [TestClass]
     public class TestMockerCreateOnly {
+
         readonly ICalculator calc;
         readonly IRequest req;
 

@@ -3,8 +3,9 @@ using CsvierGeneric.Exceptions;
 using System;
 using System.Reflection;
 
-namespace CsvierGeneric.ArgsContainers {
+namespace CsvierGeneric.ArgsContainers.ArgsContainers {
     class CtorArgs : BaseArgsManager {
+
         private int selectedCtorIndex;
         private object[] currArgsValues;
 

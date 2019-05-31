@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace Csvier.Test {
     public class CsvBase : ICsv {
+
         public CsvParser CreateCsvParser() {
             return new CsvParser(typeof(TestInfo));
         }

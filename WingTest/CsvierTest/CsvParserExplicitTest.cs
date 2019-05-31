@@ -1,7 +1,7 @@
-﻿using System;
-using System.Reflection;
+﻿using Csvier.Exceptions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Csvier.Exceptions;
+using System;
+using System.Reflection;
 
 namespace Csvier.Test {
 

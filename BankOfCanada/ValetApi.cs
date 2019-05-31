@@ -12,6 +12,7 @@ namespace BankOfCanada {
 
 
     public class ValetApi : IDisposable {
+
         const string VALET_HOST = "https://www.bankofcanada.ca/valet/";
         const string LIST_GROUPS = VALET_HOST + "lists/groups/csv";
         const string GROUP = VALET_HOST + "groups/{0}/csv";

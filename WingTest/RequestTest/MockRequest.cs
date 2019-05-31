@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Request.Test {
     public class MockRequest : IRequest, IDisposable {
+
         private readonly string RESOURCES_DIR = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName, "Resources");
 
         public void Dispose() {

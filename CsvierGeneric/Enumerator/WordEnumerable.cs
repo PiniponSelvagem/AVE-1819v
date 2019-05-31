@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace CsvierGeneric.Enumerator {
     public class WordEnumerable : IEnumerable<string> {
+
         private WordEnumerator wordEnumerator;
 
         public WordEnumerable(string str, char separator) {

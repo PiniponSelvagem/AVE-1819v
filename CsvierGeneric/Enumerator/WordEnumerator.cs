@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CsvierGeneric.Enumerator {
     public class WordEnumerator : IEnumerator<string> {
+
         private CharEnumerator charEnum;
         private string src;
         private char separator;

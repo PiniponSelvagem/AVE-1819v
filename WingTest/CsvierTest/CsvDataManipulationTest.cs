@@ -1,8 +1,8 @@
-﻿using System;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Csvier.Test {
+
     [TestClass]
     public class CsvDataManipulationTest : CsvBase {
 

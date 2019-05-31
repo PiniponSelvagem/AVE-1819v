@@ -1,9 +1,8 @@
 ﻿using CsvierGeneric.ArgsManager;
 using CsvierGeneric.Exceptions;
-using System;
 using System.Reflection;
 
-namespace CsvierGeneric.ArgsContainers {
+namespace CsvierGeneric.ArgsContainers.ArgsContainers {
     class FieldArgs : BaseArgsManager {
         
         public FieldArgs(KlassInfo klassInfo) : base(klassInfo) { }

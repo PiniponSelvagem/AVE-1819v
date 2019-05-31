@@ -1,10 +1,10 @@
-﻿using Csvier.ArgsManager;
-using Csvier.Exceptions;
+﻿using Csvier.Exceptions;
 using System;
 using System.Reflection;
 
-namespace Csvier.ArgsContainers {
+namespace Csvier.ArgsManager.ArgsContainers {
     class CtorArgs : BaseArgsManager {
+
         private int selectedCtorIndex;
         private object[] currArgsValues;
 

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace CsvierGeneric.Enumerator {
     public class LineEnumerator : IEnumerator<string> {
+
         private CharEnumerator charEnum;
         private string src;
 

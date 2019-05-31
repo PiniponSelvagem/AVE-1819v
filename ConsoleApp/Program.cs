@@ -7,6 +7,7 @@ using System.Reflection;
 
 namespace ConsoleApp {
     class Program {
+
         static void Main(string[] args) {
             //CtorArgsTest();
             //PastWeather();

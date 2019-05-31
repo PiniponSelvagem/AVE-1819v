@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace Csvier {
     class KlassInfo {
+
         public struct CInfo {
             public ConstructorInfo CtorInfo { get; private set; }
             public ParameterInfo[] ParamInfos { get; private set; }

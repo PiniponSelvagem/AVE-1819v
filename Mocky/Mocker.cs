@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Mocky {
-
     public class Mocker {
+
         private readonly Type klass;
         private readonly Generator generator;
         private Dictionary<string, MockMethod> ms;

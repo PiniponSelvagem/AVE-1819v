@@ -4,6 +4,7 @@ using System.Reflection;
 
 namespace Mocky {
     public class MockMethod {
+
         private readonly Type klass;
         private readonly MethodInfo meth;
         private Dictionary<object[], object> results;

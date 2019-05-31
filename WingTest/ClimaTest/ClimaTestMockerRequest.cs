@@ -1,9 +1,8 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using Request.Test;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Mocky;
 using Request;
+using System;
+using System.Collections.Generic;
 
 namespace Clima.Test {
 

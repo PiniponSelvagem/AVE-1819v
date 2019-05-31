@@ -1,10 +1,10 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Mocky.Test {
 
     [TestClass]
     public class TestMockMethod {
+
         MockMethod[] ms = null;
 
         [TestMethod]

@@ -1,10 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Mocky.Test {
 
     [TestClass]
     public class TestMockerForPartialCalculator {
+
         readonly ICalculator calc;
 
         public TestMockerForPartialCalculator() {

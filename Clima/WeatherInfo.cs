@@ -3,6 +3,7 @@ using System;
 
 namespace Clima {
     public class WeatherInfo {
+
         [Csv("Date", 0)]
         public DateTime Date { get; }
 

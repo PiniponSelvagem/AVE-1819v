@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace CsvierGeneric.Enumerator {
     public class LineEnumerable : IEnumerable<string> {
+
         private LineEnumerator lineEnumerator;
 
         public LineEnumerable(string str) {

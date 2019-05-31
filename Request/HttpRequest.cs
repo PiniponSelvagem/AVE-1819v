@@ -3,6 +3,7 @@ using System.Net;
 
 namespace Request {
     public class HttpRequest : IRequest, IDisposable {
+
         private readonly WebClient client = new WebClient();
 
         public void Dispose() {

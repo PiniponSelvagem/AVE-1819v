@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Reflection;
 
 namespace CsvierGeneric.Attributes {
-
     [AttributeUsage(AttributeTargets.Constructor | AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = true)]
     public class CsvAttribute : Attribute {
 

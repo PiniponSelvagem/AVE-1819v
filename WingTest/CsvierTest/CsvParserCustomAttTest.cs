@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Reflection;
-using Csvier.Exceptions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Csvier.Test {
+
     [TestClass]
     public class CsvParserCustomAttTest : CsvBase {
         

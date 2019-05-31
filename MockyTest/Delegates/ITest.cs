@@ -1,7 +1,6 @@
 ﻿
 namespace Mocky.Test.Delegates {
     public interface ITest {
-
         void Void();
         string StringParam(string a);
         int IntOneParam(int a);
