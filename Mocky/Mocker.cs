@@ -29,6 +29,18 @@ namespace Mocky {
             return Activator.CreateInstance(t, new object[1] { ms.Values.ToArray() });
         }
 
+        public object Invoke(string methodName, params object[] parms) {
+            if (ms.TryGetValue(methodName, out MockMethod mockMethod)) {
+                if (mockMethod.Del != null) {
+                    return mockMethod.Del.DynamicInvoke(parms);
+                }
+
+                throw new NotSupportedException("Method "+methodName+" already has implementation. Did you implemented it with: With(...).Return(...)?");
+            }
+
+            throw new NotImplementedException("Method "+methodName+" is not implemented, 'Add one today with Then(...) just for 2.99!'");
+        }
+
         private Type BuildType() {
             return generator.GenWith(ms);
         }

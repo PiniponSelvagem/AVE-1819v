@@ -48,11 +48,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Delegates\ITest.cs" />
+    <Compile Include="Delegates\TestMockDelegates.cs" />
     <Compile Include="TestMockerCreateOnly.cs" />
     <Compile Include="TestMockerForPartialResquest.cs" />
     <Compile Include="TestMockerForPartialCalculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestMockMethod.cs" />
+    <Compile Include="Delegates\TestMockDelegatesCalcReq.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
