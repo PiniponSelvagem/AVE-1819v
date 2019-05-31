@@ -325,7 +325,20 @@ namespace CsvierGeneric.Enumerator.Test {
         }
 
         [TestMethod]
-        public void Line_MultiLine_SkipEmpty() {
+        public void Line_MultiLine_Skip8Lines__MoreThanLength() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\nOH DUDE!\nFOR THE HORDE!!!";
+            string line3 = wowBFA.Split('\n')[2];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipNLines(4);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_SkipEmpties() {
             // Arrange
             string wowBFA = "Thrall is coming home boys!\n\nFOR THE HORDE!!!";
             string line1 = wowBFA.Split('\n')[0];

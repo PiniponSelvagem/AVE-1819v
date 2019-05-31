@@ -51,6 +51,10 @@ namespace CsvierGeneric.Enumerator {
                     return false;
                 }
             }
+
+            if (skipEmpties) {
+                SkipEmpties();
+            }
             
             while (charEnum.MoveNext()) {
                 curr = charEnum.Current;
@@ -86,6 +90,15 @@ namespace CsvierGeneric.Enumerator {
 
         public void Dispose() {
             charEnum.Dispose();
+        }
+
+
+        private void SkipEmpties() {
+            while (index+1 < src.Length && (src[index+1]=='\r' || src[index+1]=='\n')) {
+                ++index;
+                if (!charEnum.MoveNext())
+                    break;
+            }
         }
     }
 }
