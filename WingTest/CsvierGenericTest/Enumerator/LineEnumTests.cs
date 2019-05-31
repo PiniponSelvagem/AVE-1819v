@@ -38,6 +38,21 @@ namespace CsvierGeneric.Enumerator.Test {
         }
 
         [TestMethod]
+        public void Line_Return_NULL_inCurrent_When_MoveNext_isFalse() {
+            // Arrange
+            LineEnumerable lineEnumerable = new LineEnumerable("Thrall");
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            lineEnumerator.MoveNext();
+            bool isMoved2 = lineEnumerator.MoveNext();
+
+            // Assert
+            Assert.IsFalse(isMoved2);
+            Assert.IsNull(lineEnumerator.Current);
+        }
+
+        [TestMethod]
         public void Line_StartingWith_N() {
             // Arrange
             LineEnumerable lineEnumerable = new LineEnumerable("\nThrall");
@@ -74,12 +89,13 @@ namespace CsvierGeneric.Enumerator.Test {
             IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
 
             // Act
-            bool isMoved1 = lineEnumerator.MoveNext();
-            string thrall  = lineEnumerator.Current;
+            lineEnumerator.MoveNext();
             bool isMoved2 = lineEnumerator.MoveNext();
+            string thrall = lineEnumerator.Current;
+            bool isMoved3 = lineEnumerator.MoveNext();
 
             // Assert
-            Assert_Thrall(isMoved1, thrall, isMoved2);
+            Assert_Thrall(isMoved2, thrall, isMoved3);
         }
 
         [TestMethod]
@@ -164,6 +180,7 @@ namespace CsvierGeneric.Enumerator.Test {
 
             // Act
             // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
             Assert.IsTrue(lineEnumerator.MoveNext());
             Assert.AreEqual(wowBFA.Substring(2, 27), lineEnumerator.Current);
             Assert.IsFalse(lineEnumerator.MoveNext());
@@ -278,12 +295,60 @@ namespace CsvierGeneric.Enumerator.Test {
         }
 
         [TestMethod]
+        public void Line_MultiLine_DontRemove() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\n\nFOR THE HORDE!!!";
+            string[] wowBFAsplit = wowBFA.Split('\n');
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            for (int i = 0; lineEnumerator.MoveNext(); ++i) {
+                Assert.AreEqual(wowBFAsplit[i], lineEnumerator.Current);
+            }
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_Skip2Lines() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\nOH DUDE!\nFOR THE HORDE!!!";
+            string line3 = wowBFA.Split('\n')[2];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipNLines(2);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line3, lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
         public void Line_MultiLine_SkipEmpty() {
             // Arrange
-            string wowBFA = "Thrall is coming home boys!\r\n\r\nFOR THE HORDE!!!";
-            string line1 = wowBFA.Split('\r')[0];
+            string wowBFA = "Thrall is coming home boys!\n\nFOR THE HORDE!!!";
+            string line1 = wowBFA.Split('\n')[0];
+            string line3 = wowBFA.Split('\n')[2];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipEmpties();
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line1, lineEnumerator.Current);
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line3, lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_SkipStartWith() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\nOH DUDE!\nFOR THE HORDE!!!";
+            string line1 = wowBFA.Split('\n')[1];
             string line2 = wowBFA.Split('\n')[2];
-            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA);
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipStartWith("FOR");
             IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
 
             // Act

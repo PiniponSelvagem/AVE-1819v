@@ -24,27 +24,27 @@ namespace CsvierGeneric {
         }
 
         public override BaseCsvParserGeneric<T> Remove(int count) {
-            lineEnum.RemoveNLines(count);
+            lineEnum.SkipNLines(count);
             return this;
         }
 
         public override BaseCsvParserGeneric<T> RemoveEmpties() {
-            lineEnum.RemoveEmpties();
+            lineEnum.SkipEmpties();
             return this;
         }
 
         public override BaseCsvParserGeneric<T> RemoveWith(string word) {
-            lineEnum.RemoveStartWith(word);
+            lineEnum.SkipStartWith(word);
             return this;
         }
 
         public override BaseCsvParserGeneric<T> RemoveEvenIndexes() {
-            lineEnum.RemoveEvenIndexes();
+            lineEnum.SkipEvenIndexes();
             return this;
         }
 
         public override BaseCsvParserGeneric<T> RemoveOddIndexes() {
-            lineEnum.RemoveOddIndexes();
+            lineEnum.SkipOddIndexes();
             return this;
         }
 

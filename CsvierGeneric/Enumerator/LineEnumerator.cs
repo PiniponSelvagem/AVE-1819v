@@ -11,12 +11,13 @@ namespace CsvierGeneric.Enumerator {
 
         private string currStr;
         private int index = -1;
+        private bool lastLineEndWithSlashR;
 
-        internal int    removeNLines;
-        internal bool   removeEmpties;
-        internal string removeStartingWith;
-        internal bool   removeEvenIndexes;
-        internal bool   removeOddIndexes;
+        internal int    skipNLines;
+        internal bool   skipEmpties;
+        internal string skipStartingWith;
+        internal bool   skipEvenIndexes;
+        internal bool   skipOddIndexes;
 
         public LineEnumerator(string src) {
             this.src = src;
@@ -30,16 +31,32 @@ namespace CsvierGeneric.Enumerator {
         object IEnumerator.Current => Current;
         
         public bool MoveNext() {
-            if (src == null || index >= src.Length)
+            if (src == null || index >= src.Length) {
                 return false;
+            }
 
-            AllignIndexForNextIteration();
             StringBuilder strBuilder = new StringBuilder();
             char curr;
+
+            if (lastLineEndWithSlashR) {
+                lastLineEndWithSlashR = false;
+                if (charEnum.MoveNext()) {
+                    curr = charEnum.Current;
+                    if (curr!='\n') {
+                        strBuilder.Append(curr);
+                    }
+                }
+                else {
+                    currStr = null;
+                    return false;
+                }
+            }
+            
             while (charEnum.MoveNext()) {
                 curr = charEnum.Current;
                 ++index;
                 if (index < src.Length) {
+                    lastLineEndWithSlashR = (curr=='\r');
                     if (curr != '\r' && curr != '\n') {
                         strBuilder.Append(curr);
                     }
@@ -55,6 +72,7 @@ namespace CsvierGeneric.Enumerator {
                 return true;
             }
 
+            currStr = null;
             return false;
         }
 
@@ -68,16 +86,6 @@ namespace CsvierGeneric.Enumerator {
 
         public void Dispose() {
             charEnum.Dispose();
-        }
-
-
-        
-        private void AllignIndexForNextIteration() {
-            while (index+1 < src.Length && (src[index+1]=='\r' || src[index+1]=='\n')) {
-                ++index;
-                if (!charEnum.MoveNext())
-                    break;
-            }
         }
     }
 }

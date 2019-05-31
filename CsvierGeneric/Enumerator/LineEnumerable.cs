@@ -19,26 +19,31 @@ namespace CsvierGeneric.Enumerator {
             return GetEnumerator();
         }
 
-        public void RemoveNLines(int count) {
-            lineEnumerator.removeNLines = count;
+        public LineEnumerable SkipNLines(int count) {
+            lineEnumerator.skipNLines = count;
+            return this;
         }
 
-        public void RemoveEmpties() {
-            lineEnumerator.removeEmpties = true;
+        public LineEnumerable SkipEmpties() {
+            lineEnumerator.skipEmpties = true;
+            return this;
         }
 
-        public void RemoveStartWith(string word) {
-            lineEnumerator.removeStartingWith = word;
+        public LineEnumerable SkipStartWith(string word) {
+            lineEnumerator.skipStartingWith = word;
+            return this;
         }
 
-        public void RemoveEvenIndexes() {
+        public LineEnumerable SkipEvenIndexes() {
             //(i => i%2==0);
-            lineEnumerator.removeEvenIndexes = true;
+            lineEnumerator.skipEvenIndexes = true;
+            return this;
         }
 
-        public void RemoveOddIndexes() {
+        public LineEnumerable SkipOddIndexes() {
             //(i => i%2==1);
-            lineEnumerator.removeOddIndexes = true;
+            lineEnumerator.skipOddIndexes = true;
+            return this;
         }
     }
 }
