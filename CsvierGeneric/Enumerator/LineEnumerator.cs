@@ -12,6 +12,12 @@ namespace CsvierGeneric.Enumerator {
         private string currStr;
         private int index = -1;
 
+        internal int    removeNLines;
+        internal bool   removeEmpties;
+        internal string removeStartingWith;
+        internal bool   removeEvenIndexes;
+        internal bool   removeOddIndexes;
+
         public LineEnumerator(string src) {
             this.src = src;
             if (src != null) {
