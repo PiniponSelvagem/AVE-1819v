@@ -340,10 +340,28 @@ namespace CsvierGeneric.Enumerator.Test {
         [TestMethod]
         public void Line_MultiLine_SkipEmpties() {
             // Arrange
-            string wowBFA = "Thrall is coming home boys!\n\nFOR THE HORDE!!!";
+            string wowBFA = "Thrall is coming home boys!\n\n\nFOR THE HORDE!!!";
+            string line1 = wowBFA.Split('\n')[0];
+            string line4 = wowBFA.Split('\n')[3];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipEmpties();
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line1, lineEnumerator.Current);
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line4, lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_SkipStartWith() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\nOH DUDE!\nFOR THE HORDE!!!";
             string line1 = wowBFA.Split('\n')[0];
             string line3 = wowBFA.Split('\n')[2];
-            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipEmpties();
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipStartWith("OH");
             IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
 
             // Act
@@ -356,18 +374,33 @@ namespace CsvierGeneric.Enumerator.Test {
         }
 
         [TestMethod]
-        public void Line_MultiLine_SkipStartWith() {
+        public void Line_MultiLine_SkipEvenIndexes() {
             // Arrange
             string wowBFA = "Thrall is coming home boys!\nOH DUDE!\nFOR THE HORDE!!!";
-            string line1 = wowBFA.Split('\n')[1];
-            string line2 = wowBFA.Split('\n')[2];
-            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipStartWith("FOR");
+            string line1 = wowBFA.Split('\n')[2];
+            string line3 = wowBFA.Split('\n')[2];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipNLines(2);
             IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
 
             // Act
             // Assert
             Assert.IsTrue(lineEnumerator.MoveNext());
             Assert.AreEqual(line1, lineEnumerator.Current);
+            Assert.IsTrue(lineEnumerator.MoveNext());
+            Assert.AreEqual(line3, lineEnumerator.Current);
+            Assert.IsFalse(lineEnumerator.MoveNext());
+        }
+
+        [TestMethod]
+        public void Line_MultiLine_SkipOddIndexes() {
+            // Arrange
+            string wowBFA = "Thrall is coming home boys!\nOH DUDE!\nFOR THE HORDE!!!";
+            string line2 = wowBFA.Split('\n')[1];
+            LineEnumerable lineEnumerable = new LineEnumerable(wowBFA).SkipNLines(2);
+            IEnumerator<string> lineEnumerator = lineEnumerable.GetEnumerator();
+
+            // Act
+            // Assert
             Assert.IsTrue(lineEnumerator.MoveNext());
             Assert.AreEqual(line2, lineEnumerator.Current);
             Assert.IsFalse(lineEnumerator.MoveNext());

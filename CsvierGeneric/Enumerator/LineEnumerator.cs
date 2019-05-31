@@ -10,7 +10,7 @@ namespace CsvierGeneric.Enumerator {
         private string src;
 
         private string currStr;
-        private int index = -1;
+        private int  index = -1;
         private bool lastLineEndWithSlashR;
 
         internal int    skipNLines;
@@ -38,6 +38,7 @@ namespace CsvierGeneric.Enumerator {
             StringBuilder strBuilder = new StringBuilder();
             char curr;
 
+            // Check if last line ended with '\r', if this one starts with '\n' then move to next char
             if (lastLineEndWithSlashR) {
                 lastLineEndWithSlashR = false;
                 if (charEnum.MoveNext()) {
@@ -51,18 +52,37 @@ namespace CsvierGeneric.Enumerator {
                     return false;
                 }
             }
-
+            
+            // If skipEmpties, then check if this line is empty and if true then skip it
             if (skipEmpties) {
                 SkipEmpties();
             }
-            
+
+            // If skipNLines, skip lines while skipNLines > 0 
+            if (skipNLines > 0) {
+                SkipNLines();
+            }
+
+            int skipStartingWithIndex = 0, skipStartingWithCount = 0;
+            bool shouldSkip = false;
             while (charEnum.MoveNext()) {
                 curr = charEnum.Current;
                 ++index;
+                
+                if (skipStartingWith != null && skipStartingWithIndex < skipStartingWith.Length && skipStartingWith[skipStartingWithIndex++] == curr) {
+                    ++skipStartingWithCount;
+                    if (skipStartingWithCount == skipStartingWith.Length) {
+                        shouldSkip = true;
+                    }
+                }
+
                 if (index < src.Length) {
                     lastLineEndWithSlashR = (curr=='\r');
                     if (curr != '\r' && curr != '\n') {
                         strBuilder.Append(curr);
+                    }
+                    else if (shouldSkip) {
+                        strBuilder.Clear();
                     }
                     else if (index != 0) {
                         currStr = strBuilder.ToString();
@@ -95,9 +115,25 @@ namespace CsvierGeneric.Enumerator {
 
         private void SkipEmpties() {
             while (index+1 < src.Length && (src[index+1]=='\r' || src[index+1]=='\n')) {
-                ++index;
                 if (!charEnum.MoveNext())
                     break;
+
+                ++index;
+            }
+        }
+
+        private void SkipNLines() {
+            while (index+1 < src.Length && skipNLines > 0) {
+                if (!charEnum.MoveNext())
+                    break;
+                if (src[index+1]=='\r' || src[index+1]=='\n')
+                    --skipNLines;
+
+                ++index;
+            }
+
+            if (index+1 < src.Length && src[index+1]=='\n') {
+                charEnum.MoveNext();
             }
         }
     }
