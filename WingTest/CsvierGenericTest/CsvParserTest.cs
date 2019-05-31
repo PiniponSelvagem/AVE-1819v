@@ -11,8 +11,14 @@ namespace CsvierGeneric.Test {
 
         [TestMethod]
         public void Eager_Parse_NoParameters() {
+            BaseCsvParserGeneric<WeatherInfo> searchWeather = new CsvParserGenericEager<WeatherInfo>(typeof(LocationInfo), '\t')
+                .CtorArg("country", 1)
+                .CtorArg("region", 2)
+                .CtorArg("latitude", 3)
+                .CtorArg("longitude", 4);
+
             // Arrange
-            CsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGeneric<WeatherInfo>(typeof(WeatherInfo))
+            BaseCsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGenericEager<WeatherInfo>(typeof(WeatherInfo))
                             .CtorArg("date", 0)
                             .CtorArg("tempC", 2)
                             .PropArg("Desc", 10)
@@ -31,7 +37,7 @@ namespace CsvierGeneric.Test {
         [TestMethod]
         public void Eager_Parse_WithParam_Func() {
             // Arrange
-            CsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGeneric<WeatherInfo>(typeof(WeatherInfo));
+            CsvParserGenericEager<WeatherInfo> pastWeather = new CsvParserGenericEager<WeatherInfo>(typeof(WeatherInfo));
                             //.CtorArg("date", 0)
                             //.CtorArg("tempC", 2)
                             //.PropArg("Desc", 10)
@@ -74,7 +80,7 @@ namespace CsvierGeneric.Test {
         public void Eager_Assert__Parse_WithParam_Func() {
             // Arrange
             int count = 0;
-            CsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGeneric<WeatherInfo>(typeof(WeatherInfo));
+            CsvParserGenericEager<WeatherInfo> pastWeather = new CsvParserGenericEager<WeatherInfo>(typeof(WeatherInfo));
 
             // Act
             object[] items = pastWeather
@@ -96,7 +102,7 @@ namespace CsvierGeneric.Test {
             // Arrange
             int count = 0;
             IEnumerator<WeatherInfo> enumWI;
-            CsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGeneric<WeatherInfo>(typeof(WeatherInfo));
+            BaseCsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGenericLazy<WeatherInfo>(typeof(WeatherInfo));
 
             // Act
             IEnumerable<WeatherInfo> items = pastWeather
@@ -121,7 +127,7 @@ namespace CsvierGeneric.Test {
         [TestMethod]
         public void Lazy_Parse_WithParam_Func() {
             // Arrange
-            CsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGeneric<WeatherInfo>(typeof(WeatherInfo));
+            BaseCsvParserGeneric<WeatherInfo> pastWeather = new CsvParserGenericLazy<WeatherInfo>(typeof(WeatherInfo));
                             //.CtorArg("date", 0)
                             //.CtorArg("tempC", 2)
                             //.PropArg("Desc", 10)

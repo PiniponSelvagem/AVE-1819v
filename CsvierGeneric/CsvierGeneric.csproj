@@ -53,7 +53,9 @@
     <Compile Include="ArgsManager\IArgsManager.cs" />
     <Compile Include="Attributes\CsvAttribute.cs" />
     <Compile Include="Attributes\CsvAutoCreator.cs" />
-    <Compile Include="CsvParserGeneric.cs" />
+    <Compile Include="BaseCsvParserGeneric.cs" />
+    <Compile Include="CsvParserGenericLazy.cs" />
+    <Compile Include="CsvParserGenericEager.cs" />
     <Compile Include="Enumerator\WordEnumerable.cs" />
     <Compile Include="Enumerator\LineEnumerable.cs" />
     <Compile Include="Enumerator\WordEnumerator.cs" />

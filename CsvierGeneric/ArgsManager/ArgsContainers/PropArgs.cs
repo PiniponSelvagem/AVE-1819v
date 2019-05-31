@@ -3,7 +3,7 @@ using CsvierGeneric.Exceptions;
 using System.Reflection;
 
 namespace CsvierGeneric.ArgsContainers.ArgsContainers {
-    class PropArgs : BaseArgsManager {
+    public class PropArgs : BaseArgsManager {
         
         public PropArgs(KlassInfo klassInfo) : base(klassInfo) { }
         

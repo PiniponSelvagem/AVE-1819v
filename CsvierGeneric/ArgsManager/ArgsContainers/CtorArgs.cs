@@ -4,7 +4,7 @@ using System;
 using System.Reflection;
 
 namespace CsvierGeneric.ArgsContainers.ArgsContainers {
-    class CtorArgs : BaseArgsManager {
+    public class CtorArgs : BaseArgsManager {
 
         private int selectedCtorIndex;
         private object[] currArgsValues;

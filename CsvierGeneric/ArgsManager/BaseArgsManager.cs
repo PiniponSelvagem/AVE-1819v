@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 
 namespace CsvierGeneric.ArgsManager {
-    abstract class BaseArgsManager : IArgsManager {
+    public abstract class BaseArgsManager : IArgsManager {
 
         protected readonly KlassInfo klassInfo;
         protected List<ArgCol> argsList  = new List<ArgCol>();

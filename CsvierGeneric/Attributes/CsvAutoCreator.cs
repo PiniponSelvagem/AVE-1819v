@@ -4,15 +4,15 @@ using System.Reflection;
 namespace CsvierGeneric.Attributes {
     public class CsvAutoCreator<T> {
 
-        private CsvParserGeneric<T> csv;
+        private BaseCsvParserGeneric<T> csv;
         private Type type;
 
-        public CsvAutoCreator(CsvParserGeneric<T> csv, Type type) {
+        public CsvAutoCreator(BaseCsvParserGeneric<T> csv, Type type) {
             this.csv = csv;
             this.type = type;
         }     
         
-        public void Set(CsvParserGeneric<T> csv, Type type) {
+        public void Set(BaseCsvParserGeneric<T> csv, Type type) {
             SetCtors();
             SetProps();
             SetFields();

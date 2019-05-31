@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 
 namespace CsvierGeneric {
-    class KlassInfo {
+    public class KlassInfo {
 
         public struct CInfo {
             public ConstructorInfo CtorInfo { get; private set; }
