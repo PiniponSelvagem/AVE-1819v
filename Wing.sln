@@ -18,6 +18,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mocky", "Mocky\Mocky.csproj", "{5543E351-620A-4FDF-A9F4-C9A471604337}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MockyTest", "MockyTest\MockyTest.csproj", "{91361E11-37B5-465C-A9CE-24ADE8342395}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5543E351-620A-4FDF-A9F4-C9A471604337} = {5543E351-620A-4FDF-A9F4-C9A471604337}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CsvierGeneric", "CsvierGeneric\CsvierGeneric.csproj", "{0F1FCEF0-D00B-4AAD-8F2A-36CBC9DD8FE5}"
 EndProject
